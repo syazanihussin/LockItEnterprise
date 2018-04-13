@@ -1,18 +1,20 @@
 
 import com.lockit.ejb.HouseBean;
 import com.lockit.entity.House;
+import com.lockit.entity.HouseOwner;
 
 public class tryyyyyyyyyyy {
 
 	public static void main(String[] args) {
 		
 		
-		
 		HouseBean salesDao = new HouseBean();
 		
+		HouseOwner houseOwner = new HouseOwner("syazanihussin", "spectrum", "syazanihussin@gmail.com", "961225-10-5835", "017-3852095");
 		
-		House sales = new House(2, "Jun", "vvvv");
+		House sales = new House("Lot254 Kampung Katong", "C://image/house.png", houseOwner);
 		
+		//System.out.println(sales.getHouseOwner_House().getPassword());
 		salesDao.addHouse(sales);
 	}
 

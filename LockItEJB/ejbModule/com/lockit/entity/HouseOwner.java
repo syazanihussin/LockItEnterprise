@@ -2,8 +2,10 @@ package com.lockit.entity;
 
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,12 +14,11 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="user")
+@Table(name="houseowner")
 public class HouseOwner implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
-	House house;
 	
 
 	@Id
@@ -43,6 +44,10 @@ public class HouseOwner implements Serializable {
 	
 	@Column(name="phoneNumber")
 	private String phoneNumber;
+	
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "houseOwner_House")
+	House house;
 
 
 	public HouseOwner() {
@@ -50,22 +55,15 @@ public class HouseOwner implements Serializable {
 	}
 	
 	
-	public HouseOwner(String userID, String userName, String password, String email, String ic, String phoneNumber) {
+	public HouseOwner(String userName, String password, String email, String ic, String phoneNumber) {
 		super();
-		this.userID = userID;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.ic = ic;
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-	@OneToOne(mappedBy = "houseOwnerDetail")
-    public House getHouseOwner() {
-        return house;
-    }
-	
+
 
 	public String getUserID() {
 		return userID;
@@ -127,10 +125,20 @@ public class HouseOwner implements Serializable {
 	}
 
 
+	public House getHouse() {
+		return house;
+	}
+
+
+	public void setHouse(House house) {
+		this.house = house;
+	}
+
+
 	@Override
 	public String toString() {
 		return "HouseOwner [userID=" + userID + ", userName=" + userName + ", password=" + password + ", email=" + email
-				+ ", ic=" + ic + ", phoneNumber=" + phoneNumber + "]";
+				+ ", ic=" + ic + ", phoneNumber=" + phoneNumber + ", house=" + house + "]";
 	}
-	
+
 }
