@@ -1,27 +1,30 @@
 package com.lockit.ejb;
 
-
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import com.lockit.entity.House;
 import com.lockit.util.HibernateORM;
 
-
+/**
+ * Session Bean implementation class LockEyeBean
+ */
 @Stateless
 @LocalBean
-public class HouseBean implements HouseBeanRemote, HouseBeanLocal {
+public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal {
 
-    
 	HibernateORM hibernateObject = HibernateORM.getInstance();
 	private List<House> houseData = new ArrayList<>();
 	
 	
-	public HouseBean() {
+	public LockEyeBean() {
 		
 	}
 	
@@ -114,4 +117,5 @@ public class HouseBean implements HouseBeanRemote, HouseBeanLocal {
 	    session.close();
         
     }
+
 }

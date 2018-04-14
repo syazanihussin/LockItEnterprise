@@ -11,12 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name="SenseNotification")
+@Table(name="sensenotification")
 public class SenseNotification implements Serializable {
 	
 	
@@ -25,102 +24,122 @@ public class SenseNotification implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="SenseNotificationID", unique = true)
-	private int SenseNotificationID;
+	@Column(name="senseNotificationID", unique = true)
+	private int senseNotificationID;
+	
+	
+	@Column(name="senseNotificationTitle")
+	private String senseNotificationTitle;
+	
+	
+	@Column(name="senseNotificationDesc")
+	private String senseNotificationDesc;
+	
+	
+	@Column(name="senseTimestamp")
+	private int senseTimestamp;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lockSenseID", nullable = false)
+	LockSense lockSense_SenseNotification;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userID", nullable = false)
+	HouseOwner houseOwner_SenseNotification;
+	
+	
+	public SenseNotification() {
+		super();
+	}
 	
 	
 	public SenseNotification(String senseNotificationTitle, String senseNotificationDesc, int senseTimestamp) {
 		super();
-		SenseNotificationTitle = senseNotificationTitle;
-		SenseNotificationDesc = senseNotificationDesc;
-		SenseTimestamp = senseTimestamp;
+		this.senseNotificationTitle = senseNotificationTitle;
+		this.senseNotificationDesc = senseNotificationDesc;
+		this.senseTimestamp = senseTimestamp;
 	}
+	
 
 	public SenseNotification(String senseNotificationTitle, String senseNotificationDesc, int senseTimestamp,
 			LockSense lockSense_SenseNotification, HouseOwner houseOwner_SenseNotification) {
 		super();
-		SenseNotificationTitle = senseNotificationTitle;
-		SenseNotificationDesc = senseNotificationDesc;
-		SenseTimestamp = senseTimestamp;
+		this.senseNotificationTitle = senseNotificationTitle;
+		this.senseNotificationDesc = senseNotificationDesc;
+		this.senseTimestamp = senseTimestamp;
 		this.lockSense_SenseNotification = lockSense_SenseNotification;
 		this.houseOwner_SenseNotification = houseOwner_SenseNotification;
 	}
 
-	@Override
-	public String toString() {
-		return "SenseNotification [SenseNotificationID=" + SenseNotificationID + ", SenseNotificationTitle="
-				+ SenseNotificationTitle + ", SenseNotificationDesc=" + SenseNotificationDesc + ", SenseTimestamp="
-				+ SenseTimestamp + ", lockSense_SenseNotification=" + lockSense_SenseNotification
-				+ ", houseOwner_SenseNotification=" + houseOwner_SenseNotification + "]";
-	}
 
 	public int getSenseNotificationID() {
-		return SenseNotificationID;
+		return senseNotificationID;
 	}
+	
 
 	public void setSenseNotificationID(int senseNotificationID) {
-		SenseNotificationID = senseNotificationID;
+		this.senseNotificationID = senseNotificationID;
 	}
+	
 
 	public String getSenseNotificationTitle() {
-		return SenseNotificationTitle;
+		return senseNotificationTitle;
 	}
 
+	
 	public void setSenseNotificationTitle(String senseNotificationTitle) {
-		SenseNotificationTitle = senseNotificationTitle;
+		this.senseNotificationTitle = senseNotificationTitle;
 	}
 
+	
 	public String getSenseNotificationDesc() {
-		return SenseNotificationDesc;
+		return senseNotificationDesc;
 	}
 
+	
 	public void setSenseNotificationDesc(String senseNotificationDesc) {
-		SenseNotificationDesc = senseNotificationDesc;
+		this.senseNotificationDesc = senseNotificationDesc;
 	}
 
+	
 	public int getSenseTimestamp() {
-		return SenseTimestamp;
+		return senseTimestamp;
 	}
 
+	
 	public void setSenseTimestamp(int senseTimestamp) {
-		SenseTimestamp = senseTimestamp;
+		this.senseTimestamp = senseTimestamp;
 	}
+	
 
 	public LockSense getLockSense_SenseNotification() {
 		return lockSense_SenseNotification;
 	}
 
+	
 	public void setLockSense_SenseNotification(LockSense lockSense_SenseNotification) {
 		this.lockSense_SenseNotification = lockSense_SenseNotification;
 	}
 
+	
 	public HouseOwner getHouseOwner_SenseNotification() {
 		return houseOwner_SenseNotification;
 	}
+	
 
 	public void setHouseOwner_SenseNotification(HouseOwner houseOwner_SenseNotification) {
 		this.houseOwner_SenseNotification = houseOwner_SenseNotification;
 	}
-
-	@Column(name="SenseNotificationTitle")
-	private String SenseNotificationTitle;
 	
 	
-	@Column(name="SenseNotificationDesc")
-	private String SenseNotificationDesc;
+	@Override
+	public String toString() {
+		return "SenseNotification [SenseNotificationID=" + senseNotificationID + ", SenseNotificationTitle="
+				+ senseNotificationTitle + ", SenseNotificationDesc=" + senseNotificationDesc + ", SenseTimestamp="
+				+ senseTimestamp + ", lockSense_SenseNotification=" + lockSense_SenseNotification
+				+ ", houseOwner_SenseNotification=" + houseOwner_SenseNotification + "]";
+	}
 	
-	@Column(name="SenseTimestamp")
-	private int SenseTimestamp;
-	
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lockSenseID", nullable = false)
-	
-	LockSense lockSense_SenseNotification;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userID", nullable = false)
-	
-	HouseOwner houseOwner_SenseNotification;
 }

@@ -1,9 +1,9 @@
 package com.lockit.entity;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,10 +17,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="LockEye")
+@Table(name="lockeye")
 public class LockEye implements Serializable {
-	
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -28,21 +28,23 @@ public class LockEye implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="LockEyeID", unique = true)
-	private int LockEyeID;
+	@Column(name="lockEyeID", unique = true)
+	private int lockEyeID;
 	
-	@Column(name="EyeLocation")
-	private String EyeLocation;
 	
-	@Column(name="EyeLevel")
-	private String EyeLevel;
+	@Column(name="eyeLocation")
+	private String eyeLocation;
+	
+	
+	@Column(name="eyeLevel")
+	private String eyeLevel;
 	
 	
 //relation starts here 1-1 or N-1 or 1-N
 	
 	//relation owner of relation
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "HouseID", nullable = false)
+    @JoinColumn(name = "houseID", nullable = false)
 	House house_LockEye;//fkey
 
 
@@ -51,59 +53,64 @@ public class LockEye implements Serializable {
     DeviceCode deviceCode_LockEye;//fkey
 	
 	
-	
 	//borrower of relation
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockEye_Video")//map: fk from many erd
-	private List<Video> video= new ArrayList<>();
+	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockEye_Video") //map: fk from many erd
+	private List<Video> video = new ArrayList<>();
 	
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockEye_EyeNotification") //map:fk from many erd
-	private List<EyeNotification> EyeNotification =new ArrayList<>();
-	
+	private List<EyeNotification> eyeNotification = new ArrayList<>();
 	
 	
 	public LockEye(){
-	super();
+		super();
+	}
 	
 	
-}
-
-
+	public LockEye(String eyeLocation, String eyeLevel) {
+		super();
+		this.eyeLocation = eyeLocation;
+		this.eyeLevel = eyeLevel;
+	}
+	
+	
+	public LockEye(String eyeLocation, String eyeLevel, House house_LockEye, DeviceCode deviceCode_LockEye) {
+		super();
+		this.eyeLocation = eyeLocation;
+		this.eyeLevel = eyeLevel;
+		this.house_LockEye = house_LockEye;
+		this.deviceCode_LockEye = deviceCode_LockEye;
+	}
+	
 
 	public int getLockEyeID() {
-		return LockEyeID;
+		return lockEyeID;
 	}
-
 
 
 	public void setLockEyeID(int lockEyeID) {
-		LockEyeID = lockEyeID;
+		this.lockEyeID = lockEyeID;
 	}
-
 
 
 	public String getEyeLocation() {
-		return EyeLocation;
+		return eyeLocation;
 	}
-
 
 
 	public void setEyeLocation(String eyeLocation) {
-		EyeLocation = eyeLocation;
+		this.eyeLocation = eyeLocation;
 	}
-
 
 
 	public String getEyeLevel() {
-		return EyeLevel;
+		return eyeLevel;
 	}
-
 
 
 	public void setEyeLevel(String eyeLevel) {
-		EyeLevel = eyeLevel;
+		this.eyeLevel = eyeLevel;
 	}
-
 
 
 	public House getHouse_LockEye() {
@@ -111,23 +118,19 @@ public class LockEye implements Serializable {
 	}
 
 
-
 	public void setHouse_LockEye(House house_LockEye) {
 		this.house_LockEye = house_LockEye;
 	}
-
 
 
 	public DeviceCode getDeviceCode_LockEye() {
 		return deviceCode_LockEye;
 	}
 
-
-
+	
 	public void setDeviceCode_LockEye(DeviceCode deviceCode_LockEye) {
 		this.deviceCode_LockEye = deviceCode_LockEye;
 	}
-
 
 
 	public List<Video> getVideo() {
@@ -135,54 +138,26 @@ public class LockEye implements Serializable {
 	}
 
 
-
 	public void setVideo(List<Video> video) {
 		this.video = video;
 	}
 
 
-
 	public List<EyeNotification> getEyeNotification() {
-		return EyeNotification;
+		return eyeNotification;
 	}
-
 
 
 	public void setEyeNotification(List<EyeNotification> eyeNotification) {
-		EyeNotification = eyeNotification;
+		this.eyeNotification = eyeNotification;
 	}
 
-
-
-	public LockEye(String eyeLocation, String eyeLevel, List<Video> video,
-			List<com.lockit.entity.EyeNotification> eyeNotification) {
-		super();
-		EyeLocation = eyeLocation;
-		EyeLevel = eyeLevel;
-		this.video = video;
-		EyeNotification = eyeNotification;
-	}
-
-
-
-	public LockEye(int lockEyeID, String eyeLocation, String eyeLevel, House house_LockEye,
-			DeviceCode deviceCode_LockEye, List<Video> video, List<com.lockit.entity.EyeNotification> eyeNotification) {
-		super();
-		LockEyeID = lockEyeID;
-		EyeLocation = eyeLocation;
-		EyeLevel = eyeLevel;
-		this.house_LockEye = house_LockEye;
-		this.deviceCode_LockEye = deviceCode_LockEye;
-		this.video = video;
-		EyeNotification = eyeNotification;
-	}
-
-
-
+	
 	@Override
 	public String toString() {
-		return "LockEye [LockEyeID=" + LockEyeID + ", EyeLocation=" + EyeLocation + ", EyeLevel=" + EyeLevel
+		return "LockEye [LockEyeID=" + lockEyeID + ", EyeLocation=" + eyeLocation + ", EyeLevel=" + eyeLevel
 				+ ", house_LockEye=" + house_LockEye + ", deviceCode_LockEye=" + deviceCode_LockEye + ", video=" + video
-				+ ", EyeNotification=" + EyeNotification + "]";
+				+ ", EyeNotification=" + eyeNotification + "]";
 	}
+	
 }

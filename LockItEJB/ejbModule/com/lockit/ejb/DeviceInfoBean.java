@@ -14,14 +14,14 @@ import com.lockit.util.HibernateORM;
 
 @Stateless
 @LocalBean
-public class HouseBean implements HouseBeanRemote, HouseBeanLocal {
+public class DeviceInfoBean implements DeviceInfoBeanRemote, DeviceInfoBeanLocal {
 
     
 	HibernateORM hibernateObject = HibernateORM.getInstance();
 	private List<House> houseData = new ArrayList<>();
 	
 	
-	public HouseBean() {
+	public DeviceInfoBean() {
 		
 	}
 	

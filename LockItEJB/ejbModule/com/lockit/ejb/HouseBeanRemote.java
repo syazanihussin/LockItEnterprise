@@ -9,10 +9,11 @@ import com.lockit.entity.House;
 @Remote
 public interface HouseBeanRemote {
 	
-	void addHouse(House house);
+	void insertHouse(House house);
 	House getHouseById(int id);
-	void deleteHouse(int id);
-	void updateHouse(House house);
 	List<House> getAllHouses();
+	void updateHouse(House house);
+	void deleteHouse(int id);
+	void deleteAllHouses();
 
 }

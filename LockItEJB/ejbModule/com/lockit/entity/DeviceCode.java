@@ -50,12 +50,10 @@ public class DeviceCode implements Serializable {
 	}
 
 
-	public DeviceCode(String key, HouseOwner deviceInfo_DeviceCode, LockEye lockEye, LockSense lockSense) {
+	public DeviceCode(String key, HouseOwner deviceInfo_DeviceCode) {
 		super();
 		this.key = key;
 		this.deviceInfo_DeviceCode = deviceInfo_DeviceCode;
-		this.lockEye = lockEye;
-		this.lockSense = lockSense;
 	}
 
 

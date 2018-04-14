@@ -48,6 +48,7 @@ public class HouseOwner implements Serializable {
 	@Column(name="phoneNumber")
 	private String phoneNumber;
 	
+	
 	//ni utk pinjam relationship
 	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "houseOwner_House")
 	House house;
@@ -73,20 +74,6 @@ public class HouseOwner implements Serializable {
 		this.email = email;
 		this.ic = ic;
 		this.phoneNumber = phoneNumber;
-	}
-
-
-	public HouseOwner(String userName, String password, String email, String ic, String phoneNumber,
-			House house, List<SenseNotification> senseNotification, List<EyeNotification> eyeNotification) {
-		super();
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.ic = ic;
-		this.phoneNumber = phoneNumber;
-		this.house = house;
-		this.senseNotification = senseNotification;
-		this.eyeNotification = eyeNotification;
 	}
 
 

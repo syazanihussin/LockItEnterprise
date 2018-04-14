@@ -35,13 +35,12 @@ public class House implements Serializable {
 	private String address;
 	
 	
-	@Column(name="houseBlueprint")
+	@Column(name ="houseBlueprint")
 	private String houseBlueprint;
 	
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID", nullable = false)
-	
 	HouseOwner houseOwner_House;
 	
 	
@@ -63,16 +62,13 @@ public class House implements Serializable {
 		this.address = address;
 		this.houseBlueprint = houseBlueprint;
 	}
-
-
-	public House(String address, String houseBlueprint, HouseOwner houseOwner_House, List<LockEye> lockEye,
-			List<LockSense> lockSense) {
+	
+	
+	public House(String address, String houseBlueprint, HouseOwner houseOwner_House) {
 		super();
 		this.address = address;
 		this.houseBlueprint = houseBlueprint;
 		this.houseOwner_House = houseOwner_House;
-		this.lockEye = lockEye;
-		this.lockSense = lockSense;
 	}
 
 

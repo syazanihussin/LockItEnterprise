@@ -54,14 +54,6 @@ public class DeviceInfo implements Serializable {
 	}
 
 
-	public DeviceInfo(String deviceName, String deviceDesc, List<DeviceCode> deviceCode) {
-		super();
-		this.deviceName = deviceName;
-		this.deviceDesc = deviceDesc;
-		this.deviceCode = deviceCode;
-	}
-
-
 	public int getDeviceID() {
 		return deviceID;
 	}
