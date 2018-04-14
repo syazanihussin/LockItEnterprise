@@ -41,6 +41,7 @@ public class House implements Serializable {
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID", nullable = false)
+	
 	HouseOwner houseOwner_House;
 	
 	
