@@ -4,7 +4,6 @@ package com.lockit.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,8 +55,91 @@ public class House implements Serializable {
 	public House() {
 		super();
 	}
-	
-	
+
+
+	public House(String address, String houseBlueprint) {
+		super();
+		this.address = address;
+		this.houseBlueprint = houseBlueprint;
+	}
+
+
+	public House(String address, String houseBlueprint, HouseOwner houseOwner_House, List<LockEye> lockEye,
+			List<LockSense> lockSense) {
+		super();
+		this.address = address;
+		this.houseBlueprint = houseBlueprint;
+		this.houseOwner_House = houseOwner_House;
+		this.lockEye = lockEye;
+		this.lockSense = lockSense;
+	}
+
+
+	public int getHouseID() {
+		return houseID;
+	}
+
+
+	public void setHouseID(int houseID) {
+		this.houseID = houseID;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public String getHouseBlueprint() {
+		return houseBlueprint;
+	}
+
+
+	public void setHouseBlueprint(String houseBlueprint) {
+		this.houseBlueprint = houseBlueprint;
+	}
+
+
+	public HouseOwner getHouseOwner_House() {
+		return houseOwner_House;
+	}
+
+
+	public void setHouseOwner_House(HouseOwner houseOwner_House) {
+		this.houseOwner_House = houseOwner_House;
+	}
+
+
+	public List<LockEye> getLockEye() {
+		return lockEye;
+	}
+
+
+	public void setLockEye(List<LockEye> lockEye) {
+		this.lockEye = lockEye;
+	}
+
+
+	public List<LockSense> getLockSense() {
+		return lockSense;
+	}
+
+
+	public void setLockSense(List<LockSense> lockSense) {
+		this.lockSense = lockSense;
+	}
+
+
+	@Override
+	public String toString() {
+		return "House [houseID=" + houseID + ", address=" + address + ", houseBlueprint=" + houseBlueprint
+				+ ", houseOwner_House=" + houseOwner_House + ", lockEye=" + lockEye + ", lockSense=" + lockSense + "]";
+	}
 	
 }
 
