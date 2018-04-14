@@ -45,7 +45,7 @@ public class HouseOwner implements Serializable {
 	@Column(name="phoneNumber")
 	private String phoneNumber;
 	
-	
+	//ni utk pinjam relationship
 	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "houseOwner_House")
 	House house;
 
