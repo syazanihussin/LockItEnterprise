@@ -1,5 +1,5 @@
 
-import com.lockit.ejb.HouseBean;
+import com.lockit.ejb.dao.HouseBean;
 import com.lockit.entity.House;
 import com.lockit.entity.HouseOwner;
 
