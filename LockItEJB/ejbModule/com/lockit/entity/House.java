@@ -2,6 +2,9 @@ package com.lockit.entity;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,53 +43,64 @@ public class House implements Serializable {
     @JoinColumn(name = "userID", nullable = false)
 	
 	HouseOwner houseOwner_House;
-
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "house_LockEye")
+	private List<LockEye> lockEye = new ArrayList<>();
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "house_LockSense")
+	private List<LockSense> lockSense = new ArrayList<>();
+	
 	
 	public House() {
 		super();
 	}
-	
-	
+
+
 	public House(String address, String houseBlueprint) {
 		super();
 		this.address = address;
 		this.houseBlueprint = houseBlueprint;
 	}
 
-	
-	public House(String address, String houseBlueprint, HouseOwner houseOwner_House) {
+
+	public House(String address, String houseBlueprint, HouseOwner houseOwner_House, List<LockEye> lockEye,
+			List<LockSense> lockSense) {
 		super();
 		this.address = address;
 		this.houseBlueprint = houseBlueprint;
 		this.houseOwner_House = houseOwner_House;
+		this.lockEye = lockEye;
+		this.lockSense = lockSense;
 	}
 
 
 	public int getHouseID() {
 		return houseID;
 	}
-	
+
 
 	public void setHouseID(int houseID) {
 		this.houseID = houseID;
 	}
-	
+
 
 	public String getAddress() {
 		return address;
 	}
-	
+
 
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+
 
 	public String getHouseBlueprint() {
 		return houseBlueprint;
 	}
 
-	
+
 	public void setHouseBlueprint(String houseBlueprint) {
 		this.houseBlueprint = houseBlueprint;
 	}
@@ -101,10 +116,30 @@ public class House implements Serializable {
 	}
 
 
+	public List<LockEye> getLockEye() {
+		return lockEye;
+	}
+
+
+	public void setLockEye(List<LockEye> lockEye) {
+		this.lockEye = lockEye;
+	}
+
+
+	public List<LockSense> getLockSense() {
+		return lockSense;
+	}
+
+
+	public void setLockSense(List<LockSense> lockSense) {
+		this.lockSense = lockSense;
+	}
+
+
 	@Override
 	public String toString() {
 		return "House [houseID=" + houseID + ", address=" + address + ", houseBlueprint=" + houseBlueprint
-				+ ", houseOwner_House=" + houseOwner_House + "]";
+				+ ", houseOwner_House=" + houseOwner_House + ", lockEye=" + lockEye + ", lockSense=" + lockSense + "]";
 	}
 	
 }
