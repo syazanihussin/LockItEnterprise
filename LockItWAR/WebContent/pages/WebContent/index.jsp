@@ -407,29 +407,29 @@ URI     : https://colorlib.com
 		<div class="section-title">
 		<h3>Create an Account</h3>
 		</div>
-		<form>
+		<form name="myForm" action=""  onSubmit="return validateForm()" method="post">
             <div class="row">
                 <div class="col-md-6 d-flex">
 					<div class="media-body">
-						<div class="form-group">
+						<!--  <div class="form-group">
 							<label>Full Name</label>
-							<input class="form-control" placeholder="Full Name">
-						</div>
+							<input class="form-control" name="name" placeholder="Full Name">
+						</div> -->
 						<div class="form-group">
 							<label>IC Number</label>
-							<input class="form-control" placeholder="Ic Number">
+							<input class="form-control" type="text" name="ic" placeholder="Ic Number">
 						</div>
 						<div class="form-group">
 							<label>Phone Number</label>
-							<input class="form-control" placeholder="Phone Number">
+							<input class="form-control" type="text" name="phoneNumber" placeholder="Phone Number">
 						</div>
 						<div class="form-group">
 							<label>Address</label>
-							<input class="form-control" placeholder="Address">
+							<input class="form-control" type="text" name="address" placeholder="Address">
 						</div>
 						<div class="form-group">
 							<label>Email</label>
-							<input class="form-control" placeholder="Email">
+							<input class="form-control" type="email" name="email" placeholder="Email">
 						</div>
 					</div>
                 </div>
@@ -437,11 +437,11 @@ URI     : https://colorlib.com
 					<div class="media-body">
 						<div class="form-group">
 							<label>Username</label>
-							<input class="form-control" placeholder="Username">
+							<input class="form-control" type="text" name="userName" placeholder="Username">
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input class="form-control" placeholder="Password">
+							<input class="form-control" type="password" name="password" placeholder="Password">
 						</div>
 						
 					</div>
@@ -498,6 +498,40 @@ URI     : https://colorlib.com
 
         
     </footer>
+    <script type="text/javascript">
+	function validateForm()
+		{
+		   if (document.myForm.ic.value == null || document.myForm.ic.value =="") {
+			   alert("Please enter your IC number");
+			   return false;
+		   }
+		   
+		   if (document.myForm.phoneNumber.value == null || document.myForm.phoneNumber.value =="") {
+			   alert("Please enter your phone number");
+			   return false;
+		   }
+		   
+		   if (document.myForm.address.value == null || document.myForm.adress.value =="") {
+			   alert("Please enter your address");
+			   return false;
+		   }
+		   
+		   if (document.myForm.email.value == null || document.myForm.email.value =="") {
+			   alert("Please enter your email");
+			   return false;
+		   }
+		   
+		   if (document.myForm.userName.value == null || document.myForm.userName.value =="") {
+			   alert("Please enter your email");
+			   return false;
+		   }
+		   
+		   if (document.myForm.password.value == null || document.myForm.password.value =="") {
+			   alert("Please enter your password");
+			   return false;
+		   }
+		}
+	</script>
 
     <!-- jQuery and Bootstrap -->
     <script src="js/jquery-3.2.1.min.js"></script>
