@@ -5,6 +5,7 @@ import com.lockit.entity.HouseOwner;
 public class TestDriver {
 
 	public static void main(String[] args) {
+				  
 		
 		//INSERT
 		HouseOwnerBean houseOwnerBean = new HouseOwnerBean();
@@ -20,7 +21,7 @@ public class TestDriver {
 		
 		
 		//SELECT
-		HouseOwner houseOwner2 = houseOwnerBean.getHouseOwnerById(33);
+		HouseOwner houseOwner2 = houseOwnerBean.getHouseOwnerById(1);
 		System.out.println(houseOwner2.toString());
 		
 		
