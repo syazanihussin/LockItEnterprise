@@ -52,7 +52,7 @@ URI     : https://colorlib.com
                                 <li class="nav-item"> <a class="nav-link" href="#pricing">PRICING</a> </li>
 								<li class="nav-item"> <a class="nav-link" href="#register">REGISTER</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#contact">CONTACT</a> </li>
-                                <li class="nav-item"><a href="login.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
+                                <li class="nav-item"><a href="login.jsp" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
                             </ul>
                         </div>
                     </nav>
