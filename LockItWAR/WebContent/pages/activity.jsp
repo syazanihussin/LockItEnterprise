@@ -44,7 +44,7 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">LockIT!</a>
+                    <a class="navbar-brand" href="homepage.jsp">LockIT!</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -55,7 +55,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="#"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
+                    <li><a href="index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
                 </ul>
 
 				
