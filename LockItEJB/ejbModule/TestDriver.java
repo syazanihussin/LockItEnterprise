@@ -1,9 +1,9 @@
 
-import com.lockit.ejb.HouseBean;
+import com.lockit.ejb.dao.HouseBean;
 import com.lockit.entity.House;
 import com.lockit.entity.HouseOwner;
 
-public class tryyyyyyyyyyy {
+public class TestDriver {
 
 	public static void main(String[] args) {
 		
@@ -14,8 +14,8 @@ public class tryyyyyyyyyyy {
 		
 		House sales = new House("Lot254 Kampung Katong", "C://image/house.png", houseOwner);
 		
-		//System.out.println(sales.getHouseOwner_House().getPassword());
-		salesDao.addHouse(sales);
+		System.out.println(sales.getHouseOwner_House().getPassword());
+		salesDao.insertHouse(sales);
 	}
 
 }
