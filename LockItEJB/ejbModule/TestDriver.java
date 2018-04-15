@@ -20,8 +20,8 @@ public class TestDriver {
 		
 		
 		//SELECT
-		//HouseOwner houseOwner2 = houseOwnerBean.getHouseOwnerById(22);
-		//System.out.println(houseOwner2.toString());
+		HouseOwner houseOwner2 = houseOwnerBean.getHouseOwnerById(33);
+		System.out.println(houseOwner2.toString());
 		
 		
 		//DELECT
