@@ -22,8 +22,8 @@ public class DeviceCode implements Serializable {
 	
 	
 	@Id
-	@Column(name="key", unique = true)
-	private String key;
+	@Column(name="keyz", unique = true)
+	private String keyz;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -44,26 +44,26 @@ public class DeviceCode implements Serializable {
 	}
 
 
-	public DeviceCode(String key) {
+	public DeviceCode(String keyz) {
 		super();
-		this.key = key;
+		this.keyz = keyz;
 	}
 
 
-	public DeviceCode(String key, HouseOwner deviceInfo_DeviceCode) {
+	public DeviceCode(String keyz, HouseOwner deviceInfo_DeviceCode) {
 		super();
-		this.key = key;
+		this.keyz = keyz;
 		this.deviceInfo_DeviceCode = deviceInfo_DeviceCode;
 	}
 
 
-	public String getKey() {
-		return key;
+	public String getKeyz() {
+		return keyz;
 	}
 
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setKeyz(String keyz) {
+		this.keyz = keyz;
 	}
 
 
@@ -99,7 +99,7 @@ public class DeviceCode implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DeviceCode [key=" + key + ", deviceInfo_DeviceCode=" + deviceInfo_DeviceCode + ", lockEye=" + lockEye
+		return "DeviceCode [keyz=" + keyz + ", deviceInfo_DeviceCode=" + deviceInfo_DeviceCode + ", lockEye=" + lockEye
 				+ ", lockSense=" + lockSense + "]";
 	}
 	
