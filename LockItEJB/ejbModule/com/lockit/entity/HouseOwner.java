@@ -27,7 +27,7 @@ public class HouseOwner implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="userID", unique = true)
-	private String userID;
+	private int userID;
 	
 	
 	@Column(name="userName")
@@ -50,7 +50,7 @@ public class HouseOwner implements Serializable {
 	
 	
 	//ni utk pinjam relationship
-	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "houseOwner_House")
+	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, targetEntity = House.class, mappedBy = "houseOwner_House")
 	House house;
 	
 	
@@ -67,6 +67,17 @@ public class HouseOwner implements Serializable {
 	}
 
 
+	public HouseOwner(int userID, String userName, String password, String email, String ic, String phoneNumber) {
+		super();
+		this.userID = userID;
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.ic = ic;
+		this.phoneNumber = phoneNumber;
+	}
+	
+	
 	public HouseOwner(String userName, String password, String email, String ic, String phoneNumber) {
 		super();
 		this.userName = userName;
@@ -77,12 +88,12 @@ public class HouseOwner implements Serializable {
 	}
 
 
-	public String getUserID() {
+	public int getUserID() {
 		return userID;
 	}
 
 
-	public void setUserID(String userID) {
+	public void setUserID(int userID) {
 		this.userID = userID;
 	}
 
@@ -170,8 +181,10 @@ public class HouseOwner implements Serializable {
 	@Override
 	public String toString() {
 		return "HouseOwner [userID=" + userID + ", userName=" + userName + ", password=" + password + ", email=" + email
-				+ ", ic=" + ic + ", phoneNumber=" + phoneNumber + ", house=" + house + ", senseNotification="
-				+ senseNotification + ", eyeNotification=" + eyeNotification + "]";
+				+ ", ic=" + ic + ", phoneNumber=" + phoneNumber + "]";
 	}
+
+
+	
 
 }

@@ -26,7 +26,7 @@ public class House implements Serializable {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="houseID", unique = true)
 	private int houseID;
 	
@@ -39,7 +39,7 @@ public class House implements Serializable {
 	private String houseBlueprint;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = HouseOwner.class)
     @JoinColumn(name = "userID", nullable = false)
 	HouseOwner houseOwner_House;
 	
@@ -57,6 +57,14 @@ public class House implements Serializable {
 	}
 
 
+	public House(int houseID, String address, String houseBlueprint) {
+		super();
+		this.houseID = houseID;
+		this.address = address;
+		this.houseBlueprint = houseBlueprint;
+	}
+	
+	
 	public House(String address, String houseBlueprint) {
 		super();
 		this.address = address;
