@@ -56,7 +56,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onclick="window.location.href='C:/Users/User/Desktop/LOCKITLATEST/admin.html'">
+						<button class="login100-form-btn" onclick="window.location.href='C:/Users/User/Desktop/LOCKITLATEST/admin.jsp'">
 							Login
 						</button>
 					</div>
