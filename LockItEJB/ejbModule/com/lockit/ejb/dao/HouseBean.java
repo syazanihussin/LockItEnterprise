@@ -1,26 +1,24 @@
 package com.lockit.ejb.dao;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import com.lockit.entity.House;
-import com.lockit.util.HibernateORM;
 
 
-@Stateless
+@Stateless(mappedName="HouseBean")
 @LocalBean
 public class HouseBean implements HouseBeanRemote, HouseBeanLocal {
 
-    
-	HibernateORM hibernateObject = HibernateORM.getInstance();
-	private List<House> houseData = new ArrayList<>();
 	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
+	EntityManager entityManager = emf.createEntityManager();
 	
+
 	public HouseBean() {
 		
 	}
@@ -28,90 +26,46 @@ public class HouseBean implements HouseBeanRemote, HouseBeanLocal {
 	
 	@Override
 	public void insertHouse(House house) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();     
-	    Transaction transaction = session.beginTransaction();  
-
-	    session.save(house); 
-	    transaction.commit(); 
-	    session.close();  
-	    
+		entityManager.getTransaction().begin();
+		entityManager.persist(house); 
+		entityManager.getTransaction().commit();
 	}
 	
 	
 	@Override
 	public House getHouseById(int id) {
-        
-		Session session = null;
-		House house = null;
-		
-		try {
-    	session = hibernateObject.getSessionFactory().openSession();  
-	    session.beginTransaction(); 
-        
-	    house = (House) session.load(House.class, id);
-        
-		} catch (Exception e) {
-			if(null != session.getTransaction()) {
-				session.getTransaction().rollback();
-			}
-		}
-        
-        return house;
+		return (House) entityManager.find(House.class, id);
     }
 
     
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<House> getAllHouses() {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    
-    	session.beginTransaction(); 
-        houseData = (List<House>) session.createQuery("FROM house").list();
-        
-        return houseData;
+		return entityManager.createQuery("From House").getResultList();
     }
 
  
 	@Override
     public void updateHouse(House house) {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    session.update(house); 
-	    transaction.commit(); 
-	    session.close();
+		entityManager.getTransaction().begin();
+		entityManager.merge(house); 
+		entityManager.getTransaction().commit();
     }
 	
 	
 	@Override
 	public void deleteHouse(int id) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-        House house = (House) session.load(House.class, new Integer(id));
-        
-	    session.delete(house); 
-	    transaction.commit(); 
-	    session.close();
-        
+		House house = (House) entityManager.find(House.class, id);
+		entityManager.getTransaction().begin();
+		entityManager.remove(house); 
+		entityManager.getTransaction().commit();
     }
     
 	
 	@Override
-    @SuppressWarnings({ "rawtypes", "deprecation" })
 	public void deleteAllHouses() {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    Query query = session.createQuery("DELETE * FROM house");
-	    query.executeUpdate();
-         
-	    transaction.commit(); 
-	    session.close();
-        
+		entityManager.getTransaction().begin();
+		entityManager.createQuery("DELETE * From House").executeUpdate();
+		entityManager.getTransaction().commit();
     }
 }

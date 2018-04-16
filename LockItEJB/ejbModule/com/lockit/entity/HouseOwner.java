@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,15 +49,15 @@ public class HouseOwner implements Serializable {
 	
 	
 	//ni utk pinjam relationship
-	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, targetEntity = House.class, mappedBy = "houseOwner_House")
+	@OneToOne(cascade =  CascadeType.ALL, targetEntity = House.class, mappedBy = "houseOwner_House")
 	House house;
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "houseOwner_SenseNotification")
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "houseOwner_SenseNotification")
 	private List<SenseNotification> senseNotification = new ArrayList<>();
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "houseOwner_EyeNotification")
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "houseOwner_EyeNotification")
 	private List<EyeNotification> eyeNotification = new ArrayList<>();
 
 
@@ -87,7 +86,7 @@ public class HouseOwner implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-
+	
 	public int getUserID() {
 		return userID;
 	}

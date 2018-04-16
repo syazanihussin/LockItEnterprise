@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" language="java" import="com.lockit.ejb.dao.*" import="com.lockit.entity.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="en">
 <!--
@@ -67,16 +67,6 @@ URI     : https://colorlib.com
         <div class="container mt-5">
             <h1>Secure Your House With LockIt!</h1>
             <p class="tagline">The one and only solution for any kind of web application landing needs.No worries of leaving your home!We take care of it! </p>
-        	<% 
-            
-            HouseOwnerBean houseOwnerBean = new HouseOwnerBean();
-            HouseOwner houseOwner2 = houseOwnerBean.getHouseOwnerById(32);
-    		
-    		out.println("<p><b> Could not be registered due to a system error. </b></p><p>" + houseOwner2.toString() + "</p>");
-            
-            
-            
-            %>
         </div>
         <div class="img-holder mt-3"><img src="images/s.png" alt="phone" class="img-fluid"></div>
     </header>
@@ -418,7 +408,7 @@ URI     : https://colorlib.com
 		<div class="section-title">
 		<h3>Create an Account</h3>
 		</div>
-		<form name="myForm" action="./registerServlet"  onSubmit="return validateForm()" method="post">
+		<form name="myForm" action="houseOwnerController"  onSubmit="return validateForm()" method="post">
             <div class="row">
                 <div class="col-md-6 d-flex">
 					<div class="media-body">
@@ -447,11 +437,11 @@ URI     : https://colorlib.com
 				<div class="col-md-6 d-flex ">
 					<div class="media-body">
 						<div class="form-group">
-							<label>Username</label>
+							<label>Username1</label>
 							<input class="form-control" type="text" name="userName" placeholder="Username">
 						</div>
 						<div class="form-group">
-							<label>Password</label>a
+							<label>Password</label>
 							<input class="form-control" type="password" name="password" placeholder="Password">
 						</div>
 						

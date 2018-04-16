@@ -44,11 +44,11 @@ public class House implements Serializable {
 	HouseOwner houseOwner_House;
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "house_LockEye")
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "house_LockEye")
 	private List<LockEye> lockEye = new ArrayList<>();
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "house_LockSense")
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "house_LockSense")
 	private List<LockSense> lockSense = new ArrayList<>();
 	
 	

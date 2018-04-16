@@ -1,22 +1,22 @@
 package com.lockit.ejb.dao;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import com.lockit.entity.EyeNotification;
-import com.lockit.util.HibernateORM;
 
 
-@Stateless
+@Stateless(mappedName="EyeNotificationBean")
 @LocalBean
 public class EyeNotificationBean implements EyeNotificationBeanRemote, EyeNotificationBeanLocal {
 
-	HibernateORM hibernateObject = HibernateORM.getInstance();
-	private List<EyeNotification> eyeNotificationData = new ArrayList<>();
+	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
+	EntityManager entityManager = emf.createEntityManager();
 	
 	
 	public EyeNotificationBean() {
@@ -26,91 +26,47 @@ public class EyeNotificationBean implements EyeNotificationBeanRemote, EyeNotifi
 	
 	@Override
 	public void insertEyeNotification(EyeNotification eyeNotification) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();     
-	    Transaction transaction = session.beginTransaction();  
-
-	    session.save(eyeNotification); 
-	    transaction.commit(); 
-	    session.close();  
-	    
+		entityManager.getTransaction().begin();
+		entityManager.persist(eyeNotification); 
+		entityManager.getTransaction().commit();
 	}
 	
 	
 	@Override
 	public EyeNotification getEyeNotificationById(int id) {
-        
-		Session session = null;
-		EyeNotification eyeNotification = null;
-		
-		try {
-    	session = hibernateObject.getSessionFactory().openSession();  
-	    session.beginTransaction(); 
-        
-	    eyeNotification = (EyeNotification) session.load(EyeNotification.class, id);
-        
-		} catch (Exception e) {
-			if(null != session.getTransaction()) {
-				session.getTransaction().rollback();
-			}
-		}
-        
-        return eyeNotification;
+		return (EyeNotification) entityManager.find(EyeNotification.class, id);
     }
 
     
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<EyeNotification> getAllEyeNotifications() {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    
-    	session.beginTransaction(); 
-    	eyeNotificationData = (List<EyeNotification>) session.createQuery("FROM eyenotification").list();
-        
-        return eyeNotificationData;
+		return entityManager.createQuery("From EyeNotification").getResultList();
     }
 
  
 	@Override
     public void updateEyeNotification(EyeNotification eyeNotification) {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    session.update(eyeNotification); 
-	    transaction.commit(); 
-	    session.close();
+		entityManager.getTransaction().begin();
+		entityManager.merge(eyeNotification); 
+		entityManager.getTransaction().commit();
     }
 	
 	
 	@Override
 	public void deleteEyeNotification(int id) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-	    EyeNotification eyeNotification = (EyeNotification) session.load(EyeNotification.class, new Integer(id));
-        
-	    session.delete(eyeNotification); 
-	    transaction.commit(); 
-	    session.close();
-        
+		EyeNotification eyeNotification = (EyeNotification) entityManager.find(EyeNotification.class, id);
+		entityManager.getTransaction().begin();
+		entityManager.remove(eyeNotification); 
+		entityManager.getTransaction().commit();
     }
     
 	
 	@Override
-    @SuppressWarnings({ "rawtypes", "deprecation" })
 	public void deleteAllEyeNotifications() {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    Query query = session.createQuery("DELETE * FROM eyenotification");
-	    query.executeUpdate();
-         
-	    transaction.commit(); 
-	    session.close();
-        
+		entityManager.getTransaction().begin();
+		entityManager.createQuery("DELETE * From EyeNotification").executeUpdate();
+		entityManager.getTransaction().commit();
     }
 
 }

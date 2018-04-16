@@ -1,24 +1,22 @@
 package com.lockit.ejb.dao;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import com.lockit.entity.DeviceInfo;
-import com.lockit.util.HibernateORM;
 
 
-@Stateless
+@Stateless(mappedName="DeviceInfoBean")
 @LocalBean
 public class DeviceInfoBean implements DeviceInfoBeanRemote, DeviceInfoBeanLocal {
 
     
-	HibernateORM hibernateObject = HibernateORM.getInstance();
-	private List<DeviceInfo> deviceInfoData = new ArrayList<>();
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
+	EntityManager entityManager = emf.createEntityManager();
 	
 	
 	public DeviceInfoBean() {
@@ -28,90 +26,46 @@ public class DeviceInfoBean implements DeviceInfoBeanRemote, DeviceInfoBeanLocal
 	
 	@Override
 	public void insertHouse(DeviceInfo deviceInfo) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();     
-	    Transaction transaction = session.beginTransaction();  
-
-	    session.save(deviceInfo); 
-	    transaction.commit(); 
-	    session.close();  
-	    
+		entityManager.getTransaction().begin();
+		entityManager.persist(deviceInfo); 
+		entityManager.getTransaction().commit();
 	}
 	
 	
 	@Override
 	public DeviceInfo getDeviceInfoById(int id) {
-        
-		Session session = null;
-		DeviceInfo deviceInfo = null;
-		
-		try {
-    	session = hibernateObject.getSessionFactory().openSession();  
-	    session.beginTransaction(); 
-        
-	    deviceInfo = (DeviceInfo) session.load(DeviceInfo.class, id);
-        
-		} catch (Exception e) {
-			if(null != session.getTransaction()) {
-				session.getTransaction().rollback();
-			}
-		}
-        
-        return deviceInfo;
+		return (DeviceInfo) entityManager.find(DeviceInfo.class, id);
     }
 
     
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<DeviceInfo> getAllDeviceInfos() {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    
-    	session.beginTransaction(); 
-    	deviceInfoData = (List<DeviceInfo>) session.createQuery("FROM deviceinfo").list();
-        
-        return deviceInfoData;
+		return entityManager.createQuery("From DeviceInfo").getResultList();
     }
 
  
 	@Override
     public void updateDeviceInfo(DeviceInfo deviceInfo) {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    session.update(deviceInfo); 
-	    transaction.commit(); 
-	    session.close();
+		entityManager.getTransaction().begin();
+		entityManager.merge(deviceInfo); 
+		entityManager.getTransaction().commit();
     }
 	
 	
 	@Override
 	public void deleteDeviceInfo(int id) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-	    DeviceInfo deviceInfo = (DeviceInfo) session.load(DeviceInfo.class, new Integer(id));
-        
-	    session.delete(deviceInfo); 
-	    transaction.commit(); 
-	    session.close();
-        
+		DeviceInfo deviceInfo = (DeviceInfo) entityManager.find(DeviceInfo.class, id);
+		entityManager.getTransaction().begin();
+		entityManager.remove(deviceInfo); 
+		entityManager.getTransaction().commit();
     }
     
 	
 	@Override
-    @SuppressWarnings({ "rawtypes", "deprecation" })
 	public void deleteAllDeviceInfos() {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    Query query = session.createQuery("DELETE * FROM deviceinfo");
-	    query.executeUpdate();
-         
-	    transaction.commit(); 
-	    session.close();
-        
+		entityManager.getTransaction().begin();
+		entityManager.createQuery("DELETE * From DeviceInfo").executeUpdate();
+		entityManager.getTransaction().commit();
     }
 }

@@ -1,24 +1,22 @@
 package com.lockit.ejb.dao;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import com.lockit.entity.HouseOwner;
-import com.lockit.util.HibernateORM;
 
 
-@Stateless
+@Stateless(mappedName="HouseOwnerBean")
 @LocalBean
 public class HouseOwnerBean implements HouseOwnerBeanRemote, HouseOwnerBeanLocal {
 
     
-	HibernateORM hibernateObject = HibernateORM.getInstance();
-	private List<HouseOwner> houseOwnerData = new ArrayList<>();
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
+	EntityManager entityManager = emf.createEntityManager();
 	
 	
 	public HouseOwnerBean() {
@@ -28,90 +26,46 @@ public class HouseOwnerBean implements HouseOwnerBeanRemote, HouseOwnerBeanLocal
 	
 	@Override
 	public void insertHouseOwner(HouseOwner houseOwner) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();     
-	    Transaction transaction = session.beginTransaction();  
-
-	    session.save(houseOwner); 
-	    transaction.commit(); 
-	    session.close();  
-	    
+		entityManager.getTransaction().begin();
+		entityManager.persist(houseOwner); 
+		entityManager.getTransaction().commit();
 	}
 	
 	
 	@Override
 	public HouseOwner getHouseOwnerById(int id) {
-        
-		Session session = null;
-		HouseOwner houseOwner = null;
-		
-		try {
-    	session = hibernateObject.getSessionFactory().openSession();  
-	    session.beginTransaction(); 
-        
-	    houseOwner = (HouseOwner) session.load(HouseOwner.class, id);
-        
-		} catch (Exception e) {
-			if(null != session.getTransaction()) {
-				session.getTransaction().rollback();
-			}
-		}
-        
-        return houseOwner;
+		return (HouseOwner) entityManager.find(HouseOwner.class, id);
     }
 
     
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<HouseOwner> getAllHouseOwners() {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    
-    	session.beginTransaction(); 
-    	houseOwnerData = (List<HouseOwner>) session.createQuery("FROM houseowner").list();
-        
-        return houseOwnerData;
+		return entityManager.createQuery("From HouseOwner").getResultList();
     }
 
  
 	@Override
     public void updateHouseOwner(HouseOwner houseOwner) {
-        
-    	Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    session.update(houseOwner); 
-	    transaction.commit(); 
-	    session.close();
+		entityManager.getTransaction().begin();
+		entityManager.merge(houseOwner); 
+		entityManager.getTransaction().commit();
     }
 	
 	
 	@Override
 	public void deleteHouseOwner(int id) {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-	    HouseOwner houseOwner = (HouseOwner) session.load(HouseOwner.class, new Integer(id));
-        
-	    session.delete(houseOwner); 
-	    transaction.commit(); 
-	    session.close();
-        
+		HouseOwner houseOwner = (HouseOwner) entityManager.find(HouseOwner.class, id);
+		entityManager.getTransaction().begin();
+		entityManager.remove(houseOwner); 
+		entityManager.getTransaction().commit();
     }
     
 	
 	@Override
-    @SuppressWarnings({ "rawtypes", "deprecation" })
 	public void deleteAllHouseOwners() {
-		
-		Session session = hibernateObject.getSessionFactory().openSession();  
-	    Transaction transaction = session.beginTransaction(); 
-
-	    Query query = session.createQuery("DELETE * FROM houseowner");
-	    query.executeUpdate();
-         
-	    transaction.commit(); 
-	    session.close();
-        
+		entityManager.getTransaction().begin();
+		entityManager.createQuery("DELETE * From HouseOwner").executeUpdate();
+		entityManager.getTransaction().commit();
     }
 }

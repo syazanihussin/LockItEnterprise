@@ -31,11 +31,11 @@ public class DeviceCode implements Serializable {
 	HouseOwner deviceInfo_DeviceCode;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "deviceCode_LockEye")
+	@OneToOne(cascade =  CascadeType.ALL, mappedBy = "deviceCode_LockEye")
 	private LockEye lockEye;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "deviceCode_LockSense")
+	@OneToOne(cascade =  CascadeType.ALL, mappedBy = "deviceCode_LockSense")
 	private LockSense lockSense;
 
 
