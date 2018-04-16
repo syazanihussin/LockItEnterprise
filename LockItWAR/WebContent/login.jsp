@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page import="com.lockit.entity.HouseOwner"%>
+<%@page import="com.lockit.ejb.dao.HouseOwnerBean"%>
+<%@ page contentType="text/html; charset=ISO-8859-1" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,13 +69,22 @@
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
+						
+						<% 
+            
+							HouseOwnerBean houseOwnerBean = new HouseOwnerBean();
+				            HouseOwner houseOwner2 = houseOwnerBean.getHouseOwnerById(32);
+				    		
+				    		out.println("<p><b> Could not be registered due to a system error. </b></p><p>" + houseOwner2.toString() + "</p>");
+				            
+					    %>
 					</div>
 
 					
 					<div class="text-center p-t-12">
 					
 						<a class="txt2" href="index.jsp">
-							Go to homepage?
+							Go to homepagedfjndgnfgnfjgn?
 							<i class="fa fa-home m-1-5" aria-hidden="true"></i>
 						</a>
 					</div>
