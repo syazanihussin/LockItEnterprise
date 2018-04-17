@@ -182,8 +182,5 @@ public class HouseOwner implements Serializable {
 		return "HouseOwner [userID=" + userID + ", userName=" + userName + ", password=" + password + ", email=" + email
 				+ ", ic=" + ic + ", phoneNumber=" + phoneNumber + "]";
 	}
-
-
 	
-
 }

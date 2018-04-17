@@ -2,6 +2,8 @@ package com.lockit.controller;
 
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +44,9 @@ public class houseOwnerController extends HttpServlet {
 		EJBLookup ejbLookup = new EJBLookup(); 
 		ejbLookup.getHouseOwnerBeanRemote().insertHouseOwner(houseOwner); 	
 		
+		response.setContentType("text/html");
+		RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp");
+		rd.forward(request, response);
 	
 		//response.setContentType("text/html");
 		//PrintWriter out = response.getWriter();
