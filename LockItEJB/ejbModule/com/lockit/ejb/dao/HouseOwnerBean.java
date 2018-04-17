@@ -12,11 +12,12 @@ import com.lockit.entity.HouseOwner;
 
 @Stateless(mappedName="HouseOwnerBean")
 @LocalBean
-public class HouseOwnerBean implements HouseOwnerBeanRemote, HouseOwnerBeanLocal {
+public class HouseOwnerBean implements HouseOwnerBeanRemote, HouseOwnerBeanLocal, HouseOwnerLogicRemote, HouseOwnerLogicLocal  {
 
     
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
+	HouseOwner currentHouseOwner = new HouseOwner();
 	
 	
 	public HouseOwnerBean() {
@@ -68,4 +69,33 @@ public class HouseOwnerBean implements HouseOwnerBeanRemote, HouseOwnerBeanLocal
 		entityManager.createQuery("DELETE * From HouseOwner").executeUpdate();
 		entityManager.getTransaction().commit();
     }
+	
+	
+	@Override
+	public Boolean authenticateHouseOwner(String email, String password) {
+		
+		Boolean check = false;
+		for(HouseOwner houseOwner : getAllHouseOwners()) {
+			if(houseOwner.getEmail().equals(email) && houseOwner.getPassword().equals(password)) {
+				setCurrentHouseOwner(houseOwner);
+				check = true;
+				break;
+			}
+		}
+		
+		return check;
+	}
+	
+	
+	@Override
+	public HouseOwner getCurrentHouseOwner() {
+		return currentHouseOwner;
+	}
+	
+	
+	@Override
+	public void setCurrentHouseOwner(HouseOwner houseOwner) {
+		this.currentHouseOwner = houseOwner;
+	}
+	
 }

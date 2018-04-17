@@ -1,6 +1,4 @@
-<%@page import="com.lockit.entity.HouseOwner"%>
-<%@page import="com.lockit.ejb.dao.HouseOwnerBean"%>
-<%@ page contentType="text/html; charset=ISO-8859-1" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,7 +33,7 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" name="myForm" action="loginController" method="post">
 					<span class="login100-form-title">
 						Member Login
 					</span>
@@ -57,9 +55,9 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onclick="window.location.href='C:/Users/User/Desktop/LOCKITLATEST/admin.jsp'">
+						<button type="submit" name="submitLogin" class="login100-form-btn" required="required" value="Login">
 							Login
-						</button>
+						</button>						
 					</div>
 
 					<div class="text-center p-t-12">
@@ -70,21 +68,13 @@
 							Username / Password?
 						</a>
 						
-						<% 
-            
-							HouseOwnerBean houseOwnerBean = new HouseOwnerBean();
-				            HouseOwner houseOwner2 = houseOwnerBean.getHouseOwnerById(32);
-				    		
-				    		out.println("<p><b> Could not be registered due to a system error. </b></p><p>" + houseOwner2.toString() + "</p>");
-				            
-					    %>
 					</div>
 
 					
 					<div class="text-center p-t-12">
 					
 						<a class="txt2" href="index.jsp">
-							Go to homepagedfjndgnfgnfjgn?
+							Go to homepage?
 							<i class="fa fa-home m-1-5" aria-hidden="true"></i>
 						</a>
 					</div>
