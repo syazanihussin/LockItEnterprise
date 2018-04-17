@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.lockit.ejb.dao.HouseOwnerBeanRemote;
+import com.lockit.ejb.HouseOwnerBeanRemote;
 import com.lockit.entity.HouseOwner;
 
 

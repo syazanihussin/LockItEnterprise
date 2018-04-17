@@ -5,8 +5,8 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import com.lockit.ejb.dao.HouseOwnerBeanRemote;
-import com.lockit.ejb.dao.HouseOwnerLogicRemote;
+import com.lockit.ejb.HouseOwnerBeanRemote;
+import com.lockit.ejb.HouseOwnerLogicRemote;
 
 
 public class EJBLookup {
@@ -27,7 +27,7 @@ public class EJBLookup {
 	    
 	    try {
 	        InitialContext ctx = new InitialContext(prop);                              
-	        houseOwnerBeanRemote = (HouseOwnerBeanRemote) ctx.lookup("java:global/LockItEAR/LockItWAR/HouseOwnerBean!com.lockit.ejb.dao.HouseOwnerBeanRemote");
+	        houseOwnerBeanRemote = (HouseOwnerBeanRemote) ctx.lookup("java:global/LockItEAR/LockItWAR/HouseOwnerBean!com.lockit.ejb.HouseOwnerBeanRemote");
 	    } catch (NamingException e) {
 	        e.printStackTrace();
 	    }
@@ -46,7 +46,7 @@ public class EJBLookup {
 	    
 	    try {
 	        InitialContext ctx = new InitialContext(prop);                              
-	        houseOwnerLogicRemote = (HouseOwnerLogicRemote) ctx.lookup("java:global/LockItEAR/LockItWAR/HouseOwnerBean!com.lockit.ejb.dao.HouseOwnerLogicRemote");
+	        houseOwnerLogicRemote = (HouseOwnerLogicRemote) ctx.lookup("java:global/LockItEAR/LockItWAR/HouseOwnerBean!com.lockit.ejb.HouseOwnerLogicRemote");
 	    } catch (NamingException e) {
 	        e.printStackTrace();
 	    }
