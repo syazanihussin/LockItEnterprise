@@ -202,14 +202,7 @@
 													</div>
 													<div class="form-group">
 														<label>Device Location</label>
-														<div class="row">
-															<div class="col-lg-6">
-																<input class="form-control" placeholder="Latitude">
-															</div>
-															<div class="col-lg-6">
-																<input class="form-control" placeholder="Longitude">
-															</div>
-														</div>
+														<input class="form-control" placeholder="Device Location">
 													</div>
 													
 													<div class="form-group">
