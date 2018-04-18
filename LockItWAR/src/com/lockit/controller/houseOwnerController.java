@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.lockit.entity.House;
 import com.lockit.entity.HouseOwner;
 
@@ -44,9 +46,12 @@ public class houseOwnerController extends HttpServlet {
 		EJBLookup ejbLookup = new EJBLookup(); 
 		ejbLookup.getHouseOwnerBeanRemote().insertHouseOwner(houseOwner); 	
 		
-		response.setContentType("text/html");
-		RequestDispatcher rd = request.getRequestDispatcher("dashboard/pages/homepage.jsp");
-		rd.forward(request, response);
+		HttpSession session = request.getSession(true); 
+		ejbLookup.getHouseOwnerLogicRemote().setCurrentHouseOwner(houseOwner);
+		String user = ejbLookup.getHouseOwnerLogicRemote().getCurrentHouseOwner().getUserName();
+		session.setAttribute("userName", user);
+		response.sendRedirect("dashboard/pages/homepage.jsp");
+		
 	
 		//response.setContentType("text/html");
 		//PrintWriter out = response.getWriter();

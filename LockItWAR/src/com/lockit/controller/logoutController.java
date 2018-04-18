@@ -38,11 +38,12 @@ public class logoutController extends HttpServlet {
 		
 		HouseOwner houseOwner = null;
 		ejbLookup.getHouseOwnerLogicRemote().setCurrentHouseOwner(houseOwner);
-		System.out.println(ejbLookup.getHouseOwnerLogicRemote().getCurrentHouseOwner().getEmail());
+		//System.out.println(ejbLookup.getHouseOwnerLogicRemote().getCurrentHouseOwner().getEmail());
 		
 		response.setContentType("text/html");
 		RequestDispatcher rd = request.getRequestDispatcher("../../index.jsp");
-		rd.forward(request, response);
+		
+		//rd.forward(request, response);
 			
 	}
 
