@@ -52,7 +52,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
+                    <li><a href="../../index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
                 </ul>
 
 				
@@ -121,7 +121,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="../../login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
