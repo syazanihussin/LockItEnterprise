@@ -45,7 +45,7 @@ public class houseOwnerController extends HttpServlet {
 		ejbLookup.getHouseOwnerBeanRemote().insertHouseOwner(houseOwner); 	
 		
 		response.setContentType("text/html");
-		RequestDispatcher rd = request.getRequestDispatcher("/homepage.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("dashboard/pages/homepage.jsp");
 		rd.forward(request, response);
 	
 		//response.setContentType("text/html");
