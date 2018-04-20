@@ -179,7 +179,7 @@
 												<form role="form">
 													<div class="form-group">
 														<label>Device Code</label>
-														<input class="form-control" placeholder="Device Code">
+														<input class="form-control" name="deviceCode" placeholder="Device Code">
 													</div>
 													<button type="submit" class="btn btn-default">Register Device</button>
 												</form>
