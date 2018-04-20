@@ -43,7 +43,7 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">LockIT!</a>
+                    <a class="navbar-brand" href="dashboard.jsp">LockIT!</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -137,7 +137,7 @@
                              <img src="image/HawkerHero.png" alt="">                       
                             </li>
                             <li>
-                                <a href="homepage.jsp" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
+                                <a href="dashboard.jsp" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
                                 <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>

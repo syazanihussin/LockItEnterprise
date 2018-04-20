@@ -47,7 +47,7 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">LockIT!</a>
+                    <a class="navbar-brand" href="dashboard.jsp">LockIT!</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -130,7 +130,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="WebContent/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="WebContent/login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -144,18 +144,18 @@
                              <img src="image/HawkerHero.png" alt="">                       
                             </li>
                             <li>
-                                <a href="homepage.html" class="active"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
+                                <a href="dashboard.jsp" class="active"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
-                                <a href="register.html" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
+                                <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
-                                <a href="device.html" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
+                                <a href="device.jsp" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="activity.html" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
+                                <a href="activity.jsp" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
                             </li><li>
-                                <a href="cctv.html" ><i class="fa fa-eye fa-fw"></i> CCTV</a>
+                                <a href="cctv.jsp" ><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                         
 						

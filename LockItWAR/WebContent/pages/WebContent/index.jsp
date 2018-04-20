@@ -347,10 +347,10 @@ URI     : https://colorlib.com
                 <div class="card pricing">
                     <div class="card-head">
                         <small class="text-primary">PAY AS YOU GO</small>
-                        <span class="price">$249<sub>/m</sub></span>
+                        <span class="price">RM 350<sub>/m</sub></span>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <div class="list-group-item">Unlimited Projects</div>
+                        <div class="list-group-item">Unlimited Device</div>
                         <div class="list-group-item">Unlimited Storage</div>
                         <div class="list-group-item">Collaboration</div>
                         <div class="list-group-item">Reports and analytics</div>

@@ -91,7 +91,7 @@ function gridView() {
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">LockIT!</a>
+                    <a class="navbar-brand" href="dashboard.jsp">LockIT!</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -182,10 +182,10 @@ function gridView() {
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                             <img src="image/HawkerHero.png" alt="">                       
+                             <img src="images/lockit.png" alt="">                       
                             </li>
                             <li>
-                                <a href="homepage.jsp"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
+                                <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> My Dashboard</a>
                             </li>
 							<li>
                                 <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
@@ -196,7 +196,7 @@ function gridView() {
                             <li>
                                 <a href="activity.jsp"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
                             </li><li>
-                                <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV</a>
+                                <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                         
 						
