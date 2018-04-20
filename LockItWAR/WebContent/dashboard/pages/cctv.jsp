@@ -181,7 +181,7 @@ function gridView() {
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                             <img src="image/HawkerHero.png" alt="">                       
+                             <img src="../../images/favicon.ico" alt="">                       
                             </li>
                             <li>
                                 <a href="homepage.jsp"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
@@ -193,13 +193,12 @@ function gridView() {
                                 <a href="device.jsp" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="activity.jsp"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
-                            </li><li>
-                                <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV</a>
+                                <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                        
-						
-                           
+                            <li>
+                                <a href="activity.jsp"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
+                            </li>
+                          
                         </ul>
                     </div>
                 </div>
