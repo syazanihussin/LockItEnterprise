@@ -57,7 +57,7 @@ public class LockSense implements Serializable {
 	private List<SensorData> sensorData = new ArrayList<>();
 	
 	
-	//LockSense borrow from SenseNotification with relation one to many
+	//LockSense borrow from SenseNotification with relation one to many        
 	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockSense_SenseNotification")
 	private List<SenseNotification> senseNotification = new ArrayList<>();
 	

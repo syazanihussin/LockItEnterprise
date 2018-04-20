@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="en">
 <!--
@@ -25,13 +26,13 @@ URI     : https://colorlib.com
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css2/bootstrap.min.css">
     <!-- Themify Icons -->
-    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css2/themify-icons.css">
     <!-- Owl carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css2/owl.carousel.min.css">
     <!-- Main css -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css2/style.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target="#navbar" data-offset="30">
@@ -52,7 +53,7 @@ URI     : https://colorlib.com
                                 <li class="nav-item"> <a class="nav-link" href="#pricing">PRICING</a> </li>
 								<li class="nav-item"> <a class="nav-link" href="#register">REGISTER</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#contact">CONTACT</a> </li>
-                                <li class="nav-item"><a href="login.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
+                                <li class="nav-item"><a href="login.jsp" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -407,7 +408,7 @@ URI     : https://colorlib.com
 		<div class="section-title">
 		<h3>Create an Account</h3>
 		</div>
-		<form name="myForm" action="./registerServlet"  onSubmit="return validateForm()" method="post">
+		<form name="myForm" action="houseOwnerController"  onSubmit="return validateForm()" method="post">
             <div class="row">
                 <div class="col-md-6 d-flex">
 					<div class="media-body">
@@ -436,11 +437,11 @@ URI     : https://colorlib.com
 				<div class="col-md-6 d-flex ">
 					<div class="media-body">
 						<div class="form-group">
-							<label>Username</label>
+							<label>Username1</label>
 							<input class="form-control" type="text" name="userName" placeholder="Username">
 						</div>
 						<div class="form-group">
-							<label>Password</label>a
+							<label>Password</label>
 							<input class="form-control" type="password" name="password" placeholder="Password">
 						</div>
 						

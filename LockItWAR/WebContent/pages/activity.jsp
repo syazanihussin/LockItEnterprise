@@ -149,7 +149,7 @@
                             <li>
                                 <a href="activity.jsp" class="active"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
                             </li><li>
-                                <a href="cctv.jsp" ><i class="fa fa-eye fa-fw"></i> CCTV</a>
+                                <a href="cctv.jsp" ><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                         
 						
