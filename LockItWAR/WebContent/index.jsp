@@ -228,7 +228,7 @@ URI     : https://colorlib.com
                             <div class="circle-icon mr-4">2</div>
                             <div class="media-body">
                                 <h5>Register LockIt! Devices</h5>
-                                <p>Next, key in the product number attached by the products provided by us= in register device section</p>
+                                <p>Next, key in the product number attached by the products provided by us in register device section</p>
                             </div>
                         </li>
                         <li class="media">
