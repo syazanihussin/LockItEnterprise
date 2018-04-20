@@ -147,7 +147,7 @@ URI     : https://colorlib.com
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="communication">
                     <div class="d-flex flex-column flex-lg-row">
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
 
                             <h2>Communicate with ease</h2>
@@ -173,12 +173,12 @@ URI     : https://colorlib.com
                                 sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
                             </p>
                         </div>
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
                 </div>
                 <div class="tab-pane fade" id="messages">
                     <div class="d-flex flex-column flex-lg-row">
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
                             <h2>Realtime Messaging service</h2>
                             <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
@@ -203,7 +203,7 @@ URI     : https://colorlib.com
                                 sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
                             </p>
                         </div>
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@ URI     : https://colorlib.com
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <img src="images/3.png" alt="iphone" class="img-fluid">
+                    <img src="images/.png" alt="" class="img-fluid">
                 </div>
 				
             </div>
@@ -295,7 +295,8 @@ URI     : https://colorlib.com
                 <img src="images/1.png" alt="image">
                 <img src="images/2.png" alt="image">
                 <img src="images/3.png" alt="image">
-                <img src="images/4.png" alt="image">            </div>
+                <img src="images/4.png" alt="image">            
+            </div>
 
         </div>
 
@@ -339,7 +340,7 @@ URI     : https://colorlib.com
                         <div class="list-group-item">2 LockEye/House</div>
                         <div class="list-group-item">10 LockSense/House</div>
                         <div class="list-group-item">10GB Storage/House</div>
-                        <div class="list-group-item">Collaboration</div>
+                        <div class="list-group-item">Free Installation</div>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
@@ -348,13 +349,13 @@ URI     : https://colorlib.com
                 <div class="card pricing">
                     <div class="card-head">
                         <small class="text-primary">PAY AS YOU GO</small>
-                        <span class="price">$249<sub>/m</sub></span>
+                        <span class="price">RM 350<sub>/month</sub></span>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <div class="list-group-item">Unlimited Projects</div>
-                        <div class="list-group-item">Unlimited Storage</div>
-                        <div class="list-group-item">Collaboration</div>
-                        <div class="list-group-item">Reports and analytics</div>
+                        <div class="list-group-item">LockEye/House</div>
+                        <div class="list-group-item">LockSense/House</div>
+                        <div class="list-group-item">Storage/House</div>
+                        <div class="list-group-item">Free Installation</div>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
