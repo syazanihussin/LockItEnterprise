@@ -99,12 +99,11 @@ public class SensorData implements Serializable {
 	public void setLockSense_SensorData(LockSense lockSense_SensorData) {
 		this.lockSense_SensorData = lockSense_SensorData;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "SensorData [dataID=" + dataID + ", dataTimestamp=" + dataTimestamp + ", data=" + data
-				+ ", lockSense_SensorData=" + lockSense_SensorData + "]";
+		return "SensorData [dataID=" + dataID + ", dataTimestamp=" + dataTimestamp + ", data=" + data + "]";
 	}
 	
 }

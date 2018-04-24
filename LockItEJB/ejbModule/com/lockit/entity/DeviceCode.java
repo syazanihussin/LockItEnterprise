@@ -99,8 +99,7 @@ public class DeviceCode implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DeviceCode [keyz=" + keyz + ", deviceInfo_DeviceCode=" + deviceInfo_DeviceCode + ", lockEye=" + lockEye
-				+ ", lockSense=" + lockSense + "]";
+		return "DeviceCode [keyz=" + keyz + "]";
 	}
 	
 }

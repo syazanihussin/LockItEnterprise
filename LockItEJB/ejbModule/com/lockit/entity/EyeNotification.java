@@ -132,13 +132,12 @@ public class EyeNotification implements Serializable {
 		this.houseOwner_EyeNotification = houseOwner_EyeNotification;
 	}
 
-	
+
 	@Override
 	public String toString() {
-		return "EyeNotification [EyeNotificationID=" + eyeNotificationID + ", EyeNotificationTitle="
-				+ eyeNotificationTitle + ", EyeNotificationDesc=" + eyeNotificationDesc + ", EyeTimestamp="
-				+ eyeTimestamp + ", lockEye_EyeNotification=" + lockEye_EyeNotification
-				+ ", houseOwner_EyeNotification=" + houseOwner_EyeNotification + "]";
+		return "EyeNotification [eyeNotificationID=" + eyeNotificationID + ", eyeNotificationTitle="
+				+ eyeNotificationTitle + ", eyeNotificationDesc=" + eyeNotificationDesc + ", eyeTimestamp="
+				+ eyeTimestamp + "]";
 	}
 
 }

@@ -49,16 +49,16 @@ public class LockEye implements Serializable {
 
 
 	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "key", nullable = false)
+    @JoinColumn(name = "keyz", nullable = false)
     DeviceCode deviceCode_LockEye;//fkey
 	
 	
 	//borrower of relation
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockEye_Video") //map: fk from many erd
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "lockEye_Video") //map: fk from many erd
 	private List<Video> video = new ArrayList<>();
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockEye_EyeNotification") //map:fk from many erd
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "lockEye_EyeNotification") //map:fk from many erd
 	private List<EyeNotification> eyeNotification = new ArrayList<>();
 	
 	
@@ -152,12 +152,10 @@ public class LockEye implements Serializable {
 		this.eyeNotification = eyeNotification;
 	}
 
-	
+
 	@Override
 	public String toString() {
-		return "LockEye [LockEyeID=" + lockEyeID + ", EyeLocation=" + eyeLocation + ", EyeLevel=" + eyeLevel
-				+ ", house_LockEye=" + house_LockEye + ", deviceCode_LockEye=" + deviceCode_LockEye + ", video=" + video
-				+ ", EyeNotification=" + eyeNotification + "]";
+		return "LockEye [lockEyeID=" + lockEyeID + ", eyeLocation=" + eyeLocation + ", eyeLevel=" + eyeLevel + "]";
 	}
 	
 }

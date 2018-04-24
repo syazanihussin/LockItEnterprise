@@ -142,8 +142,7 @@ public class House implements Serializable {
 
 	@Override
 	public String toString() {
-		return "House [houseID=" + houseID + ", address=" + address + ", houseBlueprint=" + houseBlueprint
-				+ ", houseOwner_House=" + houseOwner_House + ", lockEye=" + lockEye + ", lockSense=" + lockSense + "]";
+		return "House [houseID=" + houseID + ", address=" + address + ", houseBlueprint=" + houseBlueprint + "]";
 	}
 	
 }

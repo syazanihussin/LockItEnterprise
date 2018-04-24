@@ -130,13 +130,12 @@ public class Video implements Serializable {
 	public void setLockEye_Video(LockEye lockEye_Video) {
 		this.lockEye_Video = lockEye_Video;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "Video [videoID=" + videoID + ", startRecordingTime=" + startRecordingTime + ", endRecordingTime="
-				+ endRecordingTime + ", videoClip=" + videoClip + ", videoSize=" + videoSize + ", lockEye_Video="
-				+ lockEye_Video + "]";
+				+ endRecordingTime + ", videoClip=" + videoClip + ", videoSize=" + videoSize + "]";
 	}
 
 }

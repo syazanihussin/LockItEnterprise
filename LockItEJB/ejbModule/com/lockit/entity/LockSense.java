@@ -42,7 +42,7 @@ public class LockSense implements Serializable {
 	
 	//LockSense owner DeviceCode with relation one to one
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "key", nullable = false)
+	@JoinColumn(name = "keyz", nullable = false)
 	DeviceCode deviceCode_LockSense;
 		
 	
@@ -53,12 +53,12 @@ public class LockSense implements Serializable {
 	
 	
 	//LockSense borrow from SensorData with relation one to many
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockSense_SensorData")
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "lockSense_SensorData")
 	private List<SensorData> sensorData = new ArrayList<>();
 	
 	
 	//LockSense borrow from SenseNotification with relation one to many        
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "lockSense_SenseNotification")
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "lockSense_SenseNotification")
 	private List<SenseNotification> senseNotification = new ArrayList<>();
 	
 	
@@ -151,13 +151,12 @@ public class LockSense implements Serializable {
 	public void setSenseNotification(List<SenseNotification> senseNotification) {
 		this.senseNotification = senseNotification;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "LockSense [locksenseID=" + lockSenseID + ", senseLocation=" + senseLocation + ", senseLevel="
-				+ senseLevel + ", deviceCode_LockSense=" + deviceCode_LockSense + ", house_LockSense=" + house_LockSense
-				+ ", sensorData=" + sensorData + ", senseNotification=" + senseNotification + "]";
+		return "LockSense [lockSenseID=" + lockSenseID + ", senseLocation=" + senseLocation + ", senseLevel="
+				+ senseLevel + "]";
 	}
 	
 }

@@ -132,14 +132,13 @@ public class SenseNotification implements Serializable {
 	public void setHouseOwner_SenseNotification(HouseOwner houseOwner_SenseNotification) {
 		this.houseOwner_SenseNotification = houseOwner_SenseNotification;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "SenseNotification [SenseNotificationID=" + senseNotificationID + ", SenseNotificationTitle="
-				+ senseNotificationTitle + ", SenseNotificationDesc=" + senseNotificationDesc + ", SenseTimestamp="
-				+ senseTimestamp + ", lockSense_SenseNotification=" + lockSense_SenseNotification
-				+ ", houseOwner_SenseNotification=" + houseOwner_SenseNotification + "]";
+		return "SenseNotification [senseNotificationID=" + senseNotificationID + ", senseNotificationTitle="
+				+ senseNotificationTitle + ", senseNotificationDesc=" + senseNotificationDesc + ", senseTimestamp="
+				+ senseTimestamp + "]";
 	}
 	
 }

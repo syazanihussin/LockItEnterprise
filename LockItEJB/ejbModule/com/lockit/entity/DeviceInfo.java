@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +37,7 @@ public class DeviceInfo implements Serializable {
 	private String deviceDesc;
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "deviceInfo_DeviceCode")
+	@OneToMany(cascade =  CascadeType.ALL, mappedBy = "deviceInfo_DeviceCode")
 	private List<DeviceCode> deviceCode = new ArrayList<>();
 	
 	
@@ -96,8 +95,7 @@ public class DeviceInfo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DeviceInfo [deviceID=" + deviceID + ", deviceName=" + deviceName + ", deviceDesc=" + deviceDesc
-				+ ", deviceCode=" + deviceCode + "]";
+		return "DeviceInfo [deviceID=" + deviceID + ", deviceName=" + deviceName + ", deviceDesc=" + deviceDesc + "]";
 	}
 	
 }
