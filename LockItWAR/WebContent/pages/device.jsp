@@ -1,48 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+	<title>Home | LOCKIT</title>
+	
+	<!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-        <title>Home | LOCKIT</title>
+    <!-- MetisMenu CSS -->
+    <link href="../css/metisMenu.min.css" rel="stylesheet">
 
-      <!-- Bootstrap Core CSS -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="../css/timeline.css" rel="stylesheet">
 
-        <!-- MetisMenu CSS -->
-        <link href="../css/metisMenu.min.css" rel="stylesheet">
+   	<!-- Custom CSS -->
+    <link href="../css/startmin.css" rel="stylesheet">
 
-        <!-- Timeline CSS -->
-        <link href="../css/timeline.css" rel="stylesheet">
+   	<!-- Morris Charts CSS -->
+    <link href="../css/morris.css" rel="stylesheet">
 
-        <!-- Custom CSS -->
-        <link href="../css/startmin.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-        <!-- Morris Charts CSS -->
-        <link href="../css/morris.css" rel="stylesheet">
-
-        <!-- Custom Fonts -->
-        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-
-        <div id="wrapper">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div id="wrapper">
 
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="homepage.jsp">LockIT!</a>
+                    <a class="navbar-brand" href="dashboard.jsp">LockIT!</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -53,7 +54,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="../../index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
+                    <li><a href="WebContent/index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
                 </ul>
 
 				
@@ -122,7 +123,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="../../login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="WebContent/login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -133,10 +134,10 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                             <img src="../../images/favicon.ico" alt="">                       
+                             <img src="image/HawkerHero.png" alt="">                       
                             </li>
                             <li>
-                                <a href="homepage.jsp" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
+                                <a href="dashboard.jsp" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
                                 <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
@@ -145,11 +146,12 @@
                                 <a href="device.jsp" class="active"><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
-                            </li>
-                            <li>
                                 <a href="activity.jsp" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
+                            </li><li>
+                                <a href="cctv.jsp" ><i class="fa fa-eye fa-fw"></i> CCTV</a>
                             </li>
+                        
+						
                            
                         </ul>
                     </div>
@@ -696,6 +698,6 @@
 
         <!-- Custom Theme JavaScript -->
         <script src="../js/startmin.js"></script>
-
-    </body>
+	
+</body>
 </html>

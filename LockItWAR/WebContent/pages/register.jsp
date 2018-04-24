@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>Home | LOCKIT</title>
-
-        <!-- Bootstrap Core CSS -->
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+	<title>Insert title here</title>
+	
+	<!-- Bootstrap Core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
@@ -27,70 +30,20 @@
         <!-- Custom Fonts -->
         <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-		
-		
-		<style>
-					.column {
-				float: left;
-				width: 30%;
-				padding: 50px;
-				border-style:solid;
-			
-				display:block;
-				
-			}
-
-			.row{
-			
-			    margin-left:auto;
-				margin-right:auto;
-				margin-top:auto;
-				display:block;
-			}
-		
-		
-		</style>
-	
-<script>	
-	// Get the elements with class="column"
-var elements = document.getElementsByClassName("column");
-
-// Declare a loop variable
-var i;
-
-// List View
-function listView() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.width = "100%";
-  }
-}
-
-// Grid View
-function gridView() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.width = "30%";
-  }
-}
-
-	
-		</script>
-		
-    </head>
-    <body>
-
-        <div id="wrapper">
+</head>
+<body>
+	  <div id="wrapper">
 
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="homepage.jsp">LockIT!</a>
+                    <a class="navbar-brand" href="dashboard.jsp">LockIT!</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -101,7 +54,7 @@ function gridView() {
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="../../index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
+                    <li><a href="#"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
                 </ul>
 
 				
@@ -170,35 +123,37 @@ function gridView() {
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="../../login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
                 <!-- /.navbar-top-links -->
 
+				<!---------------------list left------------------------------------------------------------->
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                             <img src="../../images/favicon.ico" alt="">                       
+                             <img src="image/HawkerHero.png" alt="">                       
                             </li>
                             <li>
-                                <a href="homepage.jsp"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
+                                <a href="dashboard.jsp" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
-                                <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
+                                <a href="register.jsp" class="active"><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
                                 <a href="device.jsp" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
+                                <a href="activity.jsp" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
+                            </li><li>
                                 <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            <li>
-                                <a href="activity.jsp"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
-                            </li>
-                          
+                        
+						
+                           
                         </ul>
                     </div>
                 </div>
@@ -210,96 +165,88 @@ function gridView() {
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">CCTV</h1>
+                        <h1 class="page-header">Register Device</h1>
+						<div class="row">
+							<div class="col-lg-12">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										Register Basic Information
+									</div>
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-lg-6">
+												<form role="form">
+													<div class="form-group">
+														<label>Device Code</label>
+														<input class="form-control" placeholder="Device Code">
+													</div>
+													<button type="submit" class="btn btn-default">Register Device</button>
+												</form>
+											</div>
+											<!-- /.col-lg-6 (nested) -->
+											<div class="col-lg-6">
+												<form role="form">
+												<div class="form-group">
+														<label>Device Code</label>
+														<input class="form-control" placeholder="Device Code" disabled>
+													</div>
+													<div class="form-group">
+														<label>Device Name</label>
+														<input class="form-control" placeholder="Device Name" disabled>
+													</div>
+													<div class="form-group">
+														<label>Device Description</label>
+														<input class="form-control" placeholder="Device Description" disabled>
+													</div>
+													<div class="form-group">
+														<label>Device Location</label>
+														<div class="row">
+															<div class="col-lg-6">
+																<input class="form-control" placeholder="Latitude">
+															</div>
+															<div class="col-lg-6">
+																<input class="form-control" placeholder="Longitude">
+															</div>
+														</div>
+													</div>
+													
+													<div class="form-group">
+														<label>Bulding Level</label>
+														<select class="form-control">
+															<option>Lower Ground</option>
+															<option>Level 1</option>
+															<option>Level 2</option>
+															<option>Level 3</option>
+															<option>Level 4</option>
+															<option>Level 5</option>
+														</select>
+													</div>
+													<button type="submit" class="btn btn-default">Submit</button>
+													<button type="reset" class="btn btn-default">Reset</button>
+												</form>
+											</div>
+										</div>
+										<!-- /.row (nested) -->
+									</div>
+									<!-- /.panel-body -->
+								</div>
+								<!-- /.panel -->
+							</div>
+							<!-- /.col-lg-12 -->
+						</div>
+						<!-- /.row -->
+						
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row ---------------4 gui dashboard---------->
                 
-				
+            </div>
+            <!-- /#page-wrapper -->
 
-							
-
-				<!-- Buttons to choose list or grid view -->
-				<button onclick="listView()"><i class="fa fa-bars"></i> List</button> 
-				<button onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button> 
-
-				<div class="row">
-				  <div class="column" style="background-color:#aaa;">
-					<h2>CAM 1</h2>
-					<p>Location: living room</p>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 2</h2>
-					<p>Location: kitchen</p>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 3 </h2>
-					<p>Location: Attics/ceiling</p>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-
-				  
-				  
-				  
-				</div>
-
-				
-				<div class="row">
-				  <div class="column" style="background-color:#ccc;">
-					<h2>CAM 4</h2>
-				<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#ddd;">
-					<h2>CAM 5</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 6</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				</div>
-								
-									
-				<div class="row">
-				  <div class="column" style="background-color:#ccc;">
-					<h2>CAM 7</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#ddd;">
-					<h2>CAM 8</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 9</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				</div>
-				
-				
-				
-				
-				
-							</div>
-							<!-- /#page-wrapper -->
-
-						</div>
+        </div>
         <!-- /#wrapper -->
-		
-		
-		
-		
-		
-		
 
         <!-- jQuery -->
         <script src="../js/jquery.min.js"></script>
@@ -317,6 +264,6 @@ function gridView() {
 
         <!-- Custom Theme JavaScript -->
         <script src="../js/startmin.js"></script>
-
-    </body>
+	
+</body>
 </html>
