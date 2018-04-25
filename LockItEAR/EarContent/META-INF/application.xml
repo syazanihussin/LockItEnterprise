@@ -7,4 +7,7 @@
       <context-root>LockItWAR</context-root>
     </web>
   </module>
+  <module>
+    <ejb>LockItEJB.jar</ejb>
+  </module>
 </application>
