@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>LockItWAR</project>
-		<project>LockItEJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
