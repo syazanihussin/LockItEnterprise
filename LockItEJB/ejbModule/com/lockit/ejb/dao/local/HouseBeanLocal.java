@@ -1,14 +1,14 @@
-package com.lockit.ejb;
+package com.lockit.ejb.dao.local;
 
 
 import java.util.List;
-import javax.ejb.Remote;
+import javax.ejb.Local;
 import com.lockit.entity.House;
 
 
-@Remote
-public interface HouseBeanRemote {
-	
+@Local
+public interface HouseBeanLocal {
+
 	void insertHouse(House house);
 	House getHouseById(int id);
 	List<House> getAllHouses();

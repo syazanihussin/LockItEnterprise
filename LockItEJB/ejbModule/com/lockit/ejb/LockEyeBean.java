@@ -7,6 +7,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import com.lockit.ejb.dao.local.LockEyeBeanLocal;
+import com.lockit.ejb.dao.remote.LockEyeBeanRemote;
 import com.lockit.entity.LockEye;
 
 

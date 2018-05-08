@@ -1,14 +1,14 @@
-package com.lockit.ejb;
+package com.lockit.ejb.dao.remote;
 
 
 import java.util.List;
-import javax.ejb.Local;
+import javax.ejb.Remote;
 import com.lockit.entity.Video;
 
 
-@Local
-public interface VideoBeanLocal {
-
+@Remote
+public interface VideoBeanRemote {
+	
 	void insertVideo(Video video);
 	Video getVideoById(int id);
 	List<Video> getAllVideos();

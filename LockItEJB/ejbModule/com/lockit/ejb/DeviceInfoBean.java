@@ -7,6 +7,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import com.lockit.ejb.dao.local.DeviceInfoBeanLocal;
+import com.lockit.ejb.dao.remote.DeviceInfoBeanRemote;
 import com.lockit.entity.DeviceInfo;
 
 

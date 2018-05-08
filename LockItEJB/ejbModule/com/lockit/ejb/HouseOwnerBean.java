@@ -7,6 +7,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import com.lockit.ejb.dao.local.HouseOwnerBeanLocal;
+import com.lockit.ejb.dao.remote.HouseOwnerBeanRemote;
+import com.lockit.ejb.logic.local.HouseOwnerLogicLocal;
+import com.lockit.ejb.logic.remote.HouseOwnerLogicRemote;
 import com.lockit.entity.HouseOwner;
 
 

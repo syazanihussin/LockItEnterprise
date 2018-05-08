@@ -36,7 +36,7 @@ public class EyeNotification implements Serializable {
 	
 	
 	@Column(name="eyeTimestamp")
-	private int eyeTimestamp;
+	private long eyeTimestamp;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -103,12 +103,12 @@ public class EyeNotification implements Serializable {
 	}
 
 	
-	public int getEyeTimestamp() {
+	public long getEyeTimestamp() {
 		return eyeTimestamp;
 	}
 	
 
-	public void setEyeTimestamp(int eyeTimestamp) {
+	public void setEyeTimestamp(long eyeTimestamp) {
 		this.eyeTimestamp = eyeTimestamp;
 	}
 

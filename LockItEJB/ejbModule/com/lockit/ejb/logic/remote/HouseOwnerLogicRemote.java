@@ -1,15 +1,15 @@
-package com.lockit.ejb;
+package com.lockit.ejb.logic.remote;
 
 
-import javax.ejb.Local;
+import javax.ejb.Remote;
 import com.lockit.entity.HouseOwner;
 
 
-@Local
-public interface HouseOwnerLogicLocal {
+@Remote
+public interface HouseOwnerLogicRemote {
 
 	Boolean authenticateHouseOwner(String email, String password);
 	HouseOwner getCurrentHouseOwner();
 	void setCurrentHouseOwner(HouseOwner houseOwner);
-
+	
 }

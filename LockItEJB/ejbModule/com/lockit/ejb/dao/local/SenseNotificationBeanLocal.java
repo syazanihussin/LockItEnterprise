@@ -1,4 +1,4 @@
-package com.lockit.ejb;
+package com.lockit.ejb.dao.local;
 
 
 import java.util.List;

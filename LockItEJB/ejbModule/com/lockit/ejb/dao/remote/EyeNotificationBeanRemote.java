@@ -1,4 +1,4 @@
-package com.lockit.ejb;
+package com.lockit.ejb.dao.remote;
 
 
 import java.util.List;

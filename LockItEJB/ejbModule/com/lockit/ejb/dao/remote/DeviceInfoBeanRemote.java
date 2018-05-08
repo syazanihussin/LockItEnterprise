@@ -1,13 +1,13 @@
-package com.lockit.ejb;
+package com.lockit.ejb.dao.remote;
 
 
 import java.util.List;
-import javax.ejb.Local;
+import javax.ejb.Remote;
 import com.lockit.entity.DeviceInfo;
 
 
-@Local
-public interface DeviceInfoBeanLocal {
+@Remote
+public interface DeviceInfoBeanRemote {
 
 	void insertHouse(DeviceInfo deviceInfo);
 	DeviceInfo getDeviceInfoById(int id);
@@ -15,5 +15,5 @@ public interface DeviceInfoBeanLocal {
 	void updateDeviceInfo(DeviceInfo deviceInfo);
 	void deleteDeviceInfo(int id);
 	void deleteAllDeviceInfos();
-
+	
 }

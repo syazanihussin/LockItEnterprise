@@ -37,7 +37,7 @@ public class SenseNotification implements Serializable {
 	
 	
 	@Column(name="senseTimestamp")
-	private int senseTimestamp;
+	private long senseTimestamp;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -104,12 +104,12 @@ public class SenseNotification implements Serializable {
 	}
 
 	
-	public int getSenseTimestamp() {
+	public long getSenseTimestamp() {
 		return senseTimestamp;
 	}
 
 	
-	public void setSenseTimestamp(int senseTimestamp) {
+	public void setSenseTimestamp(long senseTimestamp) {
 		this.senseTimestamp = senseTimestamp;
 	}
 	

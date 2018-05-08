@@ -1,22 +1,30 @@
 package com.lockit.ejb;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import com.lockit.ejb.dao.local.SenseNotificationBeanLocal;
+import com.lockit.ejb.dao.remote.SenseNotificationBeanRemote;
+import com.lockit.ejb.logic.local.NotificationLogicLocal;
+import com.lockit.ejb.logic.local.SenseNotificationLogicLocal;
+import com.lockit.ejb.logic.remote.SenseNotificationLogicRemote;
 import com.lockit.entity.SenseNotification;
 
 
 @Stateless(mappedName="SenseNotificationBean")
 @LocalBean
-public class SenseNotificationBean implements SenseNotificationBeanRemote, SenseNotificationBeanLocal {
+public class SenseNotificationBean implements SenseNotificationBeanRemote, SenseNotificationBeanLocal,
+		SenseNotificationLogicRemote, SenseNotificationLogicLocal{
 
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
+	NotificationLogicLocal notificationBean = new NotificationBean();
 	
 	
 	public SenseNotificationBean() {
@@ -68,5 +76,15 @@ public class SenseNotificationBean implements SenseNotificationBeanRemote, Sense
 		entityManager.createQuery("DELETE * From SenseNotification").executeUpdate();
 		entityManager.getTransaction().commit();
     }
+	
+	
+	@Override
+	public String getSenseNotificationInterval(SenseNotification senseNotification) {
+		
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		long interval = timestamp.getTime() - (long) senseNotification.getSenseTimestamp();
+		
+		return notificationBean.classifyInterval(interval);
+	}
 
 }
