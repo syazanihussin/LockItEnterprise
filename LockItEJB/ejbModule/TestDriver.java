@@ -1,6 +1,16 @@
+import com.lockit.ejb.EyeNotificationBean;
 import com.lockit.ejb.HouseOwnerBean;
+import com.lockit.ejb.NotificationBean;
+import com.lockit.ejb.SenseNotificationBean;
+import com.lockit.ejb.dao.local.EyeNotificationBeanLocal;
+import com.lockit.ejb.dao.local.SenseNotificationBeanLocal;
+import com.lockit.ejb.logic.local.EyeNotificationLogicLocal;
+import com.lockit.ejb.logic.local.NotificationLogicLocal;
+import com.lockit.ejb.logic.local.SenseNotificationLogicLocal;
+import com.lockit.entity.EyeNotification;
 import com.lockit.entity.House;
 import com.lockit.entity.HouseOwner;
+import com.lockit.entity.SenseNotification;
 
 public class TestDriver {
 
@@ -35,9 +45,25 @@ public class TestDriver {
 		//DELECT
 		
 		
-		
 		//DELECT ALL HOUSES
 		
+		
+		//NOTIFICATION
+		NotificationLogicLocal notificationLogicLocal = new NotificationBean();
+		EyeNotificationBeanLocal eyeNotificationBeanLocal = new EyeNotificationBean();
+		EyeNotificationLogicLocal eyeNotificationLogicLocal = new EyeNotificationBean();
+		SenseNotificationBeanLocal senseNotificationBeanLocal = new SenseNotificationBean();
+		SenseNotificationLogicLocal senseNotificationLogicLocal = new SenseNotificationBean();
+		
+		System.out.println(notificationLogicLocal.calculateTotalNotifications());
+		
+		for(EyeNotification eye : eyeNotificationBeanLocal.getAllEyeNotifications()) {
+			System.out.println(eyeNotificationLogicLocal.getEyeNotificationInterval(eye));
+		}
+		
+		for(SenseNotification sense : senseNotificationBeanLocal.getAllSenseNotifications()) {
+			System.out.println(senseNotificationLogicLocal.getSenseNotificationInterval(sense));
+		}
 		
 	}
 

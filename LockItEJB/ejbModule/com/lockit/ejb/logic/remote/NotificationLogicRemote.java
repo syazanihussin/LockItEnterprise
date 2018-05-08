@@ -8,6 +8,6 @@ import javax.ejb.Remote;
 public interface NotificationLogicRemote {
 
 	int calculateTotalNotifications();
-	String classifyInterval(long interval);
+	String classifyNotificationUnit(long interval);
 	
 }

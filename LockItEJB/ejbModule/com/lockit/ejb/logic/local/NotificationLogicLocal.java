@@ -8,6 +8,6 @@ import javax.ejb.Local;
 public interface NotificationLogicLocal {
 	
 	int calculateTotalNotifications();
-	String classifyInterval(long interval);
+	String classifyNotificationUnit(long interval);
 
 }

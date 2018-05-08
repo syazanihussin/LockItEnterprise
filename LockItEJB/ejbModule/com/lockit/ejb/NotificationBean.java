@@ -13,10 +13,6 @@ import com.lockit.ejb.logic.remote.NotificationLogicRemote;
 @Stateless
 @LocalBean
 public class NotificationBean implements NotificationLogicRemote, NotificationLogicLocal {
-
-	
-	EyeNotificationBeanLocal eyeNotificationLocal = new EyeNotificationBean(); 
-	SenseNotificationBeanLocal senseNotificationLocal = new SenseNotificationBean();
     
 	
     public NotificationBean() {
@@ -26,12 +22,14 @@ public class NotificationBean implements NotificationLogicRemote, NotificationLo
     
     @Override
 	public int calculateTotalNotifications() {
+    	EyeNotificationBeanLocal eyeNotificationLocal = new EyeNotificationBean(); 
+    	SenseNotificationBeanLocal senseNotificationLocal = new SenseNotificationBean();
 		return eyeNotificationLocal.getAllEyeNotifications().size() + senseNotificationLocal.getAllSenseNotifications().size();
 	}
 	
 	
 	@Override
-	public String classifyInterval(long interval) {
+	public String classifyNotificationUnit(long interval) {
 			
 		String word = "";
 		
