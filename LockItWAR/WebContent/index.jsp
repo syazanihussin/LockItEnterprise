@@ -497,7 +497,7 @@ URI     : https://colorlib.com
     <!-- // end .section -->
     <footer class="my-5 text-center">
         <!-- Copyright removal is not prohibited! -->
-        <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED. LockIt! BY <a href="">LockIt Team</a></small></p>
+        <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED. LockIt! BY LockIt Team</small></p>
 
         
     </footer>
