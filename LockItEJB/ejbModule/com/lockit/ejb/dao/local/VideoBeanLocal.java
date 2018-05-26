@@ -3,8 +3,6 @@ package com.lockit.ejb.dao.local;
 
 import java.util.List;
 import javax.ejb.Local;
-
-import com.lockit.entity.LockEye;
 import com.lockit.entity.Video;
 
 
@@ -17,6 +15,5 @@ public interface VideoBeanLocal {
 	void updateHouse(Video video);
 	void deleteVideo(int id);
 	void deleteAllVideos();
-	List<LockEye> getAllLockEyes();
 
 }

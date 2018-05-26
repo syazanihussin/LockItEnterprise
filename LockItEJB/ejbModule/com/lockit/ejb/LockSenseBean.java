@@ -1,14 +1,15 @@
 package com.lockit.ejb;
 
+
 import java.text.SimpleDateFormat;
-import java.util.Date; 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import com.lockit.ejb.dao.local.LockSenseBeanLocal;
 import com.lockit.ejb.dao.local.SensorDataBeanLocal;
 import com.lockit.ejb.dao.remote.LockSenseBeanRemote;
@@ -25,7 +26,8 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
-	
+	SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+    Date date = new Date();  
 	
 	
 	public LockSenseBean() {
@@ -78,26 +80,25 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 		entityManager.getTransaction().commit();
     }
 	
-	List <LockSense> a = getAllLockSenses();
-	
-	SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
-    Date date = new Date();  
-    String df = formatter.format(date);  
-    int CurrentTimestamp = Integer.parseInt(df);
 	
 	@Override
-	public boolean checkLockSenseStatus() {
-		SensorData SD = null;
-		for(LockSense LS : a) {
-			int last = LS.getSensorData().size() -1;
-			SensorDataBeanLocal b = new SensorDataBean();
-			SD = b.getSensorDataById(last);
-		}
-		if(CurrentTimestamp - SD.getDataTimestamp() > 100) {
-			return true;
-		}else
-		return false;
+	public HashMap<LockSense, SensorData> checkLockSenseStatus() {
 		
+		HashMap<LockSense, SensorData> map = new HashMap<LockSense, SensorData>();
+		String df = formatter.format(date);  
+	    int currentTimestamp = Integer.parseInt(df);
+	
+		for(LockSense lockSense : getAllLockSenses()) {
+			int lastIndex = lockSense.getSensorData().size() - 1;
+			SensorDataBeanLocal sensorDataBeanLocal = new SensorDataBean();
+			SensorData sensorData = sensorDataBeanLocal.getSensorDataById(lastIndex);
+			
+			if(currentTimestamp - sensorData.getDataTimestamp() > 2000) {
+				map.put(lockSense, sensorData);
+			}
+		}
+		
+		return map;
 	}
 	
 	@Override

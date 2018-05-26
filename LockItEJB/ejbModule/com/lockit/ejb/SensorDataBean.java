@@ -1,13 +1,13 @@
 package com.lockit.ejb;
 
 
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import com.lockit.ejb.dao.local.LockSenseBeanLocal;
 import com.lockit.ejb.dao.local.SensorDataBeanLocal;
 import com.lockit.ejb.dao.remote.SensorDataBeanRemote;
@@ -17,10 +17,10 @@ import com.lockit.entity.LockSense;
 import com.lockit.entity.SensorData;
 
 
-	@Stateless(mappedName="SensorDataBean")
-	@LocalBean
-	public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal,SensorDataLogicLocal,
-	SensorDataLogicRemote {
+@Stateless(mappedName="SensorDataBean")
+@LocalBean
+public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal,SensorDataLogicLocal, SensorDataLogicRemote {
+	
 	
 	//factory	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
@@ -29,7 +29,7 @@ import com.lockit.entity.SensorData;
 	
 	//empty
 	public SensorDataBean() {
-		
+		super();
 	}
 	
 	
@@ -76,6 +76,7 @@ import com.lockit.entity.SensorData;
 		entityManager.getTransaction().commit();
     }
     
+	
 	//delete all data
 	@Override
 	public void deleteAllSensorDatas() {
@@ -84,40 +85,27 @@ import com.lockit.entity.SensorData;
 		entityManager.getTransaction().commit();
     }
 	
+	
 	//detection of data unusual
 	@Override
-	public Boolean detectUnusualData()
-	
-	{	
-		LockSenseBeanLocal a =new LockSenseBean();
+	public HashMap<LockSense, SensorData> detectUnusualData() {	
 		
-		List<LockSense> x =  a.getAllLockSenses();
+		LockSenseBeanLocal lockSenseBeanLocal = new LockSenseBean();
+		List<LockSense> x =  lockSenseBeanLocal.getAllLockSenses();
+		HashMap<LockSense, SensorData> map = new HashMap<LockSense, SensorData>();
 		
-		for(LockSense LS: x) {
-			for(SensorData s : getAllSensorDatas())
-			{
+		for(LockSense lockSense : x) {
+			for(SensorData sensorData : lockSense.getSensorData()) {
 				
-				if(s.getData()>2000)
-				{
-					return true;
-					
-				}
-				else
-				{
-					return false;
-				}
-				
-				
-				}
+				if(sensorData.getData()>2000) {
+					map.put(lockSense,sensorData); ;	
+				}		
 			}
-		return null;
-		
-	
-		
 		}
-		
-		
+		return map;	
 	}
+		
+}
 	
 	
 	

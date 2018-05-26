@@ -1,13 +1,15 @@
 package com.lockit.ejb;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import com.lockit.ejb.dao.local.LockEyeBeanLocal;
 import com.lockit.ejb.dao.local.VideoBeanLocal;
 import com.lockit.ejb.dao.remote.LockEyeBeanRemote;
@@ -17,7 +19,6 @@ import com.lockit.entity.LockEye;
 import com.lockit.entity.Video;
 
 
-
 @Stateless(mappedName="LockEyeBean")
 @LocalBean
 public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEyeLogicRemote, LockEyeLogicLocal {
@@ -25,6 +26,8 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
+	SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+    Date date = new Date(); 
 	
 	
 	public LockEyeBean() {
@@ -79,29 +82,26 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 
 	
 	@Override
-	public Boolean checkLockEyeStatus() {
+	public HashMap<LockEye, Video> checkLockEyeStatus() {
 
-	
-	 
-	 List<LockEye> a= getAllLockEyes();
-	 
-		for(LockEye LE: a) {
+		HashMap<LockEye, Video> map = new HashMap<LockEye, Video>();
+		String df = formatter.format(date);  
+	    int currentTimestamp = Integer.parseInt(df);
 		
-			int last = LE.getVideo().size()-1;
-			
-			 VideoBeanLocal b=new VideoBean();
-			 Video v=b.getVideoById(last);
+		for(LockEye lockEye: getAllLockEyes()) {
+		
+			int lastIndex = lockEye.getVideo().size() - 1;
+			VideoBeanLocal videoBeanLocal = new VideoBean();
+			Video video = videoBeanLocal.getVideoById(lastIndex);
 			 
-			 if(v.getVideoClip()>  2000) {
-				 return true;
-			 }
-				 else {
-					 return false;
-				 }
-		 }
+			if(currentTimestamp - video.getEndRecordingTime() > 2000) {
+				map.put(lockEye, video);
+			}
+		}
+		
+		return map;
 	}
 	
-		
 	
 	@Override
 	public int calculateTotalLockEye() {

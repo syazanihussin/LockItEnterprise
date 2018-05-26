@@ -1,13 +1,15 @@
-	package com.lockit.ejb.logic.remote;
+package com.lockit.ejb.logic.remote;
 	
-	import javax.ejb.Local;
-	import javax.ejb.Remote;
-	
-	@Remote
-	
-	public interface SensorDataLogicRemote
-	{
 
-		Boolean detectUnusualData();
+import java.util.HashMap;
+import javax.ejb.Remote;
+import com.lockit.entity.LockSense;
+import com.lockit.entity.SensorData;
+	
 
-	}
+@Remote
+public interface SensorDataLogicRemote {
+
+	HashMap<LockSense, SensorData> detectUnusualData();
+	
+}

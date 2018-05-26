@@ -1,17 +1,16 @@
 package com.lockit.ejb.logic.local;
 
 
+import java.util.HashMap;
 import javax.ejb.Local;
-
+import com.lockit.entity.LockEye;
+import com.lockit.entity.Video;
 
 
 @Local
 public interface LockEyeLogicLocal {
 
-	Boolean checkLockEyeStatus();
-
+	HashMap<LockEye, Video> checkLockEyeStatus();
 	int calculateTotalLockEye();
-	
-	
 
 }

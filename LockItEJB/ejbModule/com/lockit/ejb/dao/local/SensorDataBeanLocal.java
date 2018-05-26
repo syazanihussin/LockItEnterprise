@@ -15,8 +15,5 @@ public interface SensorDataBeanLocal {
 	void updateSensorData(SensorData sensorData);
 	void deleteSensorData(int id);
 	void deleteAllSensorDatas();
-	Boolean detectUnusualData();
-	Boolean detectUnusualData(Boolean List);
 	
-
 }

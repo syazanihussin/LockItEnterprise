@@ -1,13 +1,15 @@
 package com.lockit.ejb.logic.remote;
 
 
+import java.util.HashMap;
 import javax.ejb.Remote;
-import com.lockit.entity.HouseOwner;
+import com.lockit.entity.LockSense;
+import com.lockit.entity.SensorData;
 
 
 @Remote
 public interface LockSenseLogicRemote {
 
-	boolean checkLockSenseStatus();
+	HashMap<LockSense, SensorData> checkLockSenseStatus();
 	int calculateTotalLockSense();
 }

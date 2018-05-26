@@ -7,12 +7,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import com.lockit.ejb.dao.local.VideoBeanLocal;
 import com.lockit.ejb.dao.remote.VideoBeanRemote;
 import com.lockit.ejb.logic.local.VideoBeanLogicLocal;
 import com.lockit.ejb.logic.remote.VideoBeanLogicRemote;
-import com.lockit.entity.LockEye;
 import com.lockit.entity.Video;
 
 
@@ -75,29 +73,23 @@ public class VideoBean implements VideoBeanRemote, VideoBeanLocal, VideoBeanLogi
 		entityManager.getTransaction().commit();
     }
 	
+	
 	@Override
 	public int calculateRemainingSpace() {
 		
 		int total = 0 ;
 		
-		for(Video vd : getAllVideos()) {
-			total += vd.getVideoSize();
+		for(Video video : getAllVideos()) {
+			total += video.getVideoSize();
 		}
-			return 50 - total ;
+		
+		return 50 - total ;
 	}
+	
 	
 	@Override
 	public int calculateTotalVideo() {
-		
 		return getAllVideos().size();
-	
-	}
-
-	//ni aq tambah je...sebab dia error kalau buang...syaz tolong semak..huhuhhuh
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<LockEye> getAllLockEyes() {
-		return entityManager.createQuery("From Video").getResultList();
 	}
 
 }
