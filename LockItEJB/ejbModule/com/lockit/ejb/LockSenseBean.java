@@ -10,12 +10,14 @@ import javax.persistence.Persistence;
 
 import com.lockit.ejb.dao.local.LockSenseBeanLocal;
 import com.lockit.ejb.dao.remote.LockSenseBeanRemote;
+import com.lockit.ejb.logic.local.LockSenseLogicLocal;
+import com.lockit.ejb.logic.remote.LockSenseLogicRemote;
 import com.lockit.entity.LockSense;
 
 
 @Stateless(mappedName="LockSenseBean")
 @LocalBean
-public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal {
+public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, LockSenseLogicLocal, LockSenseLogicRemote {
 
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
@@ -71,5 +73,16 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal {
 		entityManager.createQuery("DELETE * From LockSense").executeUpdate();
 		entityManager.getTransaction().commit();
     }
+	
+	@Override
+	public boolean checkLockSenseStatus() {
+		return false;
+		
+	}
+	
+	@Override
+	public int calculateTotalLockSense() {		
+		return getAllLockSenses().size();		
+	}
 
 }
