@@ -9,13 +9,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.lockit.ejb.dao.local.LockEyeBeanLocal;
+import com.lockit.ejb.dao.local.VideoBeanLocal;
 import com.lockit.ejb.dao.remote.LockEyeBeanRemote;
+import com.lockit.ejb.logic.local.LockEyeLogicLocal;
+import com.lockit.ejb.logic.remote.LockEyeLogicRemote;
 import com.lockit.entity.LockEye;
+import com.lockit.entity.Video;
+
 
 
 @Stateless(mappedName="LockEyeBean")
 @LocalBean
-public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal {
+public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEyeLogicRemote, LockEyeLogicLocal {
 
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
@@ -72,4 +77,34 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal {
 		entityManager.getTransaction().commit();
     }
 
+	
+	@Override
+	public Boolean checkLockEyeStatus() {
+
+	
+	 
+	 List<LockEye> a= getAllLockEyes();
+	 
+		for(LockEye LE: a) {
+		
+			int last = LE.getVideo().size()-1;
+			
+			 VideoBeanLocal b=new VideoBean();
+			 Video v=b.getVideoById(last);
+			 
+			 if(v.getVideoClip()>  2000) {
+				 return true;
+			 }
+				 else {
+					 return false;
+				 }
+		 }
+	}
+	
+		
+	
+	@Override
+	public int calculateTotalLockEye() {
+		return getAllLockEyes().size();
+	}
 }
