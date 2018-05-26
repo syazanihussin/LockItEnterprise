@@ -100,7 +100,7 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 				 }
 		 }
 	}
-	}
+	
 		
 	
 	@Override

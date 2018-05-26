@@ -1,6 +1,7 @@
 package com.lockit.ejb;
 
-
+import java.text.SimpleDateFormat;
+import java.util.Date; 
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -9,10 +10,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.lockit.ejb.dao.local.LockSenseBeanLocal;
+import com.lockit.ejb.dao.local.SensorDataBeanLocal;
 import com.lockit.ejb.dao.remote.LockSenseBeanRemote;
 import com.lockit.ejb.logic.local.LockSenseLogicLocal;
 import com.lockit.ejb.logic.remote.LockSenseLogicRemote;
 import com.lockit.entity.LockSense;
+import com.lockit.entity.SensorData;
 
 
 @Stateless(mappedName="LockSenseBean")
@@ -22,6 +25,7 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
+	
 	
 	
 	public LockSenseBean() {
@@ -74,8 +78,24 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 		entityManager.getTransaction().commit();
     }
 	
+	List <LockSense> a = getAllLockSenses();
+	
+	SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+    Date date = new Date();  
+    String df = formatter.format(date);  
+    int CurrentTimestamp = Integer.parseInt(df);
+	
 	@Override
 	public boolean checkLockSenseStatus() {
+		SensorData SD = null;
+		for(LockSense LS : a) {
+			int last = LS.getSensorData().size() -1;
+			SensorDataBeanLocal b = new SensorDataBean();
+			SD = b.getSensorDataById(last);
+		}
+		if(CurrentTimestamp - SD.getDataTimestamp() > 100) {
+			return true;
+		}else
 		return false;
 		
 	}
