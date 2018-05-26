@@ -8,25 +8,33 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.lockit.ejb.dao.local.LockSenseBeanLocal;
 import com.lockit.ejb.dao.local.SensorDataBeanLocal;
 import com.lockit.ejb.dao.remote.SensorDataBeanRemote;
+import com.lockit.ejb.logic.local.SensorDataLogicLocal;
+import com.lockit.ejb.logic.remote.SensorDataLogicRemote;
+import com.lockit.entity.LockSense;
 import com.lockit.entity.SensorData;
 
 
-@Stateless(mappedName="SensorDataBean")
-@LocalBean
-public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal {
-
+	@Stateless(mappedName="SensorDataBean")
+	@LocalBean
+	public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal,SensorDataLogicLocal,
+	SensorDataLogicRemote {
 	
+	//factory	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
 	
 	
+	//empty
 	public SensorDataBean() {
 		
 	}
 	
 	
+	///CRUD FUNCTION
+	//insert data process
 	@Override
 	public void insertSensorData(SensorData sensorData) {
 		entityManager.getTransaction().begin();
@@ -35,19 +43,22 @@ public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal
 	}
 	
 	
+	//return data
 	@Override
 	public SensorData getSensorDataById(int id) {
 		return (SensorData) entityManager.find(SensorData.class, id);
     }
 
     
+	//get all data
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<SensorData> getAllSensorDatas() {
 		return entityManager.createQuery("From SensorData").getResultList();
     }
 
- 
+  
+	//update data
 	@Override
     public void updateSensorData(SensorData sensorData) {
 		entityManager.getTransaction().begin();
@@ -56,6 +67,7 @@ public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal
     }
 	
 	
+	//delete selected data
 	@Override
 	public void deleteSensorData(int id) {
 		SensorData sensorData = (SensorData) entityManager.find(SensorData.class, id);
@@ -64,12 +76,52 @@ public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal
 		entityManager.getTransaction().commit();
     }
     
-	
+	//delete all data
 	@Override
 	public void deleteAllSensorDatas() {
 		entityManager.getTransaction().begin();
 		entityManager.createQuery("DELETE * From SensorData").executeUpdate();
 		entityManager.getTransaction().commit();
     }
+	
+	//detection of data unusual
+	@Override
+	public Boolean detectUnusualData()
+	
+	{	
+		LockSenseBeanLocal a =new LockSenseBean();
+		
+		List<LockSense> x =  a.getAllLockSenses();
+		
+		for(LockSense LS: x) {
+			for(SensorData s : getAllSensorDatas())
+			{
+				
+				if(s.getData()>2000)
+				{
+					return true;
+					
+				}
+				else
+				{
+					return false;
+				}
+				
+				
+				}
+			}
+		return null;
+		
+	
+		
+		}
+		
+		
+	}
+	
+	
+	
+	
 
-}
+
+
