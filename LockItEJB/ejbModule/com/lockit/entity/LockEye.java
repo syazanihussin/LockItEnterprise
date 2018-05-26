@@ -16,11 +16,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import com.lockit.ejb.LockEyeBean;
+import com.lockit.interfaces.LockItDevice;
 
 
 @Entity
 @Table(name="lockeye")
-public class LockEye implements Serializable {
+public class LockEye implements Serializable, LockItDevice {
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -74,7 +76,7 @@ public class LockEye implements Serializable {
 	}
 	
 	
-	public LockEye(String eyeLocation, String eyeLevel, House house_LockEye, DeviceCode deviceCode_LockEye) {
+	public LockEye(String eyeLocation, String eyeLevel, DeviceCode deviceCode_LockEye, House house_LockEye) {
 		super();
 		this.eyeLocation = eyeLocation;
 		this.eyeLevel = eyeLevel;
@@ -150,6 +152,13 @@ public class LockEye implements Serializable {
 
 	public void setEyeNotification(List<EyeNotification> eyeNotification) {
 		this.eyeNotification = eyeNotification;
+	}
+	
+	
+	@Override
+	public void save(String level, String location, DeviceCode keyz, House houseID) {
+		LockEyeBean lockEyeBean = new LockEyeBean();
+		lockEyeBean.insertLockEye(new LockEye(level, location, keyz, houseID));
 	}
 
 

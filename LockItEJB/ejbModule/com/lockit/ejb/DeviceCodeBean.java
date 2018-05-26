@@ -7,15 +7,16 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import com.lockit.ejb.dao.local.DeviceCodeBeanLocal;
 import com.lockit.ejb.dao.remote.DeviceCodeBeanRemote;
+import com.lockit.ejb.logic.local.DeviceCodeLogicLocal;
+import com.lockit.ejb.logic.remote.DeviceCodeLogicRemote;
 import com.lockit.entity.DeviceCode;
 
 
 @Stateless(mappedName="DeviceCodeBean")
 @LocalBean
-public class DeviceCodeBean implements DeviceCodeBeanRemote, DeviceCodeBeanLocal {
+public class DeviceCodeBean implements DeviceCodeBeanRemote, DeviceCodeBeanLocal, DeviceCodeLogicRemote, DeviceCodeLogicLocal {
 
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
@@ -71,5 +72,7 @@ public class DeviceCodeBean implements DeviceCodeBeanRemote, DeviceCodeBeanLocal
 		entityManager.createQuery("DELETE * From DeviceCode").executeUpdate();
 		entityManager.getTransaction().commit();
     }
+	
+	
 
 }

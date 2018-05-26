@@ -17,10 +17,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.lockit.ejb.LockSenseBean;
+import com.lockit.interfaces.LockItDevice;
+
 
 @Entity
 @Table(name="locksense")
-public class LockSense implements Serializable {
+public class LockSense implements Serializable, LockItDevice {
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -150,6 +153,14 @@ public class LockSense implements Serializable {
 
 	public void setSenseNotification(List<SenseNotification> senseNotification) {
 		this.senseNotification = senseNotification;
+	}
+	
+	
+	@Override
+	public void save(String level, String location, DeviceCode keyz, House houseID) {
+		LockSenseBean lockSenseBean = new LockSenseBean();
+		lockSenseBean.insertLockSense(new LockSense(level, location, keyz, houseID));
+		
 	}
 
 
