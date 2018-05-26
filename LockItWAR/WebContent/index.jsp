@@ -86,7 +86,7 @@ URI     : https://colorlib.com
                             <div class="media">
                                 <span class="ti-face-smile gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
-                                    <h4 class="card-title">Safe and secure</h4>
+                                    <h4 class="card-title">Safe and Secure</h4>
                                     <p class="card-text">Now, let us monitor your house and let you know if  anything happens.No worries,we take care of the rest! </p>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@ URI     : https://colorlib.com
                                 <span class="ti-lock gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">Real-time event</h4>
-                                    <p class="card-text">Real time application at its best!you can monitor your house 24/7  within this web application.Stay connected! </p>
+                                    <p class="card-text">Real time application at its best! You can monitor your house 24/7  within this web application. Stay connected! </p>
                                 </div>
                             </div>
                         </div>
