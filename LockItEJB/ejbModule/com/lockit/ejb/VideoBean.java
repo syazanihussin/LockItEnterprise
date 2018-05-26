@@ -93,8 +93,7 @@ public class VideoBean implements VideoBeanRemote, VideoBeanLocal, VideoBeanLogi
 	
 	}
 
-
-	///ni aq tambah je...sebab dia error kalau buang...syaz tolong semak..huhuhhuh
+	//ni aq tambah je...sebab dia error kalau buang...syaz tolong semak..huhuhhuh
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<LockEye> getAllLockEyes() {
