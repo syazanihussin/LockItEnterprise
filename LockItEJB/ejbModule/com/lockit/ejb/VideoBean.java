@@ -10,12 +10,14 @@ import javax.persistence.Persistence;
 
 import com.lockit.ejb.dao.local.VideoBeanLocal;
 import com.lockit.ejb.dao.remote.VideoBeanRemote;
+import com.lockit.ejb.logic.local.VideoBeanLogicLocal;
+import com.lockit.ejb.logic.remote.VideoBeanLogicRemote;
 import com.lockit.entity.Video;
 
 
 @Stateless(mappedName="VideoBean")
 @LocalBean
-public class VideoBean implements VideoBeanRemote, VideoBeanLocal {
+public class VideoBean implements VideoBeanRemote, VideoBeanLocal, VideoBeanLogicLocal, VideoBeanLogicRemote {
 
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
@@ -71,5 +73,25 @@ public class VideoBean implements VideoBeanRemote, VideoBeanLocal {
 		entityManager.createQuery("DELETE * From Video").executeUpdate();
 		entityManager.getTransaction().commit();
     }
+	
+	
+	@Override
+	public int calculateRemainingSpace() {
+		
+		int total = 0;
+		
+		for(Video vd : getAllVideos()) {
+			total += vd.getVideoSize();
+		}
+			return 50 - total ;
+	}
+	
+	
+	@Override
+	public int calculateTotalVideo() {
+		
+		return getAllVideos().size();
+	
+	}
 
 }
