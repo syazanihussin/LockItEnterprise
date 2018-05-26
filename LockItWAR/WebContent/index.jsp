@@ -18,7 +18,7 @@ URI     : https://colorlib.com
     <meta name="description" content="Mobland - Mobile App Landing Page Template">
     <meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
 	
-		<link rel="icon" type="image/png" href="images/favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/favicon.ico"/>
 
 
     <!-- Font -->
