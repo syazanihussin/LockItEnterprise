@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.Video,java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -162,7 +164,7 @@ function gridView() {
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
+                            <i class="fa fa-user fa-fw"></i> <% if(session.getAttribute("userName") != null) { HouseOwner user = (HouseOwner) session.getAttribute("userName"); out.print(user.getUserName());} %> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -170,8 +172,7 @@ function gridView() {
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="../../login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
+                            <li><a href="../../logoutController"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -193,7 +194,7 @@ function gridView() {
                                 <a href="device.jsp" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
+                                <a href="../../CCTVController" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                             <li>
                                 <a href="activity.jsp"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
@@ -225,28 +226,26 @@ function gridView() {
 				<button onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button> 
 
 				<div class="row">
-				  <div class="column" style="background-color:#aaa;">
-					<h2>CAM 1</h2>
-					<p>Location: living room</p>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 2</h2>
-					<p>Location: kitchen</p>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
+				  <% 
+				  if(session.getAttribute("videoList") != null) {
+				  	for(Video video : (List<Video>) session.getAttribute("videoList")) {
+				  		
+				  %>
+				  	
 				  
 				  <div class="column" style="background-color:#bbb;">
 					<h2>CAM 3 </h2>
-					<p>Location: Attics/ceiling</p>
-					<i class="fa fa-eye fa-5x"></i>
+					<p>Location: <% out.print(video.getLockEye_Video().getEyeLocation()); %></p>
+					<video width="320" height="240" autoplay>
+						<source src="<% out.print(video.getVideoClip()); %>" type="video/mp4">
+					</video>
 				  </div>
 				  
-
-				  
-				  
-				  
+				  <% 
+				  	}
+				  }
+				  %>
+				 
 				</div>
 
 				

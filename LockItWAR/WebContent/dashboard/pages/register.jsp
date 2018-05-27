@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="com.lockit.entity.HouseOwner" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -116,7 +118,7 @@
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
+                            <i class="fa fa-user fa-fw"></i> <% if(session.getAttribute("userName") != null) {HouseOwner user = (HouseOwner) session.getAttribute("userName"); out.print(user.getUserName()); }%> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -124,8 +126,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="../../login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
+                            <li><a href="../../logoutController"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -148,7 +149,7 @@
                                 <a href="device.jsp" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="cctv.jsp" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
+                                <a href="../../CCTVController" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                             <li>
                                 <a href="activity.jsp" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
@@ -176,10 +177,18 @@
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-lg-6">
-												<form role="form">
+												<form role="form" action="../../registerDeviceController" method="post">
 													<div class="form-group">
 														<label>Device Code</label>
-														<input class="form-control" name="deviceCode" placeholder="Device Code">
+														<input class="form-control" name="deviceCode" placeholder="Eg: ABc12de">
+													</div>
+													<div class="form-group">
+														<label>Device Location</label>
+														<input class="form-control" name="location" placeholder="Eg: Front Door">
+													</div>
+													<div class="form-group">
+														<label>Building Level</label>
+														<input class="form-control" name="level" placeholder="Eg: Ground Level">
 													</div>
 													<button type="submit" class="btn btn-default">Register Device</button>
 												</form>
