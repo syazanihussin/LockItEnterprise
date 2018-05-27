@@ -145,7 +145,7 @@
                                 <a href="device.jsp" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="../../CCTVController" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
+                                <a href="../../CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                             <li>
                                 <a href="activity.jsp" class="active"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
