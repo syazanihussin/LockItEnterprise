@@ -15,6 +15,10 @@ import com.lockit.ejb.logic.remote.NotificationLogicRemote;
 public class NotificationBean implements NotificationLogicRemote, NotificationLogicLocal {
     
 	
+	EyeNotificationBeanLocal eyeNotificationLocal = null; 
+    SenseNotificationBeanLocal senseNotificationLocal = null;
+    	
+    	
     public NotificationBean() {
         
     }
@@ -22,8 +26,8 @@ public class NotificationBean implements NotificationLogicRemote, NotificationLo
     
     @Override
 	public int calculateTotalNotifications() {
-    	EyeNotificationBeanLocal eyeNotificationLocal = new EyeNotificationBean(); 
-    	SenseNotificationBeanLocal senseNotificationLocal = new SenseNotificationBean();
+    	eyeNotificationLocal = new EyeNotificationBean(); 
+        senseNotificationLocal = new SenseNotificationBean();
 		return eyeNotificationLocal.getAllEyeNotifications().size() + senseNotificationLocal.getAllSenseNotifications().size();
 	}
 	

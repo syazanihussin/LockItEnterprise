@@ -28,7 +28,7 @@ public class DeviceCode implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deviceID", nullable = false)
-	HouseOwner deviceInfo_DeviceCode;
+	DeviceInfo deviceInfo_DeviceCode;
 	
 	
 	@OneToOne(cascade =  CascadeType.ALL, mappedBy = "deviceCode_LockEye")
@@ -50,7 +50,7 @@ public class DeviceCode implements Serializable {
 	}
 
 
-	public DeviceCode(String keyz, HouseOwner deviceInfo_DeviceCode) {
+	public DeviceCode(String keyz, DeviceInfo deviceInfo_DeviceCode) {
 		super();
 		this.keyz = keyz;
 		this.deviceInfo_DeviceCode = deviceInfo_DeviceCode;
@@ -67,12 +67,12 @@ public class DeviceCode implements Serializable {
 	}
 
 
-	public HouseOwner getDeviceInfo_DeviceCode() {
+	public DeviceInfo getDeviceInfo_DeviceCode() {
 		return deviceInfo_DeviceCode;
 	}
 
 
-	public void setDeviceInfo_DeviceCode(HouseOwner deviceInfo_DeviceCode) {
+	public void setDeviceInfo_DeviceCode(DeviceInfo deviceInfo_DeviceCode) {
 		this.deviceInfo_DeviceCode = deviceInfo_DeviceCode;
 	}
 

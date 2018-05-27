@@ -55,7 +55,7 @@ public class SenseNotification implements Serializable {
 	}
 	
 	
-	public SenseNotification(String senseNotificationTitle, String senseNotificationDesc, int senseTimestamp) {
+	public SenseNotification(String senseNotificationTitle, String senseNotificationDesc, long senseTimestamp) {
 		super();
 		this.senseNotificationTitle = senseNotificationTitle;
 		this.senseNotificationDesc = senseNotificationDesc;
@@ -63,7 +63,7 @@ public class SenseNotification implements Serializable {
 	}
 	
 
-	public SenseNotification(String senseNotificationTitle, String senseNotificationDesc, int senseTimestamp,
+	public SenseNotification(String senseNotificationTitle, String senseNotificationDesc, long senseTimestamp,
 			LockSense lockSense_SenseNotification, HouseOwner houseOwner_SenseNotification) {
 		super();
 		this.senseNotificationTitle = senseNotificationTitle;

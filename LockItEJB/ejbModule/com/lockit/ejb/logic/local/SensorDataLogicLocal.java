@@ -10,6 +10,6 @@ import com.lockit.entity.SensorData;
 @Local
 public interface SensorDataLogicLocal {
 		
-	HashMap<LockSense, SensorData> detectUnusualData();
+	HashMap<SensorData, LockSense> detectUnusualData();
 			
 }

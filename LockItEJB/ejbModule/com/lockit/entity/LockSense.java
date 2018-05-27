@@ -86,6 +86,19 @@ public class LockSense implements Serializable, LockItDevice {
 	}
 
 
+	public LockSense(int lockSenseID, String senseLocation, String senseLevel, DeviceCode deviceCode_LockSense,
+			House house_LockSense, List<SensorData> sensorData, List<SenseNotification> senseNotification) {
+		super();
+		this.lockSenseID = lockSenseID;
+		this.senseLocation = senseLocation;
+		this.senseLevel = senseLevel;
+		this.deviceCode_LockSense = deviceCode_LockSense;
+		this.house_LockSense = house_LockSense;
+		this.sensorData = sensorData;
+		this.senseNotification = senseNotification;
+	}
+
+
 	public int getLocksenseID() {
 		return lockSenseID;
 	}

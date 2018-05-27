@@ -28,7 +28,7 @@ public class SensorData implements Serializable {
 	
 	
 	@Column(name="dataTimestamp")
-	private int dataTimestamp;
+	private long dataTimestamp;
 	
 	
 	@Column(name="data")
@@ -46,14 +46,14 @@ public class SensorData implements Serializable {
 	}
 	
 	
-	public SensorData(int dataTimestamp, double data) {
+	public SensorData(long dataTimestamp, double data) {
 		super();
 		this.dataTimestamp = dataTimestamp;
 		this.data = data;
 	}
 
 	
-	public SensorData(int dataTimestamp, double data, LockSense lockSense_SensorData) {
+	public SensorData(long dataTimestamp, double data, LockSense lockSense_SensorData) {
 		super();
 		this.dataTimestamp = dataTimestamp;
 		this.data = data;
@@ -71,12 +71,12 @@ public class SensorData implements Serializable {
 	}
 	
 
-	public int getDataTimestamp() {
+	public long getDataTimestamp() {
 		return dataTimestamp;
 	}
 	
 
-	public void setDataTimestamp(int dataTimestamp) {
+	public void setDataTimestamp(long dataTimestamp) {
 		this.dataTimestamp = dataTimestamp;
 	}
 	

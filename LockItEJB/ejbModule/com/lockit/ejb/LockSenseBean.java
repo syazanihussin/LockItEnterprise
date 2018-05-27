@@ -11,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import com.lockit.ejb.dao.local.LockSenseBeanLocal;
-import com.lockit.ejb.dao.local.SensorDataBeanLocal;
 import com.lockit.ejb.dao.remote.LockSenseBeanRemote;
 import com.lockit.ejb.logic.local.LockSenseLogicLocal;
 import com.lockit.ejb.logic.remote.LockSenseLogicRemote;
@@ -26,8 +25,6 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
-	SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
-    Date date = new Date();  
 	
 	
 	public LockSenseBean() {
@@ -82,20 +79,27 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 	
 	
 	@Override
-	public HashMap<LockSense, SensorData> checkLockSenseStatus() {
+	public HashMap<SensorData, LockSense> checkLockSenseStatus() {
 		
-		HashMap<LockSense, SensorData> map = new HashMap<LockSense, SensorData>();
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
 		String df = formatter.format(date);  
-	    int currentTimestamp = Integer.parseInt(df);
-	
-		for(LockSense lockSense : getAllLockSenses()) {
-			int lastIndex = lockSense.getSensorData().size() - 1;
-			SensorDataBeanLocal sensorDataBeanLocal = new SensorDataBean();
-			SensorData sensorData = sensorDataBeanLocal.getSensorDataById(lastIndex);
+	    long currentTimestamp = Long.parseLong(df);
+	    
+	    HashMap<SensorData, LockSense> map = new HashMap<SensorData, LockSense>();
+		List<LockSense> lockSenseList = getAllLockSenses();
+		
+		
+		for(LockSense lockSense: lockSenseList) {
+			
+			List<SensorData> sensorDataList = lockSense.getSensorData();
+			int lastIndex = sensorDataList.size() - 1;
+			
+			SensorData sensorData = sensorDataList.get(lastIndex);
 			
 			if(currentTimestamp - sensorData.getDataTimestamp() > 2000) {
-				map.put(lockSense, sensorData);
-			}
+				map.put(sensorData, lockSense);
+			}	
 		}
 		
 		return map;

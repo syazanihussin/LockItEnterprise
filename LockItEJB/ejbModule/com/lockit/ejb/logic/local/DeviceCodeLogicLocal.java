@@ -7,5 +7,7 @@ import javax.ejb.Local;
 @Local
 public interface DeviceCodeLogicLocal {
 	
+	Boolean verifyDeviceCode(String code);
+	String determineDeviceType(String code);
 
 }

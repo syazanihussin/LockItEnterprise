@@ -54,7 +54,7 @@ public class EyeNotification implements Serializable {
 	}
 	
 	
-	public EyeNotification(String eyeNotificationTitle, String eyeNotificationDesc, int eyeTimestamp) {
+	public EyeNotification(String eyeNotificationTitle, String eyeNotificationDesc, long eyeTimestamp) {
 		super();
 		this.eyeNotificationTitle = eyeNotificationTitle;
 		this.eyeNotificationDesc = eyeNotificationDesc;
@@ -62,7 +62,7 @@ public class EyeNotification implements Serializable {
 	}
 	
 	
-	public EyeNotification(String eyeNotificationTitle, String eyeNotificationDesc, int eyeTimestamp,
+	public EyeNotification(String eyeNotificationTitle, String eyeNotificationDesc, long eyeTimestamp,
 			LockEye lockEye_EyeNotification, HouseOwner houseOwner_EyeNotification) {
 		super();
 		this.eyeNotificationTitle = eyeNotificationTitle;

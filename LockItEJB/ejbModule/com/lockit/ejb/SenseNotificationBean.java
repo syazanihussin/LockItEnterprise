@@ -24,6 +24,7 @@ public class SenseNotificationBean implements SenseNotificationBeanRemote, Sense
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
+	NotificationLogicLocal notificationBean = new NotificationBean();
 	
 	
 	public SenseNotificationBean() {
@@ -79,11 +80,8 @@ public class SenseNotificationBean implements SenseNotificationBeanRemote, Sense
 	
 	@Override
 	public String getSenseNotificationInterval(SenseNotification senseNotification) {
-		NotificationLogicLocal notificationBean = new NotificationBean();
-		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		long interval = timestamp.getTime() - (long) senseNotification.getSenseTimestamp();
-		
 		return notificationBean.classifyNotificationUnit(interval);
 	}
 	

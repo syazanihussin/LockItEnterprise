@@ -24,6 +24,7 @@ public class EyeNotificationBean implements EyeNotificationBeanRemote, EyeNotifi
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
+	NotificationLogicLocal notificationBean = new NotificationBean();
 	
 	
 	public EyeNotificationBean() {
@@ -79,11 +80,8 @@ public class EyeNotificationBean implements EyeNotificationBeanRemote, EyeNotifi
 	
 	@Override
 	public String getEyeNotificationInterval(EyeNotification eyeNotification) {
-		NotificationLogicLocal notificationBean = new NotificationBean();
-		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		long interval = timestamp.getTime() - (long) eyeNotification.getEyeTimestamp();
-		
 		return notificationBean.classifyNotificationUnit(interval);
 	}
 

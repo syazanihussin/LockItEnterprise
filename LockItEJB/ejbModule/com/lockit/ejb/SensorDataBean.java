@@ -25,6 +25,7 @@ public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal
 	//factory	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
+	LockSenseBeanLocal lockSenseBeanLocal = null;
 	
 	
 	//empty
@@ -88,17 +89,16 @@ public class SensorDataBean implements SensorDataBeanRemote, SensorDataBeanLocal
 	
 	//detection of data unusual
 	@Override
-	public HashMap<LockSense, SensorData> detectUnusualData() {	
+	public HashMap<SensorData, LockSense> detectUnusualData() {	
 		
-		LockSenseBeanLocal lockSenseBeanLocal = new LockSenseBean();
-		List<LockSense> x =  lockSenseBeanLocal.getAllLockSenses();
-		HashMap<LockSense, SensorData> map = new HashMap<LockSense, SensorData>();
+		lockSenseBeanLocal = new LockSenseBean();
+		HashMap<SensorData, LockSense> map = new HashMap<SensorData, LockSense>();
 		
-		for(LockSense lockSense : x) {
+		for(LockSense lockSense : lockSenseBeanLocal.getAllLockSenses()) {
 			for(SensorData sensorData : lockSense.getSensorData()) {
 				
 				if(sensorData.getData()>2000) {
-					map.put(lockSense,sensorData); ;	
+					map.put(sensorData, lockSense); ;	
 				}		
 			}
 		}

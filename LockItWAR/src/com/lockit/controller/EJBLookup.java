@@ -5,8 +5,8 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import com.lockit.ejb.HouseOwnerBeanRemote;
-import com.lockit.ejb.HouseOwnerLogicRemote;
+import com.lockit.ejb.dao.remote.HouseOwnerBeanRemote;
+import com.lockit.ejb.logic.remote.HouseOwnerLogicRemote;
 
 
 public class EJBLookup {

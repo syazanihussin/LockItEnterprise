@@ -28,11 +28,11 @@ public class Video implements Serializable {
 	
 	
 	@Column(name="startRecordingTime")
-	private int startRecordingTime;
+	private long startRecordingTime;
 	
 	
 	@Column(name="endRecordingTime")
-	private int endRecordingTime ;
+	private long endRecordingTime ;
 	
 	
 	@Column(name="videoClip")
@@ -53,7 +53,7 @@ public class Video implements Serializable {
 	}
 	
 	
-	public Video(int startRecordingTime, int endRecordingTime, String videoClip, double videoSize) {
+	public Video(long startRecordingTime, long endRecordingTime, String videoClip, double videoSize) {
 		super();
 		this.startRecordingTime = startRecordingTime;
 		this.endRecordingTime = endRecordingTime;
@@ -62,7 +62,7 @@ public class Video implements Serializable {
 	}
 	
 	
-	public Video(int startRecordingTime, int endRecordingTime, String videoClip, double videoSize, LockEye lockEye_Video) {
+	public Video(long startRecordingTime, long endRecordingTime, String videoClip, double videoSize, LockEye lockEye_Video) {
 		super();
 		this.startRecordingTime = startRecordingTime;
 		this.endRecordingTime = endRecordingTime;
@@ -82,22 +82,22 @@ public class Video implements Serializable {
 	}
 	
 	
-	public int getStartRecordingTime() {
+	public long getStartRecordingTime() {
 		return startRecordingTime;
 	}
 	
 	
-	public void setStartRecordingTime(int startRecordingTime) {
+	public void setStartRecordingTime(long startRecordingTime) {
 		this.startRecordingTime = startRecordingTime;
 	}
 	
 	
-	public int getEndRecordingTime() {
+	public long getEndRecordingTime() {
 		return endRecordingTime;
 	}
 	
 	
-	public void setEndRecordingTime(int endRecordingTime) {
+	public void setEndRecordingTime(long endRecordingTime) {
 		this.endRecordingTime = endRecordingTime;
 	}
 	

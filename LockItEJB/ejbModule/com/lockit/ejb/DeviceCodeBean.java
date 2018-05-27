@@ -74,5 +74,38 @@ public class DeviceCodeBean implements DeviceCodeBeanRemote, DeviceCodeBeanLocal
     }
 	
 	
-
+	@Override
+	public Boolean verifyDeviceCode(String code) {
+		
+		Boolean check = false;
+		
+		for(DeviceCode deviceCode : getAllDeviceCodes()) {
+			if(code.equalsIgnoreCase(deviceCode.getKeyz())) {
+				check = true;
+			}
+		}
+		
+		return check;
+    }
+	
+	
+	@Override
+	public String determineDeviceType(String code) {
+		
+		String name = null;
+		
+		if(verifyDeviceCode(code) == true) {
+			DeviceCode deviceCode = getDeviceCodeByKey(code);
+			String deviceName = deviceCode.getDeviceInfo_DeviceCode().getDeviceName();
+			
+			if(deviceName.equalsIgnoreCase("LOCKEYE")) {
+				name =  "LOCKEYE";
+			} else if (deviceName.equalsIgnoreCase("LOCKSENSE")) {
+				name =  "LOCKSENSE";
+			}
+		}
+		
+		return name;
+    }
+	
 }

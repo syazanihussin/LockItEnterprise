@@ -26,8 +26,7 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 	
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("LockItORM");
 	EntityManager entityManager = emf.createEntityManager();
-	SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
-    Date date = new Date(); 
+	VideoBeanLocal videoBeanLocal = null;
 	
 	
 	public LockEyeBean() {
@@ -82,23 +81,28 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 
 	
 	@Override
-	public HashMap<LockEye, Video> checkLockEyeStatus() {
+	public HashMap<Video, LockEye> checkLockEyeStatus() {
 
-		HashMap<LockEye, Video> map = new HashMap<LockEye, Video>();
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
 		String df = formatter.format(date);  
-	    int currentTimestamp = Integer.parseInt(df);
+	    long currentTimestamp = Long.parseLong(df);
+	    
+	    HashMap<Video, LockEye> map = new HashMap<Video, LockEye>();
+		List<LockEye> lockEyeList = getAllLockEyes();
 		
-		for(LockEye lockEye: getAllLockEyes()) {
 		
-			int lastIndex = lockEye.getVideo().size() - 1;
-			VideoBeanLocal videoBeanLocal = new VideoBean();
-			Video video = videoBeanLocal.getVideoById(lastIndex);
-			 
+		for(LockEye lockEye: lockEyeList) {
+			
+			List<Video> videoList = lockEye.getVideo();
+			int lastIndex = videoList.size() - 1;
+			
+			Video video = videoList.get(lastIndex);
+			
 			if(currentTimestamp - video.getEndRecordingTime() > 2000) {
-				map.put(lockEye, video);
-			}
+				map.put(video, lockEye);
+			}	
 		}
-		
 		return map;
 	}
 	

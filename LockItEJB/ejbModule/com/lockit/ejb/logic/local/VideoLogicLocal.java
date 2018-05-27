@@ -1,13 +1,13 @@
 package com.lockit.ejb.logic.local;
 
+
 import javax.ejb.Local;
 
 
 @Local
-public interface VideoBeanLogicLocal {
+public interface VideoLogicLocal {
 
-	int calculateRemainingSpace();
-
+	double calculateRemainingSpace();
 	int calculateTotalVideo();	
 	
 }
