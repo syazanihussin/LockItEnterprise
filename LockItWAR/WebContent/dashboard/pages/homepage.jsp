@@ -229,7 +229,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">12</div>
-                                        <div>Devices</div>
+                                        <div>LockSense</div>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">8</div>
-                                        <div>CCTV</div>
+                                        <div>LockEye</div>
                                     </div>
                                 </div>
                             </div>
