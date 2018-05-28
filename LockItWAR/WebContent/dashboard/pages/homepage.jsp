@@ -151,7 +151,7 @@
                                 <a href="../../DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="../../CCTVController" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
+                                <a href="../../CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                             <li>
                                 <a href="activity.jsp" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
@@ -229,7 +229,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">12</div>
-                                        <div>Devices</div>
+                                        <div>LockSense</div>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">8</div>
-                                        <div>CCTV</div>
+                                        <div>LockEye</div>
                                     </div>
                                 </div>
                             </div>
