@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.SensorData" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -194,7 +194,38 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div id="morris-area-chart"></div>
+                                <div id="morris-area-chart">
+	                                <script type="text/javascript">
+		                                Morris.Area({
+		                                    element: 'morris-area-chart',
+		                                    data: [
+		                                    	<% for (SensorData  data : (List <SensorData>) session.getAttribute("SensorData")){
+		                                    	
+		                                    	Long newDate = data.getDataTimestamp();
+		                                    	Double newData = data.getData();
+		                                    	
+		                                    	String aa = Long.toString(newDate);
+		                                	    String datee = aa.substring(0,2);
+		                                	    String monthh = aa.substring(2,4);
+		                                	    String yearr = aa.substring(4,8);
+		                                	    
+		                                    	
+		                                    	%>
+		                                   	{
+		                                       period: '<% out.print(datee + '/' + monthh + '/' + yearr); %>',
+		                                       Data: <% out.print(newData); %>,
+		                                  	} ,
+			                                   	<% } %>
+		                                    ],
+		                                    xkey: 'period',
+		                                    ykeys: ['Data'],
+		                                    labels: ['Data'],
+		                                    pointSize: 2,
+		                                    hideHover: 'auto',
+		                                    resize: true
+		                                });
+	                                </script>
+                                </div>
                             </div>
                             <!-- /.panel-body -->
                         </div>
@@ -217,7 +248,7 @@
         <!-- Morris Charts JavaScript -->
         <script src="../js/raphael.min.js"></script>
         <script src="../js/morris.min.js"></script>
-        <script src="../js/morris-data.js"></script>
+        <!-- <script src="../js/morris-data.js"></script> -->
 
         <!-- Custom Theme JavaScript -->
         <script src="../js/startmin.js"></script>

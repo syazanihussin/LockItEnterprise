@@ -15,8 +15,7 @@ $(function() {
         }, {
             period: '2010 Q3',
             FDoor: 4912,
-            BDoor: 1969,
-            Windows: 2501
+
         }, {
             period: '2010 Q4',
             FDoor: 3767,

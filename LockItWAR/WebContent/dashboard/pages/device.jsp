@@ -184,7 +184,10 @@
 										</div>
 										<a href="#">
 											<div class="panel-footer">
-												<span class="pull-left">View Details</span>
+												<form action="../../ActivityLogController" method="POST">
+													<input name="id" value="<%out.print(lockSense.getLocksenseID()); %>" hidden>
+													<span class="pull-left"><input type="submit" name="submit">View Details</span>
+												</form>
 												<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 	
 												<div class="clearfix"></div>

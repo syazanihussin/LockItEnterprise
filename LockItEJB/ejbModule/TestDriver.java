@@ -204,6 +204,18 @@ public class TestDriver {
 		System.out.println(dangerLockEye);
 		*/
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
+	    String df = formatter.format(date);  
+	    long currentTimestamp = Long.parseLong(df);
+	    System.out.println(currentTimestamp);
+	   
+	    String aa = Long.toString(currentTimestamp);
+	    String datee = aa.substring(0,2);
+	    String monthh = aa.substring(2,4);
+	    String yearr = aa.substring(4,8);
+	    System.out.println(datee + '/' + monthh + '/' + yearr);
+		
 	}
 
 }

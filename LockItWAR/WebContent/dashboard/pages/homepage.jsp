@@ -154,7 +154,7 @@
                                 <a href="../../CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                             <li>
-                                <a href="activity.jsp" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
+                                <a href="../../ActivityLogController" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
                             </li>
                  
                         </ul>
