@@ -1,7 +1,12 @@
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -148,7 +153,7 @@ public class TestDriver {
 		} 
 		
 		VideoBeanLocal v = new VideoBean();
-		System.out.println(v.getVideoById(4).getLockEye_Video());*/
+		System.out.println(v.getVideoById(4).getLockEye_Video());
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
 	    Date date = new Date(); 
 	    String df = formatter.format(date);  
@@ -157,37 +162,48 @@ public class TestDriver {
 	    
 	    LockSenseLogicLocal lockSenseLogicLocal = new LockSenseBean();
 	    LockSenseBeanLocal lockSenseBeanLocal = new LockSenseBean();
-	    HashMap<SensorData, LockSense> dangerLockSenseList = lockSenseLogicLocal.checkLockSenseStatus();
-		List<LockSense> allLockSense = lockSenseBeanLocal.getAllLockSenses();
-		List<LockSense> dangerLockSenseList2 = new ArrayList<>();
-		List<LockSense> normalLockSense = new ArrayList<>();
-		int i = 1;
-		for(@SuppressWarnings("rawtypes") Map.Entry m : dangerLockSenseList.entrySet()) {
+	    
+	    
+	    List<LockSense> normalLockSense = new ArrayList<>();
+		List<LockSense> dangerLockSense = new ArrayList<>();
+		
+		for(LockSense lockSense : lockSenseBeanLocal.getAllLockSenses()){  
+			HashMap<SensorData, LockSense> a = lockSenseLogicLocal.checkLockSenseStatus(lockSense.getLocksenseID());
 			
-			System.out.println("loop:"+i);
-			LockSense dangerLockSense = (LockSense) m.getValue();
-			dangerLockSenseList2.add(dangerLockSense);
-			i++;
-			
-			for(LockSense lockSense : allLockSense){  
-				if(dangerLockSense.getLocksenseID() == lockSense.getLocksenseID()) {
-					System.out.println("same:"+dangerLockSense.getLocksenseID() +" : "+ lockSense.getLocksenseID());
-					continue;
-				} else {
-					System.out.println("xsame: "+dangerLockSense.getLocksenseID() +" : "+ lockSense.getLocksenseID());
-					normalLockSense.add(lockSense);
-					continue;
+			if(a.isEmpty()) {
+				normalLockSense.add(lockSense);
+			} else {
+				for(@SuppressWarnings("rawtypes") Map.Entry m : a.entrySet()) {
+					dangerLockSense.add((LockSense) m.getValue());
 				}
-				
 			}
 		}
 		
-		if(dangerLockSenseList2.isEmpty()) {
-			normalLockSense = lockSenseBeanLocal.getAllLockSenses();
+		System.out.println(normalLockSense);
+		System.out.println(dangerLockSense);
+		
+		LockEyeLogicLocal lockEyeLogicLocal = new LockEyeBean();
+	    LockEyeBeanLocal lockEyeBeanLocal = new LockEyeBean();
+		
+	    List<LockEye> normalLockEye = new ArrayList<>();
+		List<LockEye> dangerLockEye = new ArrayList<>();
+		
+		for(LockEye lockEye : lockEyeBeanLocal.getAllLockEyes()){  
+			HashMap<Video, LockEye> a = lockEyeLogicLocal.checkLockEyeStatus(lockEye.getLockEyeID());
+			
+			if(a.isEmpty()) {
+				normalLockEye.add(lockEye);
+			} else {
+				for(@SuppressWarnings("rawtypes") Map.Entry m : a.entrySet()) {
+					dangerLockEye.add((LockEye) m.getValue());
+				}
+			}
 		}
 		
-		System.out.println(dangerLockSenseList2.isEmpty() + " : "+normalLockSense);
-		System.out.println(dangerLockSenseList2);
+		System.out.println(normalLockEye);
+		System.out.println(dangerLockEye);
+		*/
+		
 	}
 
 }

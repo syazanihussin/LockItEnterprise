@@ -81,7 +81,7 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 
 	
 	@Override
-	public HashMap<Video, LockEye> checkLockEyeStatus() {
+	public HashMap<Video, LockEye> checkLockEyeStatus(int id) {
 
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
 	    Date date = new Date(); 
@@ -89,20 +89,17 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 	    long currentTimestamp = Long.parseLong(df);
 	    
 	    HashMap<Video, LockEye> map = new HashMap<Video, LockEye>();
-		List<LockEye> lockEyeList = getAllLockEyes();
+		LockEye lockEye = getLockEyeById(id);
 		
+		List<Video> videoList = lockEye.getVideo();
+		int lastIndex = videoList.size() - 1;
+			
+		Video video = videoList.get(lastIndex);
+			
+		if(currentTimestamp - video.getEndRecordingTime() > 2000) {
+			map.put(video, lockEye);
+		}	
 		
-		for(LockEye lockEye: lockEyeList) {
-			
-			List<Video> videoList = lockEye.getVideo();
-			int lastIndex = videoList.size() - 1;
-			
-			Video video = videoList.get(lastIndex);
-			
-			if(currentTimestamp - video.getEndRecordingTime() > 2000) {
-				map.put(video, lockEye);
-			}	
-		}
 		return map;
 	}
 	

@@ -79,7 +79,7 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 	
 	
 	@Override
-	public HashMap<SensorData, LockSense> checkLockSenseStatus() {
+	public HashMap<SensorData, LockSense> checkLockSenseStatus(int id) {
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
 	    Date date = new Date(); 
@@ -87,21 +87,17 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 	    long currentTimestamp = Long.parseLong(df);
 	    
 	    HashMap<SensorData, LockSense> map = new HashMap<SensorData, LockSense>();
-		List<LockSense> lockSenseList = getAllLockSenses();
+		LockSense lockSense = getLockSenseById(id);
 		
-		
-		for(LockSense lockSense: lockSenseList) {
+		List<SensorData> sensorDataList = lockSense.getSensorData();
+		int lastIndex = sensorDataList.size() - 1;
 			
-			List<SensorData> sensorDataList = lockSense.getSensorData();
-			int lastIndex = sensorDataList.size() - 1;
+		SensorData sensorData = sensorDataList.get(lastIndex);
 			
-			SensorData sensorData = sensorDataList.get(lastIndex);
-			
-			if(currentTimestamp - sensorData.getDataTimestamp() > 2000) {
-				map.put(sensorData, lockSense);
-			}	
-		}
-		
+		if(currentTimestamp - sensorData.getDataTimestamp() > 2000) {
+			map.put(sensorData, lockSense);
+		}	
+	
 		return map;
 	}
 	

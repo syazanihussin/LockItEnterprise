@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.lockit.ejb.dao.local.LockEyeBeanLocal;
 import com.lockit.ejb.dao.local.LockSenseBeanLocal;
 import com.lockit.ejb.logic.local.LockEyeLogicLocal;
@@ -53,50 +52,59 @@ public class DeviceStatusController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HashMap<SensorData, LockSense> dangerLockSenseList = lockSenseLogicLocal.checkLockSenseStatus();
-		List<LockSense> allLockSense = lockSenseBeanLocal.getAllLockSenses();
-		List<LockSense> dangerLockSenseList2 = new ArrayList<>();
-		
-		for(@SuppressWarnings("rawtypes") Map.Entry m : dangerLockSenseList.entrySet()) {
-			
-			LockSense dangerLockSense = (LockSense) m.getValue();
-			dangerLockSenseList2.add(dangerLockSense);
-			
-			for(LockSense lockSense : allLockSense){  
-				if(dangerLockSense.getLocksenseID() == lockSense.getLocksenseID()) {
-					allLockSense.remove(lockSense);
-				}
-			}
-		}
-		
-		
-		/*HashMap<Video, LockEye> dangerLockEyeList = lockEyeLogicLocal.checkLockEyeStatus();
-		List<LockEye> allLockEye = lockEyeBeanLocal.getAllLockEyes();
-		List<LockEye> dangerLockEyeList2 = new ArrayList<>();
-		
-		for(@SuppressWarnings("rawtypes") Map.Entry m : dangerLockEyeList.entrySet()) {
-			
-			LockEye dangerLockEye = (LockEye) m.getValue();
-			dangerLockEyeList2.add(dangerLockEye);
-			
-			for(LockEye lockEye : allLockEye){  
-				if(dangerLockEye.getLockEyeID() == lockEye.getLockEyeID()) {
-					allLockEye.remove(lockEye);
-				}
-			}
-		}*/
-		
 		HttpSession session = request.getSession(true); 
-		session.setAttribute("dangerLockSense", dangerLockSenseList2);
-		session.setAttribute("normalLockSense", allLockSense);
-		//session.setAttribute("dangerLockEye", dangerLockEyeList2);
-		//session.setAttribute("normalLockEye", allLockEye);
+		checkingLockSense(session);
+		checkingLockEye(session);
 		response.sendRedirect("dashboard/pages/device.jsp");	
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	
+	public void checkingLockSense(HttpSession session) {
+		
+		List<LockSense> normalLockSense = new ArrayList<>();
+		List<LockSense> dangerLockSense = new ArrayList<>();
+		
+		for(LockSense lockSense : lockSenseBeanLocal.getAllLockSenses()){  
+			HashMap<SensorData, LockSense> a = lockSenseLogicLocal.checkLockSenseStatus(lockSense.getLocksenseID());
+			
+			if(a.isEmpty()) {
+				normalLockSense.add(lockSense);
+			} else {
+				for(@SuppressWarnings("rawtypes") Map.Entry m : a.entrySet()) {
+					dangerLockSense.add((LockSense) m.getValue());
+				}
+			}
+		}
+		
+		session.setAttribute("dangerLockSense", dangerLockSense);
+		session.setAttribute("normalLockSense", normalLockSense);
+	}
+	
+	
+	public void checkingLockEye(HttpSession session) {
+		
+	    List<LockEye> normalLockEye = new ArrayList<>();
+		List<LockEye> dangerLockEye = new ArrayList<>();
+		
+		for(LockEye lockEye : lockEyeBeanLocal.getAllLockEyes()){  
+			HashMap<Video, LockEye> a = lockEyeLogicLocal.checkLockEyeStatus(lockEye.getLockEyeID());
+			
+			if(a.isEmpty()) {
+				normalLockEye.add(lockEye);
+			} else {
+				for(@SuppressWarnings("rawtypes") Map.Entry m : a.entrySet()) {
+					dangerLockEye.add((LockEye) m.getValue());
+				}
+			}
+		}
+		
+		session.setAttribute("dangerLockEye", dangerLockEye);
+		session.setAttribute("normalLockEye", normalLockEye);
 	}
 
 }

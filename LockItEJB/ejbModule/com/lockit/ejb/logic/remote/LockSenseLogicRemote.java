@@ -10,6 +10,6 @@ import com.lockit.entity.SensorData;
 @Remote
 public interface LockSenseLogicRemote {
 
-	HashMap<SensorData, LockSense> checkLockSenseStatus();
+	HashMap<SensorData, LockSense> checkLockSenseStatus(int id);
 	int calculateTotalLockSense();
 }

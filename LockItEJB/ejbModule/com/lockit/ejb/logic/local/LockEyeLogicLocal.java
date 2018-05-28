@@ -10,7 +10,7 @@ import com.lockit.entity.Video;
 @Local
 public interface LockEyeLogicLocal {
 
-	HashMap<Video, LockEye> checkLockEyeStatus();
+	HashMap<Video, LockEye> checkLockEyeStatus(int id);
 	int calculateTotalLockEye();
 
 }
