@@ -153,9 +153,7 @@
                             <li>
                                 <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            <li>
-                                <a href="ActivityLogController" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
-                            </li>
+                           
                  
                         </ul>
                     </div>

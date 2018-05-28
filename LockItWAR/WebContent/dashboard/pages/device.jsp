@@ -148,10 +148,7 @@
                             <li>
                                 <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            <li>
-                                <a href="activity.jsp" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
-                            </li>
-                           
+                            
                         </ul>
                     </div>
                 </div>
@@ -184,9 +181,9 @@
 										</div>
 										<a href="#">
 											<div class="panel-footer">
-												<form action="../../ActivityLogController" method="POST">
-													<input name="id" value="<%out.print(lockSense.getLocksenseID()); %>" hidden>
-													<span class="pull-left"><input type="submit" name="submit">View Details</span>
+												<form action="ActivityLogController" method="POST">
+													<input name="id" value="<%out.print(lockSense.getLocksenseID()); %>" type="hidden">
+													<input type="submit" class="pull-left" name="submit" value="View Details"></input>
 												</form>
 												<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 	
@@ -219,7 +216,10 @@
 									</div>
 									<a href="#">
 										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
+											<form action="ActivityLogController" method="POST">
+													<input name="id" value="<%out.print(lockSense.getLocksenseID()); %>" type="hidden">
+													<input type="submit" class="pull-left" name="submit" value="View Details"></input>
+											</form>
 											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
 											<div class="clearfix"></div>
@@ -251,7 +251,10 @@
 										</div>
 										<a href="#">
 											<div class="panel-footer">
-												<span class="pull-left">View Details</span>
+												<form action="LockEyeDetailsController" method="POST">
+													<input name="id" value="<%out.print(lockEye.getLockEyeID()); %>" type="hidden">
+													<input type="submit" class="pull-left" name="submit" value="View Details"></input>
+												</form>
 												<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 	
 												<div class="clearfix"></div>
@@ -283,7 +286,10 @@
 									</div>
 									<a href="#">
 										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
+											<form action="LockEyeDetailsController" method="POST">
+													<input name="id" value="<%out.print(lockEye.getLockEyeID()); %>" type="hidden">
+													<input type="submit" class="pull-left" name="submit" value="View Details"></input>
+												</form>
 											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
 											<div class="clearfix"></div>

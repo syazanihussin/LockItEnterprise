@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.SensorData,java.util.*" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.LockEye,java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,9 +23,7 @@
         <!-- Custom CSS -->
         <link href="dashboard/css/startmin.css" rel="stylesheet">
 
-        <!-- Morris Charts CSS -->
-        <link href="dashboard/css/morris.css" rel="stylesheet">
-
+       
         <!-- Custom Fonts -->
         <link href="dashboard/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -142,12 +140,11 @@
                                 <a href="registerController" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
-                                <a href="DeviceStatusController" class="active" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
+                                <a href="DeviceStatusController" class="active"><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
                                 <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            
                            
                         </ul>
                     </div>
@@ -160,7 +157,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Device Log</h1>
+                        <h1 class="page-header">CCTV Log</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -192,7 +189,22 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div id="morris-area-chart">
+                                <div>
+                                <table>
+                                	<tr>
+                                		<th> CCTV Name </th>
+                                		<th> : </th>
+                                		<th> <% LockEye lockEye = (LockEye) request.getAttribute("lockEye"); out.print("CAM " + lockEye.getLockEyeID());  %>
+                                		</th>
+                                		
+                                	</tr>
+                                	<tr>
+                                		<th> CCTV Location </th>
+                                		<th> : </th>
+                                		<th> <% out.print(lockEye.getEyeLocation());  %>
+                                		</th>
+                                	</tr>
+                                </table>
 	                                
                                 </div>
                             </div>
@@ -211,47 +223,7 @@
         <!-- Bootstrap Core JavaScript -->
         <script src="dashboard/js/bootstrap.min.js"></script>
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="dashboard/js/metisMenu.min.js"></script>
-
-        <!-- Morris Charts JavaScript -->
-        <script src="dashboard/js/raphael.min.js"></script>
-        <script src="dashboard/js/morris.min.js"></script>
-        <script type="text/javascript">
-        $(function() {
-         Morris.Area({
-             element: 'morris-area-chart',
-             data: [
-             	<% for (SensorData  data : (List <SensorData>) request.getAttribute("SensorData")){
-             			
-             		
-             	
-             	Long newDate = data.getDataTimestamp();
-             	Double newData = data.getData();
-             	
-             	String aa = Long.toString(newDate);
-         	    String datee = aa.substring(0,2);
-         	    String monthh = aa.substring(2,4);
-         	    String yearr = aa.substring(4,8);
-         	    
-             	
-             	%>
-            	{
-                period: '<% out.print(datee + '/' + monthh + '/' + yearr); %>',
-                Data: <% out.print(newData); %>,
-           	} ,
-             	<% } %>
-             ],
-             xkey: 'period',
-             ykeys: ['Data'],
-             labels: ['Data'],
-             pointSize: 2,
-             hideHover: 'auto',
-             resize: true
-         });
-        });
-        </script>
-        <!-- <script src="../js/morris-data.js"></script> -->
+        
 
         <!-- Custom Theme JavaScript -->
         <script src="dashboard/js/startmin.js"></script>
