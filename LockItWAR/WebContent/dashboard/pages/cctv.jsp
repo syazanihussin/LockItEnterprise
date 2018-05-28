@@ -41,8 +41,8 @@
 		<style>
 					.column {
 				float: left;
-				width: 30%;
-				padding: 50px;
+				width: 32%;
+				padding: 10px;
 				border-style:solid;
 			
 				display:block;
@@ -234,9 +234,14 @@ function gridView() {
 				  	
 				  
 				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 3 </h2>
-					<p>Location: <% out.print(video.getLockEye_Video().getEyeLocation()); %></p>
-					<video width="320" height="240" autoplay>
+					<table>
+					<tr>
+						<th><h2>CAM 3 </h2></th>
+						<th><p>Location: <% out.print(video.getLockEye_Video().getEyeLocation()); %> </p></th>
+					</tr>
+					</table>
+					
+					<video autoplay width="300" height="200" >
 						<source src="<% out.print(video.getVideoClip()); %>" type="video/mp4">
 					</video>
 				  </div>
