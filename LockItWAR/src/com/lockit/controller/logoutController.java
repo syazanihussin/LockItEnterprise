@@ -41,8 +41,7 @@ public class logoutController extends HttpServlet {
 		houseOwnerLogicLocal.setCurrentHouseOwner(houseOwner);
 		
 		response.setContentType("text/html");
-		RequestDispatcher rd = request.getRequestDispatcher("../../index.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("index.jsp");
 			
 	}
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.LockEye,com.lockit.entity.LockSense,java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -143,7 +143,7 @@
                                 <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
-                                <a href="device.jsp" class="active"><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
+                                <a href="../../DeviceStatusController" class="active"><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
                                 <a href="../../CCTVController" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
@@ -165,326 +165,106 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">Device Status</h1>
 						<div class="row">
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-primary">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-comments fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">26</div>
-												<div>Report</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-green">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-tasks fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">50GB</div>
-												<div>Storage</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
 							
-							<div class="clearfix"></div>
+							<%
+							for(LockSense lockSense : (List<LockSense>) session.getAttribute("normalLockSense")){
+							%>
+								<div class="col-lg-3 col-md-6">
+									<div class="panel panel-green">
+										<div class="panel-heading">
+											<div class="row">
+												<div class="col-xs-3">
+													<i class="fa fa-tasks fa-5x"></i>
+												</div>
+												<div class="col-xs-9 text-right">
+													<div class="huge">LS<%out.print(lockSense.getLocksenseID()); %></div>
+													<div>LOCK SENSE</div>
+												</div>
+											</div>
+										</div>
+										<a href="#">
+											<div class="panel-footer">
+												<span class="pull-left">View Details</span>
+												<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	
+												<div class="clearfix"></div>
+											</div>
+										</a>
+									</div>
+								</div>
+							<%
+							}
 							
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS01</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS02</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS03</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS04</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS05</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS06</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS07</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS08</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS09</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS10</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS11</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-yellow">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-home fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LS12</div>
-												<div>LOCK SENSE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
+							%>
 							
 							
+							<%
+							for(LockSense lockSense : (List<LockSense>) session.getAttribute("dangerLockSense")){
+							%>
+							<div class="col-lg-3 col-md-6">
+								<div class="panel panel-red">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-video-camera fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<div class="huge">LS<%out.print(lockSense.getLocksenseID()); %></div>
+												<div>LOCK SENSE</div>
+											</div>
+										</div>
+									</div>
+									<a href="#">
+										<div class="panel-footer">
+											<span class="pull-left">View Details</span>
+											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+											<div class="clearfix"></div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<%
+							}
 							
+							%>
+							
+							
+							<%
+							for(LockEye lockEye : (List<LockEye>) session.getAttribute("normalLockEye")){
+							%>
+								<div class="col-lg-3 col-md-6">
+									<div class="panel panel-green">
+										<div class="panel-heading">
+											<div class="row">
+												<div class="col-xs-3">
+													<i class="fa fa-tasks fa-5x"></i>
+												</div>
+												<div class="col-xs-9 text-right">
+													<div class="huge">LS<%out.print(lockEye.getLockEyeID()); %></div>
+													<div>LOCK EYE</div>
+												</div>
+											</div>
+										</div>
+										<a href="#">
+											<div class="panel-footer">
+												<span class="pull-left">View Details</span>
+												<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	
+												<div class="clearfix"></div>
+											</div>
+										</a>
+									</div>
+								</div>
+							<%
+							}
+							
+							%>
+							
+							
+							<%
+							for(LockEye lockEye : (List<LockEye>) session.getAttribute("dangerLockEye")){
+							%>
 							<div class="col-lg-3 col-md-6">
 								<div class="panel panel-red">
 									<div class="panel-heading">
@@ -493,7 +273,7 @@
 												<i class="fa fa-video-camera fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<div class="huge">LE01</div>
+												<div class="huge">LS<%out.print(lockEye.getLockEyeID()); %></div>
 												<div>LOCK EYE</div>
 											</div>
 										</div>
@@ -508,167 +288,11 @@
 									</a>
 								</div>
 							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-red">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-video-camera fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LE02</div>
-												<div>LOCK EYE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-red">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-video-camera fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LE03</div>
-												<div>LOCK EYE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-red">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-video-camera fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LE04</div>
-												<div>LOCK EYE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-red">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-video-camera fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LE05</div>
-												<div>LOCK EYE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-red">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-video-camera fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LE06</div>
-												<div>LOCK EYE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-red">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-video-camera fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LE07</div>
-												<div>LOCK EYE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="panel panel-red">
-									<div class="panel-heading">
-										<div class="row">
-											<div class="col-xs-3">
-												<i class="fa fa-video-camera fa-5x"></i>
-											</div>
-											<div class="col-xs-9 text-right">
-												<div class="huge">LE08</div>
-												<div>LOCK EYE</div>
-											</div>
-										</div>
-									</div>
-									<a href="#">
-										<div class="panel-footer">
-											<span class="pull-left">View Details</span>
-											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-											<div class="clearfix"></div>
-										</div>
-									</a>
-								</div>
-							</div>
+							<%
+							}
+							
+							%>
+							
 						</div>
                     </div>
                     <!-- /.col-lg-12 -->

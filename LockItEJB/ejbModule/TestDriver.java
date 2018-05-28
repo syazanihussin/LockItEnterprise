@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.lockit.ejb.VideoBean;
 import com.lockit.ejb.dao.local.DeviceCodeBeanLocal;
 import com.lockit.ejb.dao.local.EyeNotificationBeanLocal;
 import com.lockit.ejb.dao.local.LockEyeBeanLocal;
+import com.lockit.ejb.dao.local.LockSenseBeanLocal;
 import com.lockit.ejb.dao.local.SenseNotificationBeanLocal;
 import com.lockit.ejb.dao.local.SensorDataBeanLocal;
 import com.lockit.ejb.dao.local.VideoBeanLocal;
@@ -143,8 +145,49 @@ public class TestDriver {
 		HashMap<SensorData, LockSense> hm = le.checkLockSenseStatus();
 		for(Map.Entry m : hm.entrySet()){  
 			System.out.println(m.getKey()+" "+m.getValue());  
-		} */
+		} 
 		
+		VideoBeanLocal v = new VideoBean();
+		System.out.println(v.getVideoById(4).getLockEye_Video());*/
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
+	    String df = formatter.format(date);  
+	    long currentTimestamp = Long.parseLong(df);
+	    System.out.println(currentTimestamp);
+	    
+	    LockSenseLogicLocal lockSenseLogicLocal = new LockSenseBean();
+	    LockSenseBeanLocal lockSenseBeanLocal = new LockSenseBean();
+	    HashMap<SensorData, LockSense> dangerLockSenseList = lockSenseLogicLocal.checkLockSenseStatus();
+		List<LockSense> allLockSense = lockSenseBeanLocal.getAllLockSenses();
+		List<LockSense> dangerLockSenseList2 = new ArrayList<>();
+		List<LockSense> normalLockSense = new ArrayList<>();
+		int i = 1;
+		for(@SuppressWarnings("rawtypes") Map.Entry m : dangerLockSenseList.entrySet()) {
+			
+			System.out.println("loop:"+i);
+			LockSense dangerLockSense = (LockSense) m.getValue();
+			dangerLockSenseList2.add(dangerLockSense);
+			i++;
+			
+			for(LockSense lockSense : allLockSense){  
+				if(dangerLockSense.getLocksenseID() == lockSense.getLocksenseID()) {
+					System.out.println("same:"+dangerLockSense.getLocksenseID() +" : "+ lockSense.getLocksenseID());
+					continue;
+				} else {
+					System.out.println("xsame: "+dangerLockSense.getLocksenseID() +" : "+ lockSense.getLocksenseID());
+					normalLockSense.add(lockSense);
+					continue;
+				}
+				
+			}
+		}
+		
+		if(dangerLockSenseList2.isEmpty()) {
+			normalLockSense = lockSenseBeanLocal.getAllLockSenses();
+		}
+		
+		System.out.println(dangerLockSenseList2.isEmpty() + " : "+normalLockSense);
+		System.out.println(dangerLockSenseList2);
 	}
 
 }
