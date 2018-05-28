@@ -96,7 +96,7 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 			
 		Video video = videoList.get(lastIndex);
 			
-		if(currentTimestamp - video.getEndRecordingTime() > 2000) {
+		if(currentTimestamp - video.getEndRecordingTime() > Long.parseLong("900000")) {
 			map.put(video, lockEye);
 		}	
 		

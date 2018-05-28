@@ -2,15 +2,14 @@ package com.lockit.controller;
 
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.lockit.ejb.dao.local.HouseOwnerBeanLocal;
+import com.lockit.ejb.logic.local.HouseOwnerLogicLocal;
 import com.lockit.entity.House;
 import com.lockit.entity.HouseOwner;
 
@@ -21,6 +20,12 @@ public class houseOwnerController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
        
+    @EJB
+    HouseOwnerBeanLocal houseOwnerBean;
+    
+    @EJB
+    HouseOwnerLogicLocal houseOwnerLogic;
+    
     
     public houseOwnerController() {
         super();
@@ -43,14 +48,13 @@ public class houseOwnerController extends HttpServlet {
 		House house = new House("Lot254 Kampung Katong", "C://image/house.png", houseOwner);
 		houseOwner.setHouse(house);
 		
-		EJBLookup ejbLookup = new EJBLookup(); 
-		ejbLookup.getHouseOwnerBeanRemote().insertHouseOwner(houseOwner); 	
+		houseOwnerBean.insertHouseOwner(houseOwner); 	
 		
-		HttpSession session = request.getSession(true); 
-		ejbLookup.getHouseOwnerLogicRemote().setCurrentHouseOwner(houseOwner);
-		String user = ejbLookup.getHouseOwnerLogicRemote().getCurrentHouseOwner().getUserName();
-		session.setAttribute("userName", user);
-		response.sendRedirect("dashboard/pages/homepage.jsp");
+		houseOwnerLogic.setCurrentHouseOwner(houseOwner);
+		String user = houseOwnerLogic.getCurrentHouseOwner().getUserName();
+		response.setContentType("text/html");
+		request.setAttribute("userName", user);
+		request.getRequestDispatcher("dashboard/pages/homepage.jsp").forward(request, response);
 		
 	
 		//response.setContentType("text/html");

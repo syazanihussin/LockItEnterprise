@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import com.lockit.ejb.dao.local.VideoBeanLocal;
 import com.lockit.entity.Video;
 
@@ -31,10 +30,10 @@ public class CCTVController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true); 
 		List<Video> video = videoBeanLocal.getAllVideos();
-		session.setAttribute("videoList", video);
-		response.sendRedirect("dashboard/pages/cctv.jsp");	
+		request.setAttribute("videoList", video);
+		response.setContentType("text/html");
+		request.getRequestDispatcher("dashboard/pages/cctv.jsp").forward(request, response);	
 	}
 
 	

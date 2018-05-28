@@ -44,6 +44,7 @@ import com.lockit.entity.LockSense;
 import com.lockit.entity.SenseNotification;
 import com.lockit.entity.SensorData;
 import com.lockit.entity.Video;
+import com.lockit.factory.LockItDeviceFactory;
 
 public class TestDriver {
 
@@ -209,7 +210,7 @@ public class TestDriver {
 	    String df = formatter.format(date);  
 	    long currentTimestamp = Long.parseLong(df);
 	    System.out.println(currentTimestamp);
-	   
+
 	    String aa = Long.toString(currentTimestamp);
 	    String datee = aa.substring(0,2);
 	    String monthh = aa.substring(2,4);

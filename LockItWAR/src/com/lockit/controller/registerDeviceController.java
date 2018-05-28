@@ -40,12 +40,12 @@ public class registerDeviceController extends HttpServlet {
 		String level = request.getParameter("level");
 		
 		register(deviceCode, location, level);
-		response.sendRedirect("dashboard/pages/register.jsp");
+		response.setContentType("text/html");
+		request.getRequestDispatcher("dashboard/pages/register.jsp").forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		doGet(request, response);
 	}
 	
