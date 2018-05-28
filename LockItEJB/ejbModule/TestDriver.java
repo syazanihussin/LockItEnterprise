@@ -203,12 +203,12 @@ public class TestDriver {
 			}
 		}System.out.println(normalLockEye);
 		System.out.println(dangerLockEye);
+
 		String aa = Long.toString(currentTimestamp);
 	    String datee = aa.substring(0,2);
 	    String monthh = aa.substring(2,4);
 	    String yearr = aa.substring(4,8);
 	    System.out.println(datee + '/' + monthh + '/' + yearr);
-		
 		
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
@@ -217,13 +217,37 @@ public class TestDriver {
 	    long currentTimestamp = Long.parseLong(df);
 	    System.out.println(currentTimestamp);
 
+
+	    String aa = Long.toString(currentTimestamp);
+	    String datee = aa.substring(0,2);
+	    String monthh = aa.substring(2,4);
+	    String yearr = aa.substring(4,8);
+	    System.out.println(datee + '/' + monthh + '/' + yearr);
+		
+		
+		
+		
+	    NotificationLogicLocal notificationLogicLocal = new NotificationBean() ;
+		
+	   
+	    VideoLogicLocal videoLogicLocal = new VideoBean();
+		
+		System.out.println(notificationLogicLocal.calculateTotalNotifications());
+		
+		
+		System.out.println(videoLogicLocal.calculateRemainingSpace());
+*/
 		SenseNotificationBeanLocal senseNotificationBeanLocal = new SenseNotificationBean();
 		
 		SensorDataLogicLocal senseDataLogicLocal = new SensorDataBean();
 		
 	    HashMap<SensorData, LockSense> a = senseDataLogicLocal.detectUnusualData();
 		
-	    
+	    SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
+	    String df = formatter.format(date);  
+	    long currentTimestamp = Long.parseLong(df);
+	    System.out.println(currentTimestamp);
 	    
 		if(!a.isEmpty()) {
 			for(@SuppressWarnings("rawtypes") Map.Entry m : a.entrySet()) {
@@ -240,7 +264,8 @@ public class TestDriver {
 				SenseNotification senseNotification = new SenseNotification("Unusual Behaviour Detected", "This Lock Sense has detected unusual behaviour at "+tarikh, currentTimestamp, (LockSense) m.getValue(), houseOwner);
 				senseNotificationBeanLocal.insertSenseNotification(senseNotification);
 			}
-		}*/
+		}
+		
 		
 	}
 

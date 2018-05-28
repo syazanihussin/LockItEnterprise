@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.SensorData" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.SensorData,java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -142,14 +142,12 @@
                                 <a href="registerController" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
-                                <a href="DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
+                                <a href="DeviceStatusController" class="active" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
                                 <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            <li>
-                                <a href="activity.jsp" class="active"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
-                            </li>
+                            
                            
                         </ul>
                     </div>
@@ -195,36 +193,7 @@
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <div id="morris-area-chart">
-	                                <script type="text/javascript">
-		                                Morris.Area({
-		                                    element: 'morris-area-chart',
-		                                    data: [
-		                                    	<% for (SensorData  data : (List <SensorData>) session.getAttribute("SensorData")){
-		                                    	
-		                                    	Long newDate = data.getDataTimestamp();
-		                                    	Double newData = data.getData();
-		                                    	
-		                                    	String aa = Long.toString(newDate);
-		                                	    String datee = aa.substring(0,2);
-		                                	    String monthh = aa.substring(2,4);
-		                                	    String yearr = aa.substring(4,8);
-		                                	    
-		                                    	
-		                                    	%>
-		                                   	{
-		                                       period: '<% out.print(datee + '/' + monthh + '/' + yearr); %>',
-		                                       Data: <% out.print(newData); %>,
-		                                  	} ,
-			                                   	<% } %>
-		                                    ],
-		                                    xkey: 'period',
-		                                    ykeys: ['Data'],
-		                                    labels: ['Data'],
-		                                    pointSize: 2,
-		                                    hideHover: 'auto',
-		                                    resize: true
-		                                });
-	                                </script>
+	                                
                                 </div>
                             </div>
                             <!-- /.panel-body -->
@@ -248,6 +217,40 @@
         <!-- Morris Charts JavaScript -->
         <script src="dashboard/js/raphael.min.js"></script>
         <script src="dashboard/js/morris.min.js"></script>
+        <script type="text/javascript">
+        $(function() {
+         Morris.Area({
+             element: 'morris-area-chart',
+             data: [
+             	<% for (SensorData  data : (List <SensorData>) request.getAttribute("SensorData")){
+             			
+             		
+             	
+             	Long newDate = data.getDataTimestamp();
+             	Double newData = data.getData();
+             	
+             	String aa = Long.toString(newDate);
+         	    String datee = aa.substring(0,2);
+         	    String monthh = aa.substring(2,4);
+         	    String yearr = aa.substring(4,8);
+         	    
+             	
+             	%>
+            	{
+                period: '<% out.print(datee + '/' + monthh + '/' + yearr); %>',
+                Data: <% out.print(newData); %>,
+           	} ,
+             	<% } %>
+             ],
+             xkey: 'period',
+             ykeys: ['Data'],
+             labels: ['Data'],
+             pointSize: 2,
+             hideHover: 'auto',
+             resize: true
+         });
+        });
+        </script>
         <!-- <script src="../js/morris-data.js"></script> -->
 
         <!-- Custom Theme JavaScript -->

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.entity.LockEye,java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,9 +13,6 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="dashboard/css/bootstrap.min.css" rel="stylesheet">
-		
-		
-		<link rel="icon"  href="images/favicon.ico"/>
 
         <!-- MetisMenu CSS -->
         <link href="dashboard/css/metisMenu.min.css" rel="stylesheet">
@@ -26,9 +23,7 @@
         <!-- Custom CSS -->
         <link href="dashboard/css/startmin.css" rel="stylesheet">
 
-        <!-- Morris Charts CSS -->
-        <link href="dashboard/css/morris.css" rel="stylesheet">
-
+       
         <!-- Custom Fonts -->
         <link href="dashboard/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -118,7 +113,7 @@
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> <% if(request.getAttribute("userName") != null) {HouseOwner user = (HouseOwner) request.getAttribute("userName"); out.print(user.getUserName()); }%> <b class="caret"></b>
+                            <i class="fa fa-user fa-fw"></i> <% if(request.getAttribute("userName") != null) {HouseOwner user = (HouseOwner) request.getAttribute("userName"); out.print(user.getUserName());} %> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -132,26 +127,25 @@
                 </ul>
                 <!-- /.navbar-top-links -->
 
-				<!---------------------list left------------------------------------------------------------->
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                             <img src="images/favicon.ico" alt="">                       
+                             <img src="../../images/favicon.ico" alt="">                     
                             </li>
                             <li>
                                 <a href="dashboardController" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
-                                <a href="registerController" class="active"><i class="fa fa-edit fa-fw"></i> Register Device</a>
+                                <a href="registerController" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
-                                <a href="DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
+                                <a href="DeviceStatusController" class="active"><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
                                 <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            
+                           
                         </ul>
                     </div>
                 </div>
@@ -163,84 +157,60 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Register Device</h1>
-						<div class="row">
-							<div class="col-lg-12">
-							
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										Register Basic Information
-									</div>
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-lg-6">
-												<form role="form" action="registerDeviceController" method="post">
-													<div class="form-group">
-														<label>Device Code</label>
-														<input class="form-control" name="deviceCode" placeholder="Eg: ABc12de">
-													</div>
-													<div class="form-group">
-														<label>Device Location</label>
-														<input class="form-control" name="location" placeholder="Eg: Front Door">
-													</div>
-													<div class="form-group">
-														<label>Building Level</label>
-														<input class="form-control" name="level" placeholder="Eg: Ground Level">
-													</div>
-													<button type="submit" class="btn btn-default">Register Device</button>
-												</form>
-											</div>
-											<!-- /.col-lg-6 (nested) -->
-											<div class="col-lg-6">
-												<form role="form">
-												<div class="form-group">
-														<label>Device Code</label>
-														<input class="form-control" placeholder="Device Code" disabled>
-													</div>
-													<div class="form-group">
-														<label>Device Name</label>
-														<input class="form-control" placeholder="Device Name" disabled>
-													</div>
-													<div class="form-group">
-														<label>Device Description</label>
-														<input class="form-control" placeholder="Device Description" disabled>
-													</div>
-													<div class="form-group">
-														<label>Device Location</label>
-														<input class="form-control" placeholder="Device Location">
-													</div>
-													
-													<div class="form-group">
-														<label>Bulding Level</label>
-														<select class="form-control">
-															<option>Lower Ground</option>
-															<option>Level 1</option>
-															<option>Level 2</option>
-															<option>Level 3</option>
-															<option>Level 4</option>
-															<option>Level 5</option>
-														</select>
-													</div>
-													<button type="submit" class="btn btn-default">Submit</button>
-													<button type="reset" class="btn btn-default">Reset</button>
-												</form>
-											</div>
-										</div>
-										<!-- /.row (nested) -->
-									</div>
-									<!-- /.panel-body -->
-								</div>
-								<!-- /.panel -->
-							</div>
-							<!-- /.col-lg-12 -->
-						</div>
-						<!-- /.row -->
-						
+                        <h1 class="page-header">CCTV Log</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row ---------------4 gui dashboard---------->
-                
+               
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Most Active Devices
+                                <div class="pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle"
+                                                data-toggle="dropdown">
+                                            Actions
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                            <li><a href="#">Action</a>
+                                            </li>
+                                            <li><a href="#">Another action</a>
+                                            </li>
+                                            <li><a href="#">Something else here</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Separated link</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div>
+                                <table>
+                                	<tr>
+                                		<th> CCTV Name </th>
+                                		<th> : </th>
+                                		<th> <% LockEye lockEye = (LockEye) request.getAttribute("lockEye"); out.print("CAM " + lockEye.getLockEyeID());  %>
+                                		</th>
+                                		
+                                	</tr>
+                                	<tr>
+                                		<th> CCTV Location </th>
+                                		<th> : </th>
+                                		<th> <% out.print(lockEye.getEyeLocation());  %>
+                                		</th>
+                                	</tr>
+                                </table>
+	                                
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+					</div>
             </div>
             <!-- /#page-wrapper -->
 
@@ -253,13 +223,7 @@
         <!-- Bootstrap Core JavaScript -->
         <script src="dashboard/js/bootstrap.min.js"></script>
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="dashboard/js/metisMenu.min.js"></script>
-
-        <!-- Morris Charts JavaScript -->
-        <script src="dashboard/js/raphael.min.js"></script>
-        <script src="dashboard/js/morris.min.js"></script>
-        <script src="dashboard/js/morris-data.js"></script>
+        
 
         <!-- Custom Theme JavaScript -->
         <script src="dashboard/js/startmin.js"></script>

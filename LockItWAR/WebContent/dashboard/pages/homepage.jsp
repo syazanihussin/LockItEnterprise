@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner,com.lockit.ejb.SenseNotificationBean,com.lockit.ejb.dao.local.SenseNotificationBeanLocal,com.lockit.ejb.logic.local.SenseNotificationLogicLocal,com.lockit.entity.SenseNotification" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.ejb.SenseNotificationBean,com.lockit.ejb.dao.local.SenseNotificationBeanLocal,com.lockit.ejb.logic.local.SenseNotificationLogicLocal,com.lockit.entity.SenseNotification,com.lockit.ejb.logic.local.NotificationLogicLocal,com.lockit.ejb.logic.local.VideoLogicLocal,com.lockit.ejb.NotificationBean,com.lockit.ejb.VideoBean,com.lockit.ejb.logic.local.LockEyeLogicLocal,com.lockit.ejb.logic.local.LockSenseLogicLocal,com.lockit.ejb.LockSenseBean,com.lockit.ejb.LockEyeBean" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -128,9 +128,7 @@
                             <li>
                                 <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            <li>
-                                <a href="ActivityLogController" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
-                            </li>
+                           
                  
                         </ul>
                     </div>
@@ -157,8 +155,13 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>Report</div>
+                                        <div class="huge"><% 
+                                        
+                                        NotificationLogicLocal notificationLogicLocal = new NotificationBean() ;                               		
+                                		int total = notificationLogicLocal.calculateTotalNotifications();
+                                		
+                                        out.print(total);%></div>
+                                        <div>Notification</div>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +183,12 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">50GB</div>
+                                        <div class="huge"><% 
+                                       	
+                                       	VideoLogicLocal videoLogicLocal = new VideoBean();
+                                        double remain = videoLogicLocal.calculateRemainingSpace();
+                                        
+                                        out.print(remain);%></div>
                                         <div>Storage</div>
                                     </div>
                                 </div>
@@ -203,7 +211,12 @@
                                         <i class="fa fa-home fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge"><%
+                                        
+                                        LockSenseLogicLocal lockSenseLogicLocal = new LockSenseBean();
+                                        int totalLockSense=lockSenseLogicLocal.calculateTotalLockSense();
+                                        
+                                        out.print(totalLockSense);%></div>
                                         <div>LockSense</div>
                                     </div>
                                 </div>
@@ -226,7 +239,12 @@
                                         <i class="fa fa-eye fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">8</div>
+                                        <div class="huge"><%
+                                        
+                                        LockEyeLogicLocal lockEyeLogicLocal = new LockEyeBean();
+                                        int totalLockEye =lockEyeLogicLocal.calculateTotalLockEye();
+                                        
+                                        out.print(totalLockEye);%></div>
                                         <div>LockEye</div>
                                     </div>
                                 </div>

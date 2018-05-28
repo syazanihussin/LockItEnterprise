@@ -77,7 +77,7 @@ function listView() {
 // Grid View
 function gridView() {
   for (i = 0; i < elements.length; i++) {
-    elements[i].style.width = "30%";
+    elements[i].style.width = "32%";
   }
 }
 
@@ -196,9 +196,7 @@ function gridView() {
                             <li>
                                 <a href="CCTVController" class="active"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
-                            <li>
-                                <a href="activity.jsp"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
-                            </li>
+                           
                           
                         </ul>
                     </div>
@@ -230,15 +228,18 @@ function gridView() {
 				  if(request.getAttribute("videoList") != null) {
 				  	for(Video video : (List<Video>) request.getAttribute("videoList")) {
 				  		
+				  
 				  %>
 				  	
 				  
 				  <div class="column" style="background-color:#bbb;">
 					<table>
 					<tr>
-						<th><h2>CAM 3 </h2></th>
+						<th><h2>CAM <% out.print(video.getVideoID());  %></h2></th>
+					</tr>
 						<th><p>Location: <% out.print(video.getLockEye_Video().getEyeLocation()); %> </p></th>
 					</tr>
+					
 					</table>
 					
 					<video autoplay width="300" height="200" >
@@ -254,40 +255,7 @@ function gridView() {
 				</div>
 
 				
-				<div class="row">
-				  <div class="column" style="background-color:#ccc;">
-					<h2>CAM 4</h2>
-				<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#ddd;">
-					<h2>CAM 5</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 6</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				</div>
-								
-									
-				<div class="row">
-				  <div class="column" style="background-color:#ccc;">
-					<h2>CAM 7</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#ddd;">
-					<h2>CAM 8</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				  
-				  <div class="column" style="background-color:#bbb;">
-					<h2>CAM 9</h2>
-					<i class="fa fa-eye fa-5x"></i>
-				  </div>
-				</div>
+				
 				
 				
 				
