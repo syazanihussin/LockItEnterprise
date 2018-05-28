@@ -2,11 +2,16 @@ package com.lockit.controller;
 
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.lockit.ejb.logic.local.LockEyeLogicLocal;
+import com.lockit.ejb.logic.local.LockSenseLogicLocal;
 
 
 @WebServlet("/dashboardController")
@@ -15,6 +20,11 @@ public class dashboardController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
+    @EJB
+    LockEyeLogicLocal lockEyeLogicLocal;
+    
+    @EJB
+    LockSenseLogicLocal lockSenseLogicLocal;
     
     public dashboardController() {
         super();
@@ -23,8 +33,15 @@ public class dashboardController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		int totalLockEye =lockEyeLogicLocal.calculateTotalLockEye();
+		request.setAttribute("totalLockEye",totalLockEye);
+
+		int totalLockSense=lockSenseLogicLocal.calculateTotalLockSense();
+		request.setAttribute("totalLockSense",totalLockSense);
+		
 		response.setContentType("text/html");
-		request.getRequestDispatcher("dashboard/pages/homepage.jsp").forward(request, response);			
+		request.getRequestDispatcher("dashboardController").forward(request, response);			
 	}
 
 	

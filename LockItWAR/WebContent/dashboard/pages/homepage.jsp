@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.ejb.logic.local.LockEyeLogicLocal,com.lockit.ejb.logic.local.LockSenseLogicLocal,com.lockit.ejb.LockSenseBean,com.lockit.ejb.LockEyeBean" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -228,7 +228,12 @@
                                         <i class="fa fa-home fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge"><%
+                                        
+                                        LockSenseLogicLocal lockSenseLogicLocal = new LockSenseBean();
+                                        int totalLockSense=lockSenseLogicLocal.calculateTotalLockSense();
+                                        
+                                        out.print(totalLockSense);%></div>
                                         <div>LockSense</div>
                                     </div>
                                 </div>
@@ -251,7 +256,12 @@
                                         <i class="fa fa-eye fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">8</div>
+                                        <div class="huge"><%
+                                        
+                                        LockEyeLogicLocal lockEyeLogicLocal = new LockEyeBean();
+                                        int totalLockEye =lockEyeLogicLocal.calculateTotalLockEye();
+                                        
+                                        out.print(totalLockEye);%></div>
                                         <div>LockEye</div>
                                     </div>
                                 </div>
