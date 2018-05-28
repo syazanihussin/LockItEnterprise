@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="en">
-<!--
 
-Page    : index / LockIt
-Version : 1.0
-Author  : LockIt Team
-URI     : https://colorlib.com
-
- -->
 
 <head>
     <title>Lockit - Stay Safe</title>
@@ -44,7 +37,7 @@ URI     : https://colorlib.com
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="index.jsp"><img alt="" src="images/favicon.ico" style="height:30px ; width : 30px">
+                        <a class="navbar-brand" href="index.jsp"><img alt="" src="images/favicon.ico" style="height:30px ; width : 30px; filter: grayscale(100%);">
                         LOCKIT</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         <div class="collapse navbar-collapse" id="navbar">
                             <ul class="navbar-nav ml-auto">
@@ -128,83 +121,71 @@ URI     : https://colorlib.com
         <div class="container">
             <div class="section-title">
                 <small>FEATURES</small>
-                <h3>Do more with our app</h3>
+                <h3>What LOCKIT can offers to you?</h3>
             </div>
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#communication">Communication</a>
+                    <a class="nav-link active" data-toggle="tab" href="#communication">Easy device installations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#schedule">Scheduling</a>
+                    <a class="nav-link" data-toggle="tab" href="#schedule">Interactive user interfaces</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages">Messages</a>
+                    <a class="nav-link" data-toggle="tab" href="#messages">Device notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#livechat">Live Chat</a>
+                    <a class="nav-link" data-toggle="tab" href="#livechat">Enhanced home security</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="communication">
                     <div class="d-flex flex-column flex-lg-row">
-                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/a.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
 
-                            <h2>Communicate with ease</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
+                            <h2>Easy device installations</h2>
+                            <p class="lead">Ease of installation </p>
+                            <p>Just enter device codes, and other less info then your device is up!
                             </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="schedule">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
-                            <h2>Scheduling when you want</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
+                            <h2>Interactive user interfaces</h2>
+                            <p class="lead">Understandable icons and enhance user experiences </p>
+                            <p>User able to learn quick and fast on how to use the system!
                             </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            
                         </div>
-                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/b.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
                 </div>
                 <div class="tab-pane fade" id="messages">
                     <div class="d-flex flex-column flex-lg-row">
-                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/c.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
-                            <h2>Realtime Messaging service</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
+                            <h2>Device notifications</h2>
+                            <p class="lead">Triggers users with appropriates notifications </p>
+                            <p>User now able to keep track how are their devices are working currently.
                             </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="livechat">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
-                            <h2>Live chat when you needed</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
+                            <h2>Enhanced home security</h2>
+                            <p class="lead">Your home security now is under control! </p>
+                            <p>LOCKIT! will notify you if something happens on the spot.
                             </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                          
                         </div>
-                        <img src="images/.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                        <img src="images/d.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
                 </div>
             </div>
@@ -259,30 +240,24 @@ URI     : https://colorlib.com
             </div>
 
             <div class="testimonials owl-carousel">
+              
                 <div class="testimonials-single">
-                    <img src="images/client.png" alt="client" class="client-img">
-                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
+                    <img src="images/woman.png" alt="client" class="client-img">
+                    <blockquote class="blockquote">..."Due to my busy tasks at work,it made me came home late almost everyday
+                   .Now with LOCKIT! ,I am able to track my house security from time to time!"...</blockquote>
                     <h5 class="mt-4 mb-2">Faizah</h5>
-                    <p class="text-primary">Bangi</p>
+                    <p class="text-primary">Businesswoman</p>
                 </div>
                 <div class="testimonials-single">
-                    <img src="images/client.png" alt="client" class="client-img">
-                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
-                    <h5 class="mt-4 mb-2">Faizah</h5>
-                    <p class="text-primary">Bangi</p>
-                </div>
-                <div class="testimonials-single">
-                    <img src="images/client.png" alt="client" class="client-img">
-                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
-                    <h5 class="mt-4 mb-2">Faizah</h5>
-                    <p class="text-primary">Bangi</p>
+                    <img src="images/man.png" alt="client" class="client-img">
+                    <blockquote class="blockquote">..."I love to use this app as this is easy and convenient!"....</blockquote>
+                    <h5 class="mt-4 mb-2">Syahmi</h5>
+                    <p class="text-primary">Business manager</p>
                 </div>
             </div>
-
         </div>
-
     </div>
-    <!-- // end .section -->
+  
 
 
     <div class="section light-bg" id="gallery">
@@ -381,17 +356,17 @@ URI     : https://colorlib.com
 
             <div class="row pt-4">
                 <div class="col-md-6">
-                    <h4 class="mb-3">Can I try before I buy?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                    <h4 class="mb-3">Is it hard to use it?</h4>
+                    <p class="light-font mb-5"> We confirms you with the ease of use</p>
                     <h4 class="mb-3">What payment methods do you accept?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                    <p class="light-font mb-5">We do accept many types of payment including debit/credits!</p>
 
                 </div>
                 <div class="col-md-6">
                     <h4 class="mb-3">Can I change my plan later?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-                    <h4 class="mb-3">Do you have a contract?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                    <p class="light-font mb-5">Yes,you may change anytime if you are interested but with terms and conditions applied </p>
+                    <h4 class="mb-3">Can I run this application via mobile?</h4>
+                    <p class="light-font mb-5">Yes,LOCKIT also offers you mobile platform! </p>
 
                 </div>
             </div>
@@ -408,7 +383,7 @@ URI     : https://colorlib.com
 
         <div class="container">
 		<div class="section-title">
-		<h3>Create an Account</h3>
+		<h3>Create LOCKIT! Account Now!</h3>
 		</div>
 		<form name="myForm" action="houseOwnerController"  onSubmit="return validateForm()" method="post">
             <div class="row">
@@ -439,7 +414,7 @@ URI     : https://colorlib.com
 				<div class="col-md-6 d-flex ">
 					<div class="media-body">
 						<div class="form-group">
-							<label>Username1</label>
+							<label>Username</label>
 							<input class="form-control" type="text" name="userName" placeholder="Username">
 						</div>
 						<div class="form-group">
@@ -469,6 +444,7 @@ URI     : https://colorlib.com
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left">
+                <p> LOCKIT HEADQUARTERZ </p>
                     <p class="mb-2"> <span class="ti-location-pin mr-2"></span> Block A1.11, Bangi Central, Bandar Baru Bangi, Selangor Malaysia</p>
                     <div class=" d-block d-sm-inline-block">
                         <p class="mb-2">
