@@ -2,7 +2,9 @@ package com.lockit.entity;
 
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import com.lockit.ejb.LockEyeBean;
+import com.lockit.ejb.VideoBean;
 import com.lockit.interfaces.LockItDevice;
 
 
@@ -157,8 +160,21 @@ public class LockEye implements Serializable, LockItDevice {
 	
 	@Override
 	public void save(String level, String location, DeviceCode keyz, House houseID) {
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
+	    String df = formatter.format(date);  
+	    long currentTimestamp = Long.parseLong(df);
+	    
 		LockEyeBean lockEyeBean = new LockEyeBean();
-		lockEyeBean.insertLockEye(new LockEye(level, location, keyz, houseID));
+		int id = lockEyeBean.insertLockEye(new LockEye(level, location, keyz, houseID));
+		
+		LockEye lockEye = new LockEye();
+		lockEye.setLockEyeID(id);
+		
+		VideoBean videoBean = new VideoBean();
+		Video video = new Video(currentTimestamp, currentTimestamp, "1.MP4", 0.5, lockEye);
+		videoBean.insertVideo(video);
 	}
 
 

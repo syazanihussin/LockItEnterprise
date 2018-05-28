@@ -2,8 +2,11 @@ package com.lockit.entity;
 
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +21,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.lockit.ejb.LockSenseBean;
+import com.lockit.ejb.SensorDataBean;
 import com.lockit.interfaces.LockItDevice;
 
 
@@ -171,8 +175,19 @@ public class LockSense implements Serializable, LockItDevice {
 	
 	@Override
 	public void save(String level, String location, DeviceCode keyz, House houseID) {
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
+	    String df = formatter.format(date);  
+	    long currentTimestamp = Long.parseLong(df);
+	    
 		LockSenseBean lockSenseBean = new LockSenseBean();
-		lockSenseBean.insertLockSense(new LockSense(level, location, keyz, houseID));
+		SensorDataBean senseDataBean = new SensorDataBean();
+		int id = lockSenseBean.insertLockSense(new LockSense(level, location, keyz, houseID));
+		LockSense lockSense = new LockSense();
+		lockSense.setLocksenseID(id);
+		SensorData sensorData = new SensorData(3400, currentTimestamp, lockSense);
+		senseDataBean.insertSensorData(sensorData);
 		
 	}
 

@@ -9,7 +9,7 @@ import com.lockit.entity.LockEye;
 @Local
 public interface LockEyeBeanLocal {
 
-	void insertLockEye(LockEye lockEye);
+	int insertLockEye(LockEye lockEye);
 	LockEye getLockEyeById(int id);
 	List<LockEye> getAllLockEyes();
 	void updateLockEye(LockEye lockEye);

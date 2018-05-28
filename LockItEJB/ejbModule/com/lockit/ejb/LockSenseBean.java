@@ -33,10 +33,11 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 	
 	
 	@Override
-	public void insertLockSense(LockSense lockSense) {
+	public int insertLockSense(LockSense lockSense) {
 		entityManager.getTransaction().begin();
 		entityManager.persist(lockSense); 
 		entityManager.getTransaction().commit();
+		return lockSense.getLocksenseID();
 	}
 	
 	

@@ -209,7 +209,7 @@ public class TestDriver {
 	    String yearr = aa.substring(4,8);
 	    System.out.println(datee + '/' + monthh + '/' + yearr);
 		
-		*/
+		
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
 	    Date date = new Date(); 
@@ -240,7 +240,7 @@ public class TestDriver {
 				SenseNotification senseNotification = new SenseNotification("Unusual Behaviour Detected", "This Lock Sense has detected unusual behaviour at "+tarikh, currentTimestamp, (LockSense) m.getValue(), houseOwner);
 				senseNotificationBeanLocal.insertSenseNotification(senseNotification);
 			}
-		}
+		}*/
 		
 	}
 

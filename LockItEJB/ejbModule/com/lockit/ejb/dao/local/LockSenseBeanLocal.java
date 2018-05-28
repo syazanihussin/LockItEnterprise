@@ -9,7 +9,7 @@ import com.lockit.entity.LockSense;
 @Local
 public interface LockSenseBeanLocal {
 
-	void insertLockSense(LockSense lockSense);
+	int insertLockSense(LockSense lockSense);
 	LockSense getLockSenseById(int id);
 	List<LockSense> getAllLockSenses();
 	void updateLockSense(LockSense lockSense);

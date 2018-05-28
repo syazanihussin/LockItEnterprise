@@ -35,10 +35,11 @@ public class LockEyeBean implements LockEyeBeanRemote, LockEyeBeanLocal, LockEye
 	
 	
 	@Override
-	public void insertLockEye(LockEye lockEye) {
+	public int insertLockEye(LockEye lockEye) {
 		entityManager.getTransaction().begin();
 		entityManager.persist(lockEye); 
 		entityManager.getTransaction().commit();
+		return lockEye.getLockEyeID();
 	}
 	
 	
