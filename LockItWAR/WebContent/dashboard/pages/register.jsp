@@ -137,7 +137,7 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                             <img src="../../images/favicon.ico" alt="">                       
+                             <img src="images/favicon.ico" alt="">                       
                             </li>
                             <li>
                                 <a href="dashboardController" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
@@ -174,7 +174,7 @@
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-lg-6">
-												<form role="form" action="../../registerDeviceController" method="post">
+												<form role="form" action="registerDeviceController" method="post">
 													<div class="form-group">
 														<label>Device Code</label>
 														<input class="form-control" name="deviceCode" placeholder="Eg: ABc12de">
