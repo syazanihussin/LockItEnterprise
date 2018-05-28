@@ -54,7 +54,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="../../index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
+                    <li><a href="index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
                 </ul>
 
 				
@@ -123,7 +123,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="../../logoutController"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                            <li><a href="logoutController"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -237,21 +237,21 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="../js/jquery.min.js"></script>
+        <script src="dashboard/js/jquery.min.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="dashboard/js/bootstrap.min.js"></script>
 
         <!-- Metis Menu Plugin JavaScript -->
-        <script src="../js/metisMenu.min.js"></script>
+        <script src="dashboard/js/metisMenu.min.js"></script>
 
         <!-- Morris Charts JavaScript -->
-        <script src="../js/raphael.min.js"></script>
-        <script src="../js/morris.min.js"></script>
+        <script src="dashboard/js/raphael.min.js"></script>
+        <script src="dashboard/js/morris.min.js"></script>
         <!-- <script src="../js/morris-data.js"></script> -->
 
         <!-- Custom Theme JavaScript -->
-        <script src="../js/startmin.js"></script>
+        <script src="dashboard/js/startmin.js"></script>
 
     </body>
 </html>

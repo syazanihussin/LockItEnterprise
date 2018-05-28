@@ -57,7 +57,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="../../index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
+                    <li><a href="index.jsp"><i class="fa fa-home fa-fw"></i> Go Website</a></li>
                 </ul>
 
 				
@@ -129,7 +129,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-							<li><a href="../../logoutController"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+							<li><a href="logoutController"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -139,7 +139,7 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                             <img src="../../images/favicon.ico" alt="">                       
+                             <img src="images/favicon.ico" alt="">                       
                             </li>
                             <li>
                                 <a href="dashboardController" class="active"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
@@ -148,13 +148,13 @@
                                 <a href="registerController" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
-                                <a href="../../DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
+                                <a href="DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="../../CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
+                                <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                             <li>
-                                <a href="../../ActivityLogController" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
+                                <a href="ActivityLogController" ><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
                             </li>
                  
                         </ul>
