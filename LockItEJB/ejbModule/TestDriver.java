@@ -44,6 +44,7 @@ import com.lockit.entity.LockSense;
 import com.lockit.entity.SenseNotification;
 import com.lockit.entity.SensorData;
 import com.lockit.entity.Video;
+import com.lockit.factory.LockItDeviceFactory;
 
 public class TestDriver {
 
@@ -203,6 +204,13 @@ public class TestDriver {
 		System.out.println(normalLockEye);
 		System.out.println(dangerLockEye);
 		*/
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
+	    Date date = new Date(); 
+	    String df = formatter.format(date);  
+	    long currentTimestamp = Long.parseLong(df);
+	    System.out.println(currentTimestamp);
+	    
 		
 	}
 

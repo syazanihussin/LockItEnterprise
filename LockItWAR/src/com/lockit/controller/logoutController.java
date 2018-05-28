@@ -2,15 +2,12 @@ package com.lockit.controller;
 
 
 import java.io.IOException;
-
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import com.lockit.ejb.logic.local.HouseOwnerLogicLocal;
 import com.lockit.entity.HouseOwner;
 
@@ -32,10 +29,8 @@ public class logoutController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-		    session.invalidate();
-		}
+		
+		request.removeAttribute("userName");
 		
 		HouseOwner houseOwner = null;
 		houseOwnerLogicLocal.setCurrentHouseOwner(houseOwner);

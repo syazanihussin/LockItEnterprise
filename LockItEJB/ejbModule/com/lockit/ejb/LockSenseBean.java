@@ -94,7 +94,7 @@ public class LockSenseBean implements LockSenseBeanRemote, LockSenseBeanLocal, L
 			
 		SensorData sensorData = sensorDataList.get(lastIndex);
 			
-		if(currentTimestamp - sensorData.getDataTimestamp() > 2000) {
+		if(currentTimestamp - sensorData.getDataTimestamp() > Long.parseLong("900000")) {
 			map.put(sensorData, lockSense);
 		}	
 	

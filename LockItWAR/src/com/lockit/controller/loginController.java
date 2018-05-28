@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import com.lockit.ejb.logic.local.HouseOwnerLogicLocal;
 import com.lockit.entity.HouseOwner;
 
@@ -38,10 +37,9 @@ public class loginController extends HttpServlet {
 		 	
 		
 		if(houseOwnerBeanLocal.authenticateHouseOwner(email, password) == true) {
-			HttpSession session = request.getSession(true); 
 			HouseOwner user = houseOwnerBeanLocal.getCurrentHouseOwner();
-			session.setAttribute("userName", user);
-			response.sendRedirect("dashboard/pages/homepage.jsp");
+			request.setAttribute("userName", user);
+			request.getRequestDispatcher("dashboard/pages/homepage.jsp").forward(request, response);	
 		}
 		
 		else {

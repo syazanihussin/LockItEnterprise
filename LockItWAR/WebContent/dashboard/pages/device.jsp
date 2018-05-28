@@ -116,7 +116,7 @@
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> <% if(session.getAttribute("userName") != null) {HouseOwner user = (HouseOwner) session.getAttribute("userName"); out.print(user.getUserName());} %> <b class="caret"></b>
+                            <i class="fa fa-user fa-fw"></i> <% if(request.getAttribute("userName") != null) {HouseOwner user = (HouseOwner) request.getAttribute("userName"); out.print(user.getUserName());} %> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -167,7 +167,7 @@
 						<div class="row">
 							
 							<%
-							for(LockSense lockSense : (List<LockSense>) session.getAttribute("normalLockSense")){
+							for(LockSense lockSense : (List<LockSense>) request.getAttribute("normalLockSense")){
 							%>
 								<div class="col-lg-3 col-md-6">
 									<div class="panel panel-green">
@@ -199,7 +199,7 @@
 							
 							
 							<%
-							for(LockSense lockSense : (List<LockSense>) session.getAttribute("dangerLockSense")){
+							for(LockSense lockSense : (List<LockSense>) request.getAttribute("dangerLockSense")){
 							%>
 							<div class="col-lg-3 col-md-6">
 								<div class="panel panel-red">
@@ -231,7 +231,7 @@
 							
 							
 							<%
-							for(LockEye lockEye : (List<LockEye>) session.getAttribute("normalLockEye")){
+							for(LockEye lockEye : (List<LockEye>) request.getAttribute("normalLockEye")){
 							%>
 								<div class="col-lg-3 col-md-6">
 									<div class="panel panel-green">
@@ -241,7 +241,7 @@
 													<i class="fa fa-tasks fa-5x"></i>
 												</div>
 												<div class="col-xs-9 text-right">
-													<div class="huge">LS<%out.print(lockEye.getLockEyeID()); %></div>
+													<div class="huge">LE<%out.print(lockEye.getLockEyeID()); %></div>
 													<div>LOCK EYE</div>
 												</div>
 											</div>
@@ -263,7 +263,7 @@
 							
 							
 							<%
-							for(LockEye lockEye : (List<LockEye>) session.getAttribute("dangerLockEye")){
+							for(LockEye lockEye : (List<LockEye>) request.getAttribute("dangerLockEye")){
 							%>
 							<div class="col-lg-3 col-md-6">
 								<div class="panel panel-red">
@@ -273,7 +273,7 @@
 												<i class="fa fa-video-camera fa-5x"></i>
 											</div>
 											<div class="col-xs-9 text-right">
-												<div class="huge">LS<%out.print(lockEye.getLockEyeID()); %></div>
+												<div class="huge">LE<%out.print(lockEye.getLockEyeID()); %></div>
 												<div>LOCK EYE</div>
 											</div>
 										</div>

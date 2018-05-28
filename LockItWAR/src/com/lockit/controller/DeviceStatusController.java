@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import com.lockit.ejb.dao.local.LockEyeBeanLocal;
 import com.lockit.ejb.dao.local.LockSenseBeanLocal;
 import com.lockit.ejb.logic.local.LockEyeLogicLocal;
@@ -52,10 +51,10 @@ public class DeviceStatusController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true); 
-		checkingLockSense(session);
-		checkingLockEye(session);
-		response.sendRedirect("dashboard/pages/device.jsp");	
+		checkingLockSense(request);
+		checkingLockEye(request);
+		
+		request.getRequestDispatcher("dashboard/pages/device.jsp").forward(request, response);
 	}
 
 	
@@ -64,7 +63,7 @@ public class DeviceStatusController extends HttpServlet {
 	}
 	
 	
-	public void checkingLockSense(HttpSession session) {
+	public void checkingLockSense(HttpServletRequest request) {
 		
 		List<LockSense> normalLockSense = new ArrayList<>();
 		List<LockSense> dangerLockSense = new ArrayList<>();
@@ -80,13 +79,12 @@ public class DeviceStatusController extends HttpServlet {
 				}
 			}
 		}
-		
-		session.setAttribute("dangerLockSense", dangerLockSense);
-		session.setAttribute("normalLockSense", normalLockSense);
+		request.setAttribute("dangerLockSense", dangerLockSense);
+		request.setAttribute("normalLockSense", normalLockSense);
 	}
 	
 	
-	public void checkingLockEye(HttpSession session) {
+	public void checkingLockEye(HttpServletRequest request) {
 		
 	    List<LockEye> normalLockEye = new ArrayList<>();
 		List<LockEye> dangerLockEye = new ArrayList<>();
@@ -103,8 +101,8 @@ public class DeviceStatusController extends HttpServlet {
 			}
 		}
 		
-		session.setAttribute("dangerLockEye", dangerLockEye);
-		session.setAttribute("normalLockEye", normalLockEye);
+		request.setAttribute("dangerLockEye", dangerLockEye);
+		request.setAttribute("normalLockEye", normalLockEye);
 	}
 
 }
