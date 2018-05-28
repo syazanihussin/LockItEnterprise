@@ -139,7 +139,7 @@
                                 <a href="homepage.jsp" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
-                                <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
+                                <a href="dashboard/pages/register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
                                 <a href="DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
