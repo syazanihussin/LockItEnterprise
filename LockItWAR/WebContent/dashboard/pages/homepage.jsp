@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.ejb.logic.local.NotificationLogicLocal,com.lockit.ejb.logic.local.VideoLogicLocal,com.lockit.ejb.NotificationBean,com.lockit.ejb.VideoBean" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -182,8 +182,13 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>Report</div>
+                                        <div class="huge"><% 
+                                        
+                                        NotificationLogicLocal notificationLogicLocal = new NotificationBean() ;                               		
+                                		int total = notificationLogicLocal.calculateTotalNotifications();
+                                		
+                                        out.print(total);%></div>
+                                        <div>Notification</div>
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +210,12 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">50GB</div>
+                                        <div class="huge"><% 
+                                       	
+                                       	VideoLogicLocal videoLogicLocal = new VideoBean();
+                                        double remain = videoLogicLocal.calculateRemainingSpace();
+                                        
+                                        out.print(remain);%></div>
                                         <div>Storage</div>
                                     </div>
                                 </div>

@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJB;
+
 import com.lockit.ejb.DeviceCodeBean;
 import com.lockit.ejb.EyeNotificationBean;
 import com.lockit.ejb.HouseOwnerBean;
@@ -203,7 +205,7 @@ public class TestDriver {
 		
 		System.out.println(normalLockEye);
 		System.out.println(dangerLockEye);
-		*/
+		
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
 	    Date date = new Date(); 
@@ -216,6 +218,19 @@ public class TestDriver {
 	    String monthh = aa.substring(2,4);
 	    String yearr = aa.substring(4,8);
 	    System.out.println(datee + '/' + monthh + '/' + yearr);
+		*/
+		
+		
+		
+	    NotificationLogicLocal notificationLogicLocal = new NotificationBean() ;
+		
+	   
+	    VideoLogicLocal videoLogicLocal = new VideoBean();
+		
+		System.out.println(notificationLogicLocal.calculateTotalNotifications());
+		
+		
+		System.out.println(videoLogicLocal.calculateRemainingSpace());
 		
 	}
 
