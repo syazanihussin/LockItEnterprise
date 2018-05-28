@@ -52,6 +52,7 @@ public class houseOwnerController extends HttpServlet {
 		
 		houseOwnerLogic.setCurrentHouseOwner(houseOwner);
 		String user = houseOwnerLogic.getCurrentHouseOwner().getUserName();
+		response.setContentType("text/html");
 		request.setAttribute("userName", user);
 		request.getRequestDispatcher("dashboard/pages/homepage.jsp").forward(request, response);
 		

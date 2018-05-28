@@ -39,6 +39,7 @@ public class loginController extends HttpServlet {
 		if(houseOwnerBeanLocal.authenticateHouseOwner(email, password) == true) {
 			HouseOwner user = houseOwnerBeanLocal.getCurrentHouseOwner();
 			request.setAttribute("userName", user);
+			response.setContentType("text/html");
 			request.getRequestDispatcher("dashboard/pages/homepage.jsp").forward(request, response);	
 		}
 		

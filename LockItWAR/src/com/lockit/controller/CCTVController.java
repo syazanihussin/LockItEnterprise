@@ -32,6 +32,7 @@ public class CCTVController extends HttpServlet {
 
 		List<Video> video = videoBeanLocal.getAllVideos();
 		request.setAttribute("videoList", video);
+		response.setContentType("text/html");
 		request.getRequestDispatcher("dashboard/pages/cctv.jsp").forward(request, response);	
 	}
 

@@ -40,7 +40,7 @@ public class ActivityLogController extends HttpServlet {
 		LockSense ls = lockSenseBeanLocal.getLockSenseById(id);
 		
 		List <SensorData> sdList = ls.getSensorData();
-		
+		response.setContentType("text/html");
 		request.setAttribute("SensorData", sdList);
 		request.getRequestDispatcher("dashboard/pages/activity.jsp").forward(request, response);;
 	}

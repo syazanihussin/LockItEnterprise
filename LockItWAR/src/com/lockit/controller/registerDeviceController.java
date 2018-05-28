@@ -40,6 +40,7 @@ public class registerDeviceController extends HttpServlet {
 		String level = request.getParameter("level");
 		
 		register(deviceCode, location, level);
+		response.setContentType("text/html");
 		request.getRequestDispatcher("dashboard/pages/register.jsp").forward(request, response);
 	}
 
