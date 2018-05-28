@@ -185,10 +185,10 @@ function gridView() {
                              <img src="../../images/favicon.ico" alt="">                       
                             </li>
                             <li>
-                                <a href="homepage.jsp"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
+                                <a href="dashboardController"><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
-                                <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
+                                <a href="registerController" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
                                 <a href="../../DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
