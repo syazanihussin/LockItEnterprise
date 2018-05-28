@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJB;
+
 import com.lockit.ejb.DeviceCodeBean;
 import com.lockit.ejb.EyeNotificationBean;
 import com.lockit.ejb.HouseOwnerBean;
@@ -199,11 +201,19 @@ public class TestDriver {
 					dangerLockEye.add((LockEye) m.getValue());
 				}
 			}
-		}
-		
-		System.out.println(normalLockEye);
+		}System.out.println(normalLockEye);
 		System.out.println(dangerLockEye);
+<<<<<<< HEAD
+		
+=======
+		String aa = Long.toString(currentTimestamp);
+	    String datee = aa.substring(0,2);
+	    String monthh = aa.substring(2,4);
+	    String yearr = aa.substring(4,8);
+	    System.out.println(datee + '/' + monthh + '/' + yearr);
+		
 		*/
+>>>>>>> branch 'master' of https://github.com/syazanihussin/LockItEnterprise.git
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");  
 	    Date date = new Date(); 
@@ -211,11 +221,51 @@ public class TestDriver {
 	    long currentTimestamp = Long.parseLong(df);
 	    System.out.println(currentTimestamp);
 
+<<<<<<< HEAD
 	    String aa = Long.toString(currentTimestamp);
 	    String datee = aa.substring(0,2);
 	    String monthh = aa.substring(2,4);
 	    String yearr = aa.substring(4,8);
 	    System.out.println(datee + '/' + monthh + '/' + yearr);
+		*/
+		
+		
+		
+	    NotificationLogicLocal notificationLogicLocal = new NotificationBean() ;
+		
+	   
+	    VideoLogicLocal videoLogicLocal = new VideoBean();
+		
+		System.out.println(notificationLogicLocal.calculateTotalNotifications());
+		
+		
+		System.out.println(videoLogicLocal.calculateRemainingSpace());
+=======
+		SenseNotificationBeanLocal senseNotificationBeanLocal = new SenseNotificationBean();
+		
+		SensorDataLogicLocal senseDataLogicLocal = new SensorDataBean();
+		
+	    HashMap<SensorData, LockSense> a = senseDataLogicLocal.detectUnusualData();
+		
+	    
+	    
+		if(!a.isEmpty()) {
+			for(@SuppressWarnings("rawtypes") Map.Entry m : a.entrySet()) {
+				
+				SensorData sensorData = (SensorData) m.getKey();
+				String aa = Long.toString(sensorData.getDataTimestamp());
+				String datee = aa.substring(0,2);
+				String monthh = aa.substring(2,4);
+				String yearr = aa.substring(4,8);
+				String tarikh = datee + '/' + monthh + '/' + yearr;
+	    
+				HouseOwner houseOwner = new HouseOwner();
+				houseOwner.setUserID(1);
+				SenseNotification senseNotification = new SenseNotification("Unusual Behaviour Detected", "This Lock Sense has detected unusual behaviour at "+tarikh, currentTimestamp, (LockSense) m.getValue(), houseOwner);
+				senseNotificationBeanLocal.insertSenseNotification(senseNotification);
+			}
+		}
+>>>>>>> branch 'master' of https://github.com/syazanihussin/LockItEnterprise.git
 		
 	}
 

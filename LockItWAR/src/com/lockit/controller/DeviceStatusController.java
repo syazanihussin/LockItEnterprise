@@ -54,7 +54,7 @@ public class DeviceStatusController extends HttpServlet {
 		checkingLockSense(request);
 		checkingLockEye(request);
 		response.setContentType("text/html");
-		request.getRequestDispatcher("dashboard/pages/device.jsp").forward(request, response);
+		request.getRequestDispatcher("DeviceStatusController").forward(request, response);
 	}
 
 	

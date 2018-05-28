@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="com.lockit.entity.HouseOwner,com.lockit.ejb.logic.local.LockEyeLogicLocal,com.lockit.ejb.logic.local.LockSenseLogicLocal,com.lockit.ejb.LockSenseBean,com.lockit.ejb.LockEyeBean" %>
+<%@ page import="com.lockit.entity.HouseOwner,com.lockit.ejb.SenseNotificationBean,com.lockit.ejb.dao.local.SenseNotificationBeanLocal,com.lockit.ejb.logic.local.SenseNotificationLogicLocal,com.lockit.entity.SenseNotification,com.lockit.ejb.logic.local.NotificationLogicLocal,com.lockit.ejb.logic.local.VideoLogicLocal,com.lockit.ejb.NotificationBean,com.lockit.ejb.VideoBean,com.lockit.ejb.logic.local.LockEyeLogicLocal,com.lockit.ejb.logic.local.LockSenseLogicLocal,com.lockit.ejb.LockSenseBean,com.lockit.ejb.LockEyeBean" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -68,53 +68,28 @@
                             <i class="fa fa-bell fa-fw"></i> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-alerts">
+                        
+                        <%
+                        
+                        SenseNotificationBeanLocal senseNotificationBeanLocal = new SenseNotificationBean();
+                        SenseNotificationLogicLocal senseNotificationLogicLocal = new SenseNotificationBean();
+                        for(SenseNotification senseNotification : senseNotificationBeanLocal.getAllSenseNotifications()) {
+                
+                		%>
+                			
                             <li>
                                 <a href="#">
                                     <div>
-                                        <i class="fa fa-comment fa-fw"></i> New Comment
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
+                                        <i class="fa fa-comment fa-fw"></i> <%out.print(senseNotification.getSenseNotificationTitle()); %>
+                                        <span class="pull-right text-muted small"><%out.print(senseNotificationLogicLocal.getSenseNotificationInterval(senseNotification)); %></span>
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                        <span class="pull-right text-muted small">12 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-tasks fa-fw"></i> New Task
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
+                            
+                        <%
+                        }
+                        %>
                             <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
                         </ul>
                     </li>
 					<!------------------------------------------notification panel-------------------------------->
@@ -182,8 +157,13 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>Report</div>
+                                        <div class="huge"><% 
+                                        
+                                        NotificationLogicLocal notificationLogicLocal = new NotificationBean() ;                               		
+                                		int total = notificationLogicLocal.calculateTotalNotifications();
+                                		
+                                        out.print(total);%></div>
+                                        <div>Notification</div>
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +185,12 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">50GB</div>
+                                        <div class="huge"><% 
+                                       	
+                                       	VideoLogicLocal videoLogicLocal = new VideoBean();
+                                        double remain = videoLogicLocal.calculateRemainingSpace();
+                                        
+                                        out.print(remain);%></div>
                                         <div>Storage</div>
                                     </div>
                                 </div>
