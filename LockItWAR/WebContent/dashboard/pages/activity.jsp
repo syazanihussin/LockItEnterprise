@@ -12,22 +12,22 @@
         <title>Home | LOCKIT</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="dashboard/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
-        <link href="../css/metisMenu.min.css" rel="stylesheet">
+        <link href="dashboard/css/metisMenu.min.css" rel="stylesheet">
 
         <!-- Timeline CSS -->
-        <link href="../css/timeline.css" rel="stylesheet">
+        <link href="dashboard/css/timeline.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="../css/startmin.css" rel="stylesheet">
+        <link href="dashboard/css/startmin.css" rel="stylesheet">
 
         <!-- Morris Charts CSS -->
-        <link href="../css/morris.css" rel="stylesheet">
+        <link href="dashboard/css/morris.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="dashboard/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -139,13 +139,13 @@
                                 <a href="homepage.jsp" ><i class="fa fa-dashboard fa-fw"></i> MyDashboard</a>
                             </li>
 							<li>
-                                <a href="register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
+                                <a href="dashboard/pages/register.jsp" ><i class="fa fa-edit fa-fw"></i> Register Device</a>
                             </li>
 							<li>
-                                <a href="../../DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
+                                <a href="DeviceStatusController" ><i class="fa fa-bar-chart-o fa-fw"></i> Device Status</a>
                             </li>
                             <li>
-                                <a href="../../CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
+                                <a href="CCTVController"><i class="fa fa-eye fa-fw"></i> CCTV Status</a>
                             </li>
                             <li>
                                 <a href="activity.jsp" class="active"><i class="fa fa-wrench fa-fw"></i> Activity Log</a>
