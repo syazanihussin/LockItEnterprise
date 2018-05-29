@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.lockit.ejb.logic.local.HouseOwnerLogicLocal;
 import com.lockit.entity.HouseOwner;
 
@@ -35,10 +37,10 @@ public class loginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("pass");
 		 	
-		
+		HttpSession session = request.getSession(true);
 		if(houseOwnerBeanLocal.authenticateHouseOwner(email, password) == true) {
 			HouseOwner user = houseOwnerBeanLocal.getCurrentHouseOwner();
-			request.setAttribute("userName", user);
+			session.setAttribute("userName", user);
 			response.setContentType("text/html");
 			request.getRequestDispatcher("dashboard/pages/homepage.jsp").forward(request, response);	
 		}

@@ -38,20 +38,9 @@ public class dashboardController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int totalLockEye =lockEyeLogicLocal.calculateTotalLockEye();
-		request.setAttribute("totalLockEye",totalLockEye);
-
-		int totalLockSense=lockSenseLogicLocal.calculateTotalLockSense();
-		request.setAttribute("totalLockSense",totalLockSense);
-
-		int total = notificationLogicLocal.calculateTotalNotifications();
-		request.setAttribute("totalNotification", total);
-		
-		double remain = videoLogicLocal.calculateRemainingSpace();
-		request.setAttribute("remainingSpace", remain);
 		
 		response.setContentType("text/html");
-		request.getRequestDispatcher("dashboardController").forward(request, response);			
+		request.getRequestDispatcher("dashboard/pages/homepage.jsp").forward(request, response);			
 	}
 
 	

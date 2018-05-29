@@ -186,7 +186,7 @@ public class LockSense implements Serializable, LockItDevice {
 		int id = lockSenseBean.insertLockSense(new LockSense(level, location, keyz, houseID));
 		LockSense lockSense = new LockSense();
 		lockSense.setLocksenseID(id);
-		SensorData sensorData = new SensorData(3400, currentTimestamp, lockSense);
+		SensorData sensorData = new SensorData(currentTimestamp, 3400, lockSense);
 		senseDataBean.insertSensorData(sensorData);
 		
 	}
